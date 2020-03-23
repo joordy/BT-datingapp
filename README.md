@@ -4,10 +4,14 @@
 
 ```bash
 git checkout <branchname>
+```
 
+Once you've made your feature or changes run
 
-
-
+```bash
+git add -A
+git commit -m '<your commit message>'
+git push -u origin <branch-name>
 ```
 
 ### How are the branches named?
