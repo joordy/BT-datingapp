@@ -5,9 +5,16 @@
 ```bash
 git checkout <branchname>
 
+```
 
+### How to commit?
 
+```bash
+git add <filename> <or> < . (all)>
 
+git commit -m "<message>"
+
+git push origin <branchname>
 ```
 
 ### How are the branches named?
