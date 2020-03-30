@@ -1,0 +1,22 @@
+{
+  "name": "datingapplication",
+  "version": "1.0.0",
+  "description": "Datingapplication made for team project of CMD Amsterdam",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joordy/BT-datingapp.git"
+  },
+  "author": "Jordy Fronik, Veerle Prins, Rowan Horn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joordy/BT-datingapp/issues"
+  },
+  "homepage": "https://github.com/joordy/BT-datingapp#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
