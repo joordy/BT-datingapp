@@ -122,3 +122,15 @@ async function error(req, res, next) {
 }
 
 module.exports = router;
+
+// seen
+// firstName
+// lastName
+// DateOfBirth
+// gender
+// photo
+// movies
+// prefGender
+// prefMovie
+// likesYou
+// match
