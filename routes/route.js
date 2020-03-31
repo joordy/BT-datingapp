@@ -20,16 +20,17 @@ mongo.MongoClient.connect(url, { useUnifiedTopology: true }, function(err, clien
 });
 
 // Routing
-router.get('/', home)
-router.get('/register', register);
-router.post('/register', registerPosting)
-router.post('/login', login)
-router.get('/profile', profile)
-router.get('/currentUser', showUser)
-router.post('/match', match)
-router.get('/matchlist', matchList)
-router.get('/filter', filter)
-router.get('/*', error) // Error route
+router.get('/', home) // Jordy
+router.get('/register', register); // Rowan
+router.post('/register', registerPosting) // Rowan
+router.post('/login', login) // Rowan
+router.get('/profile', profile) // Rowan
+router.get('/currentUser', showUser) // Jordy
+router.post('/match', match) // Jordy
+router.get('/matchlist', matchList) // Jordy
+router.get('/filter', filter) // Veerle
+router.post('/', postFilter); // Veerle
+router.get('/*', error) // Veerle
 
 async function home(req, res, next) {
     try {
@@ -96,6 +97,14 @@ async function matchList(req, res, next) {
 }
 
 async function filter(req, res, next) {
+    try {
+
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+async function postFilter(req, res, next) {
     try {
 
     } catch (err) {
