@@ -6,7 +6,7 @@ html {
 
 body {
     font-family: 'Inter', sans-serif;
-    background: url('../images/background.png')no-repeat center center fixed;
+    background: url('../images/background.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -33,7 +33,7 @@ header ul li {
 
 header ul li a {
     text-decoration: none;
-    color: #4E50B8;
+    color: #4e50b8;
 }
 
 header ul li:nth-of-type(2) {
@@ -95,11 +95,11 @@ footer ul li a img {
 .swipe section {
     margin-top: 1em;
     border-radius: 1em;
-    ;
     box-shadow: 4px 4px 8px grey;
 }
 
 .swipe section figure {
+    /* background-color: white; */
     height: 75vh;
     position: relative;
 }
@@ -122,7 +122,7 @@ footer ul li a img {
 }
 
 .swipe section figure p {
-    background-color: #4E50B8;
+    background-color: #4e50b8;
     color: white;
     font-weight: 300;
     border-radius: 0.2em;
@@ -147,7 +147,7 @@ footer ul li a img {
     margin-top: -1rem;
     padding-top: 0.5em;
     width: 100%;
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, .1));
+    background-image: linear-gradient( to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.1));
     color: white;
     text-align: center;
     border-radius: 0em 0em 1em 1em;
@@ -180,7 +180,7 @@ footer ul li a img {
     width: 50%;
 }
 
-.swipe section figure figcaption form input[type=submit] {
+.swipe section figure figcaption form input[type='submit'] {
     font-size: 16px;
     padding: 1.2em 1.6em;
     background-color: white;
@@ -190,9 +190,9 @@ footer ul li a img {
     background-color: none;
 }
 
-.swipe section figure figcaption form input[type=submit]:nth-of-type(2) {
+.swipe section figure figcaption form input[type='submit']:nth-of-type(2) {
     padding: 1.2em 1.5em;
-    background-color: #EB4B71;
+    background-color: #eb4b71;
     color: white;
 }
 
@@ -207,7 +207,7 @@ footer ul li a img {
 .filtersPage header {
     display: flex;
     margin: 1em;
-    border-bottom: solid 1px #BDBDBD;
+    border-bottom: solid 1px #bdbdbd;
     padding-bottom: 1em;
 }
 
@@ -221,7 +221,7 @@ footer ul li a img {
 }
 
 .filtersPage header a:active {
-    color: #FFBFE7;
+    color: #ffbfe7;
 }
 
 .filtersPage header a img {
@@ -245,7 +245,7 @@ footer ul li a img {
     font-size: 1em;
     font-weight: 400;
     color: white;
-    background-color: #FF8484;
+    background-color: #ff8484;
     box-shadow: 1px 1px 2px rgb(49, 49, 49);
     border: none;
     margin: 0 auto;
@@ -286,7 +286,6 @@ footer ul li a img {
     font-size: 16px;
     color: black;
     font-weight: 300;
-    ;
 }
 
 .filtersPage main section form fieldset legend {
@@ -300,7 +299,7 @@ footer ul li a img {
     font-size: 1em;
     background: white;
     /* color: white; */
-    border: solid 2px #DCABA7;
+    border: solid 2px #dcaba7;
     border-radius: 0.3em;
     padding: 0.5em;
     /* margin-bottom: 10em; */
@@ -313,7 +312,7 @@ input:focus {
 
 .filtersPage main section form fieldset input {
     font-size: 1em;
-    border: solid 2px #DCABA7;
+    border: solid 2px #dcaba7;
     background-color: white;
     border-radius: 0.3em;
     padding: 0.5em;
@@ -323,9 +322,116 @@ input:focus {
     opacity: 0;
 }
 
-.filtersPage main section form fieldset input[type="radio"] {
+.filtersPage main section form fieldset input[type='radio'] {
     transform: scale(1.5);
     margin-left: 0.4em;
+}
+
+
+/******************************************************************************
+                          Match Page
+*******************************************************************************/
+
+.match {
+    background-image: none;
+    background-color: #4e50b8;
+    width: 100vw;
+    height: 100vh;
+}
+
+.match section:nth-of-type(1) {
+    width: 80%;
+    margin: 0% 10%;
+    display: flex;
+    height: 17em;
+}
+
+.match section:nth-of-type(1) img {
+    width: 40%;
+    max-width: 10em;
+    height: auto;
+    border-radius: 5px;
+    z-index: 1;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+.match section:nth-of-type(1) img:nth-of-type(2) {
+    /* foto van match */
+    transform: rotate(25deg);
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 3em;
+    left: 0;
+    right: 0;
+    margin-right: 5em;
+}
+
+.match section:nth-of-type(1) img:nth-of-type(3) {
+    /* foto van jou */
+    transform: rotate(-25deg);
+    top: 6em;
+    width: 30%;
+    max-width: 7em;
+    height: auto;
+    margin-left: 5em;
+}
+
+.match section:nth-of-type(1) img {
+    /* foto van hart */
+    transform: rotate(2deg);
+    top: 11em;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+.match section:nth-of-type(2) {
+    display: block;
+    width: 100vw;
+    text-align: center;
+    margin-top: 6vh;
+}
+
+.match section h1 {
+    font-size: 2em;
+    color: white;
+}
+
+.match section h2 {
+    color: white;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 2em;
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.match section a {
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    background-color: #ef6a52;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 1em 0em;
+    border-radius: 5px;
+}
+
+.match section a:nth-of-type(1) {
+    margin-top: 5vh;
+}
+
+.match section a:nth-of-type(2) {
+    margin-top: 1.25em;
+    background-color: #8182c8;
 }
 
 
@@ -369,8 +475,8 @@ input:focus {
 .matchlist article figure {
     position: absolute;
     left: 1em;
-    margin-top: .5em;
-    margin-bottom: .5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
     height: 100px;
     width: 100px;
 }
@@ -384,8 +490,8 @@ input:focus {
 .matchlist article figcaption {
     position: absolute;
     right: 1em;
-    margin-top: .5em;
-    margin-bottom: .5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
     width: 60%;
 }
 
@@ -399,7 +505,7 @@ input:focus {
     height: 80vh;
     text-align: center;
     display: table-cell;
-    vertical-align: middle
+    vertical-align: middle;
 }
 
 
@@ -449,7 +555,6 @@ input:focus {
     .swipe section {
         margin-top: 1em;
         border-radius: 1em;
-        ;
         box-shadow: 4px 4px 8px grey;
     }
     .swipe section figure {
@@ -472,7 +577,7 @@ input:focus {
         top: 1em;
     }
     .swipe section figure p {
-        background-color: #DCABA7;
+        background-color: #dcaba7;
         color: white;
         font-weight: 300;
         border-radius: 0.2em;
@@ -494,7 +599,7 @@ input:focus {
         margin-top: -1rem;
         padding-top: 0.5em;
         width: 100%;
-        background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, .1));
+        background-image: linear-gradient( to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.1));
         color: white;
         text-align: center;
         border-radius: 0em 0em 1em 1em;

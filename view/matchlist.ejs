@@ -12,17 +12,23 @@
     </header>
     <main>
         <ul>
-            <li>
-                <article id="person-options">
-                    <figure>
-                        <img src="images/users/user0001.jpg" alt="Liked user">
-                    </figure>
-                    <figcaption>
-                        <h2>name, age </h2>
-                        <p>You've got a match, lets talk!</p>
-                    </figcaption>
-                </article>
-            </li>
+            <% for (let i = 0; i < users.length; i++) { %>
+                <li>
+                    <article id="person-options">
+                        <figure>
+                            <img src="images/users/<%= users[i].photo %>.jpg" alt="Liked user" />
+                        </figure>
+                        <figcaption>
+                            <h2>
+                                <%= users[i].firstName %>
+                                    <%=users[i].lastName %>,
+                                        <%=users[i].age %>
+                            </h2>
+                            <p>You've got a match, lets talk!</p>
+                        </figcaption>
+                    </article>
+                </li>
+                <% }%>
         </ul>
     </main>
     <%- include ("components/footer-m.ejs") %>
