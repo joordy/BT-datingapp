@@ -35,6 +35,7 @@ router.get('/*', error) // Veerle
 async function home(req, res, next) {
     try {
         console.log('hello')
+        console.log('test 2')
     } catch (err) {
         console.log(err)
     }
