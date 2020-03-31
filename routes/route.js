@@ -97,7 +97,7 @@ async function matchList(req, res, next) {
 async function filter(req, res, next) {
     // veerle
     try {
-        console.log('Test');
+        res.render('filter.ejs');
 
     } catch (err) {
         console.log(err)
