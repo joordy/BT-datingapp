@@ -34,48 +34,47 @@ router.get('/*', error) // Veerle
 
 async function home(req, res, next) {
     try {
-        console.log('hello')
-        console.log('test 2')
+        res.render('index.ejs')
+            // console.log('hello')
+            // console.log('test 2')
     } catch (err) {
         console.log(err)
     }
 }
 
 async function register(req, res, next) {
+    // Rowan
     try {
-
+        res.render('register.ejs')
     } catch (err) {
         console.log(err)
     }
 }
 
 async function registerPosting(req, res, next) {
-    try {
-
-    } catch (err) {
+    // Rowan
+    try {} catch (err) {
         console.log(err)
     }
 }
 
 async function login(req, res, next) {
-    try {
-
-    } catch (err) {
+    // Rowan
+    try {} catch (err) {
         console.log(err)
     }
 }
 
 async function profile(req, res, next) {
-    try {
-
-    } catch (err) {
+    // Rowan
+    try {} catch (err) {
         console.log(err)
     }
 }
 
 async function showUser(req, res, next) {
     try {
-
+        res.render('currentUser.ejs')
     } catch (err) {
         console.log(err)
     }
@@ -83,7 +82,7 @@ async function showUser(req, res, next) {
 
 async function match(req, res, next) {
     try {
-
+        res.render('match.ejs')
     } catch (err) {
         console.log(err)
     }
@@ -91,14 +90,16 @@ async function match(req, res, next) {
 
 async function matchList(req, res, next) {
     try {
-
+        res.render('matchlist.ejs')
     } catch (err) {
         console.log(err)
     }
 }
 
 async function filter(req, res, next) {
+    // veerle
     try {
+        console.log('Test');
 
     } catch (err) {
         console.log(err)
@@ -106,6 +107,7 @@ async function filter(req, res, next) {
 }
 
 async function postFilter(req, res, next) {
+    // veerle
     try {
 
     } catch (err) {
@@ -115,7 +117,7 @@ async function postFilter(req, res, next) {
 
 async function error(req, res, next) {
     try {
-
+        res.render('404.ejs')
     } catch (err) {
         console.log(err)
     }
