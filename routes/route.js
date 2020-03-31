@@ -98,6 +98,7 @@ async function matchList(req, res, next) {
 
 async function filter(req, res, next) {
     try {
+        console.log('Test');
 
     } catch (err) {
         console.log(err)
