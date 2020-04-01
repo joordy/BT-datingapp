@@ -22,16 +22,18 @@ mongo.MongoClient.connect(url, { useUnifiedTopology: true }, function(
 });
 
 // Routing
-router.get('/', home); // Jordy
-router.get('/register', register); // Rowan
-router.post('/register', registerPosting); // Rowan
-router.post('/login', login); // Rowan
-router.get('/profile', profile); // Rowan
+router.get('/', signin); // Rowan, eerste pagina (index)
+router.get('registration', registration); // Rowan
+router.post('registration', createAccount); // Rowan
+router.post('/', logIn); // Rowan
+router.get('/profile', profileOfMe); // Rowan
+router.post('/profile', postProfile); // Rowan
+router.get('/home', home); // Jordy
 router.get('/currentUser', showUser); // Jordy
 router.post('/match', match); // Jordy
 router.get('/matchlist', matchList); // Jordy
 router.get('/filter', filter); // Veerle
-router.post('/', postFilter); // Veerle
+router.post('/home', postFilter); // Veerle
 router.get('/*', error); // Veerle
 
 function deleteYourself(remove_u) {
@@ -43,42 +45,67 @@ function deleteYourself(remove_u) {
 }
 
 // Routing functions
+async function signIn(req, res, next) {
+    // Rowan
+    try {
+        res.render('index.ejs');
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function registration(req, res, next) {
+    // Rowan
+    try {
+        // code
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function createAccount(req, res, next) {
+    // Rowan
+    try {
+        // code
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function logIn(req, res, next) {
+    // Rowan
+    try {
+        // code
+        // post gegevens signin, res.redirect('/home')
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function profileOfMe(req, res, next) {
+    // Rowan
+    try {
+        // code
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function postProfile(req, res, next) {
+    // Rowan
+    try {
+        // code
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 async function home(req, res, next) {
     // Routes function home, graps every user with 'seen: false' and shows them on page.
     try {
         let allUsers = await usersCollection.find({ seen: false }).toArray();
-        res.render('index.ejs', { users: allUsers });
+        res.render('home.ejs', { users: allUsers });
     } catch (err) {
-        console.log(err);
-    }
-}
-
-async function register(req, res, next) {
-    // Rowan
-    try {
-        res.render('register.ejs');
-    } catch (err) {
-        console.log(err);
-    }
-}
-
-async function registerPosting(req, res, next) {
-    // Rowan
-    try {} catch (err) {
-        console.log(err);
-    }
-}
-
-async function login(req, res, next) {
-    // Rowan
-    try {} catch (err) {
-        console.log(err);
-    }
-}
-
-async function profile(req, res, next) {
-    // Rowan
-    try {} catch (err) {
         console.log(err);
     }
 }
