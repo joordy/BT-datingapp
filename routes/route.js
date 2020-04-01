@@ -22,7 +22,7 @@ mongo.MongoClient.connect(url, { useUnifiedTopology: true }, function(
 });
 
 // Routing
-router.get('/', signin); // Rowan, eerste pagina (index)
+router.get('/', signIn); // Rowan, eerste pagina (index)
 router.get('registration', registration); // Rowan
 router.post('registration', createAccount); // Rowan
 router.post('/', logIn); // Rowan
