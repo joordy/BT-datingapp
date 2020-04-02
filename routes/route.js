@@ -23,12 +23,12 @@ mongo.MongoClient.connect(url, { useUnifiedTopology: true }, function(
 
 // Routing
 router.get('/', signIn); // Rowan, eerste pagina (index)
-router.get('registration', registration); // Rowan
-router.post('registration', createAccount); // Rowan
-router.post('/', logIn); // Rowan
+router.get('/registration', registration); // Rowan
+router.post('/registration', createAccount); // Rowan
+router.post('/home', logIn); // Rowan
 router.get('/profile', profileOfMe); // Rowan
 router.post('/profile', postProfile); // Rowan
-router.get('/home', home); // Jordy
+router.get('/home', home); // Jordy & Veerle
 router.get('/currentUser', showUser); // Jordy
 router.post('/match', match); // Jordy
 router.get('/matchlist', matchList); // Jordy
