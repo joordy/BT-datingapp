@@ -177,12 +177,12 @@ footer ul li a img {
 }
 
 .swipe section figure figcaption form div {
-  width: 50%;
+  width: 40%;
 }
 
 .swipe section figure figcaption form input[type='submit'] {
-  font-size: 16px;
-  padding: 1.2em 1.6em;
+  font-size: 32px;
+  padding: 0.4em 0.75em;
   background-color: white;
   border: none;
   border-radius: 50%;
@@ -191,7 +191,7 @@ footer ul li a img {
 }
 
 .swipe section figure figcaption form input[type='submit']:nth-of-type(2) {
-  padding: 1.2em 1.5em;
+  padding: 0.4em 0.6em;
   background-color: #eb4b71;
   color: white;
 }
