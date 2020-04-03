@@ -120,20 +120,6 @@ async function postProfile(req, res, next) {
     
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 async function home(req, res, next) {
     // Routes function home, graps every user with 'seen: false' and shows them on page.
     try {
