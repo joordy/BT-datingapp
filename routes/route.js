@@ -23,8 +23,8 @@ mongo.MongoClient.connect(url, { useUnifiedTopology: true }, function(
 
 // Routing
 router.get('/', signIn); // Rowan, eerste pagina (index)
-router.get('/registration', registration); // Rowan
-router.post('/registration', createAccount); // Rowan
+router.get('/registration', registration); // Rowan klaar
+router.post('/registration', createAccount); // Rowan klaar
 router.post('/home', logIn); // Rowan
 router.get('/profile', profileOfMe); // Rowan
 router.post('/profile', postProfile); // Rowan
@@ -57,19 +57,38 @@ async function signIn(req, res, next) {
 async function registration(req, res, next) {
   // Rowan
   try {
-    // code
+    res.render('registration');
   } catch (err) {
     console.log(err);
   }
 }
 
 async function createAccount(req, res, next) {
-  // Rowan
-  try {
-    // code
-  } catch (err) {
-    console.log(err);
-  }
+    // Rowan
+    try {
+        let firstName = req.body.firstName;
+        let lastName = req.body.lastName;
+        let email = req.body.email;
+        let password = req.body.password;
+        let gender = req.body.gender;
+        let age = req.body.age;
+
+
+        let data = {
+            'firstName': firstName,
+            'lastName': lastName,
+            'email': email,
+            'password': password,
+            'gender': gender,
+            'age': age,
+        };
+    // Pusht de data + input naar database
+    await db.collection('users').insertOne(data);
+    console.log('Created new user');
+    res.render('succes');
+    } catch {
+        next(err);
+    }
 }
 
 async function logIn(req, res, next) {
@@ -92,12 +111,13 @@ async function profileOfMe(req, res, next) {
 }
 
 async function postProfile(req, res, next) {
-  // Rowan
-  try {
-    // code
-  } catch (err) {
-    console.log(err);
-  }
+    // Rowan
+    try {
+        // code
+    } catch (err) {
+        console.log(err);
+    }
+    
 }
 
 async function home(req, res, next) {
