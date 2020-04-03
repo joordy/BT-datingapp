@@ -66,9 +66,28 @@ async function registration(req, res, next) {
 async function createAccount(req, res, next) {
     // Rowan
     try {
-        // code
-    } catch (err) {
-        console.log(err);
+        let firstName = req.body.firstName;
+        let lastName = req.body.lastName;
+        let email = req.body.email;
+        let password = req.body.password;
+        let gender = req.body.gender;
+        let age = req.body.age;
+
+
+        let data = {
+            'firstName': firstName,
+            'lastName': lastName,
+            'email': email,
+            'password': password,
+            'gender': gender,
+            'age': age,
+        };
+    // Pusht de data + input naar database
+    await db.collection('users').insertOne(data);
+    console.log('Created new user');
+    res.render('succes');
+    } catch {
+        next(err);
     }
 }
 
@@ -98,7 +117,22 @@ async function postProfile(req, res, next) {
     } catch (err) {
         console.log(err);
     }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 async function home(req, res, next) {
     // Routes function home, graps every user with 'seen: false' and shows them on page.
