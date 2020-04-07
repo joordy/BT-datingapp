@@ -5,6 +5,7 @@ require('dotenv').config();
 
 // Database calling
 let db = null;
+let loggedInUser; 
 let usersCollection = null;
 let url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_URL}${process.env.DB_END}`;
 
@@ -94,6 +95,12 @@ async function createAccount(req, res, next) {
 async function logIn(req, res, next) {
   // Rowan
   try {
+    //Veerle: Rowan, hierin moet een session beginnen met de 
+    //globale: loggedInUser. < dit is de ingelogde gebruiker.
+    //Voor nu zet ik er even static code in zodat mijn code alvast kan werken: 
+    req.session.gender = "Everyone";
+    req.session.movie = "";
+    loggedInUser = 5;
     // code
     // post gegevens signin, res.redirect('/home')
   } catch (err) {
@@ -179,9 +186,9 @@ async function matchList(req, res, next) {
 async function filter(req, res, next) {
   // veerle
   try {
-    res.render('filter.ejs');
+    res.render("filter", {gender : req.session.gender, movie: req.session.movie});
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
