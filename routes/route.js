@@ -34,8 +34,8 @@ router.get('/currentUser', showUser); // Jordy
 router.post('/match', match); // Jordy
 router.get('/matchlist', matchList); // Jordy
 router.get('/filter', filter); // Veerle - KLAAR
-router.post('/home', postFilter); // Veerle
-router.get('/*', error); // Veerle
+router.post('/home', postFilter); // Veerle - BIJNA KLAAR
+router.get('/*', error); // Veerle - KLAAR
 
 function deleteYourself(remove_u) {
   // To remove yourself from match page
@@ -127,6 +127,7 @@ async function postProfile(req, res, next) {
 }
 
 async function home(req, res, next) {
+  // Jordy & Veerle
   // Routes function home, graps every user with 'seen: false' and shows them on page.
   try {
     let allUsers = await usersCollection.find({ seen: false }).toArray();
@@ -183,7 +184,8 @@ async function matchList(req, res, next) {
 }
 
 async function filter(req, res, next) {
-  // veerle
+  // Veerle
+  //Displays the filter page with the sessions:
   try {
     res.render('filter.ejs', {gender : req.session.gender, movie: req.session.movie});
   } catch (err) {
@@ -192,15 +194,39 @@ async function filter(req, res, next) {
 }
 
 async function postFilter(req, res, next) {
-  // veerle
+  // Veerle
+  //Retrieves the entered preferences and sends them to the 
+  //updatePreferences function. After this the index page is 
+  //redirected again:
   try {
+    if (req.body.remove) {
+      await updatePreferences('everyone', '');
+      req.session.gender = 'everyone';
+      req.session.movie = '';
+    } else {
+      await updatePreferences(req.body.gender, req.body.movies);
+    }
   } catch (err) {
+    next(err);
+  }
+}
+
+async function updatePreferences (genderPreference, moviePreference) {
+  // Veerle
+  // Updates the database with the new preferences from the form:
+  try {
+    await db.collection("datingUsers").updateOne(
+      {id: loggedInUser},
+      {$set: { prefGender: genderPreference, prefMovies: moviePreference}}
+    );
+  } catch {
     next(err);
   }
 }
 
 async function error(req, res, next) {
   // Veerle
+  // Displays the error page:
   try {
     res.render('404.ejs');
   } catch (err) {
