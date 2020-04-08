@@ -28,8 +28,8 @@ router.post('/registration', createAccount); // Rowan klaar
 router.post('/home', logIn); // Rowan
 router.get('/profile', profileOfMe); // Rowan
 router.post('/profile', postProfile); // Rowan
+router.post('/updateProfile', updateProfile);
 router.post('/forgotPassword', forgotPassword);
-router.post('/updatePassword', updatePassword);
 router.get('/home', home); // Jordy & Veerle
 router.get('/currentUser', showUser); // Jordy
 router.post('/match', match); // Jordy
@@ -93,29 +93,29 @@ async function createAccount(req, res, next) {
     }
 }
 
-async function logIn(req, res) {
+async function logIn(req, res, next) {
   try {
-  usersCollection.findOne({email: req.body.email})
-      .then(data => {
-          if (data) {
-              if (data.password === req.body.password) {
-                  req.session.loggedIN = true;
-                  req.session.userId = data.email;
-                  req.session.userName = data.voornaam;
-                  res.render('succes');
-                  console.log('logged in as ' + req.session.userId);
-              } else {
-                  res.render('index');
-                  console.log('password incorrect');
-              }
-          } else {
-              res.render('index');
-              console.log('Cant find this account');
-          }
-      })
+  usersCollection.findOne({email: req.body.email}, (err, data) => {
+      // user does not exist
+    if  (data == null) {
+        res.redirect("/home");
+        console.log("user does not exist")
+        return;
+
+    } else {
+      // match from E-mail & password
+      if (req.body.password == data.password) {
+        req.session.user = data;
+        console.log("Logged in as " + req.session.user.name);
+        res.redirect("/");
+      } else if () {
+      // Invalid password
+      console.log("Invalid password");
+      res.redirect("/home");
+      } else {
     } catch (err) {
       console.log(err);
-    }
+  
   }
 
 async function profileOfMe(req, res, next) {
@@ -136,7 +136,7 @@ async function postProfile(req, res, next) {
   }  
 }
 
-async function forgotPassword(req, res, next) {
+async function updateProfile(req, res, next) {
   // Rowan
   try {
     // code
@@ -145,7 +145,8 @@ async function forgotPassword(req, res, next) {
   }
 }
 
-async function updatePassword(req, res, next) {
+
+async function forgotPassword(req, res, next) {
   // Rowan
   try {
     // code
