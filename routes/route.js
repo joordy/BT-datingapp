@@ -28,6 +28,8 @@ router.post('/registration', createAccount); // Rowan klaar
 router.post('/home', logIn); // Rowan
 router.get('/profile', profileOfMe); // Rowan
 router.post('/profile', postProfile); // Rowan
+router.post('/forgotPassword', forgotPassword);
+router.post('/updatePassword', updatePassword);
 router.get('/home', home); // Jordy & Veerle
 router.get('/currentUser', showUser); // Jordy
 router.post('/match', match); // Jordy
@@ -91,26 +93,7 @@ async function createAccount(req, res, next) {
     }
 }
 
-async function logIn(req, res, next) {
-  // Rowan
-  try {
-    // code
-    // post gegevens signin, res.redirect('/home')
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-async function profileOfMe(req, res, next) {
-  // Rowan
-  try {
-    // code
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-function logIn(req, res) {
+async function logIn(req, res) {
   try {
   usersCollection.findOne({email: req.body.email})
       .then(data => {
@@ -135,17 +118,40 @@ function logIn(req, res) {
     }
   }
 
-
-
+async function profileOfMe(req, res, next) {
+  // Rowan
+  try {
+    // code
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 async function postProfile(req, res, next) {
-    // Rowan
-    try {
-        // code
-    } catch (err) {
-        console.log(err);
-    }
-    
+  // Rowan
+  try {
+    // code
+  } catch (err) {
+    console.log(err);
+  }  
+}
+
+async function forgotPassword(req, res, next) {
+  // Rowan
+  try {
+    // code
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function updatePassword(req, res, next) {
+  // Rowan
+  try {
+    // code
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 async function home(req, res, next) {
