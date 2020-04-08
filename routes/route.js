@@ -110,6 +110,34 @@ async function profileOfMe(req, res, next) {
   }
 }
 
+function logIn(req, res) {
+  try {
+  usersCollection.findOne({email: req.body.email})
+      .then(data => {
+          if (data) {
+              if (data.password === req.body.password) {
+                  req.session.loggedIN = true;
+                  req.session.userId = data.email;
+                  req.session.userName = data.voornaam;
+                  res.render('succes');
+                  console.log('logged in as ' + req.session.userId);
+              } else {
+                  res.render('index');
+                  console.log('password incorrect');
+              }
+          } else {
+              res.render('index');
+              console.log('Cant find this account');
+          }
+      })
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+
+
+
 async function postProfile(req, res, next) {
     // Rowan
     try {
