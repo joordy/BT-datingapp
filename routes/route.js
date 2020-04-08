@@ -5,6 +5,7 @@ require('dotenv').config();
 
 // Database calling
 let db = null;
+let loggedInUser; 
 let usersCollection = null;
 let url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_URL}${process.env.DB_END}`;
 
@@ -32,7 +33,7 @@ router.get('/home', home); // Jordy & Veerle
 router.get('/currentUser', showUser); // Jordy
 router.post('/match', match); // Jordy
 router.get('/matchlist', matchList); // Jordy
-router.get('/filter', filter); // Veerle
+router.get('/filter', filter); // Veerle - KLAAR
 router.post('/home', postFilter); // Veerle
 router.get('/*', error); // Veerle
 
@@ -50,7 +51,7 @@ async function signIn(req, res, next) {
   try {
     res.render('index.ejs');
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
@@ -59,7 +60,7 @@ async function registration(req, res, next) {
   try {
     res.render('registration');
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
@@ -94,10 +95,16 @@ async function createAccount(req, res, next) {
 async function logIn(req, res, next) {
   // Rowan
   try {
+    //Veerle: Rowan, hierin moet een session beginnen met de 
+    //globale: loggedInUser. < dit is de ingelogde gebruiker.
+    //Voor nu zet ik er even static code in zodat mijn code alvast kan werken: 
+    req.session.gender = 'everyone';
+    req.session.movie = '';
+    loggedInUser = 5;
     // code
     // post gegevens signin, res.redirect('/home')
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
@@ -106,18 +113,17 @@ async function profileOfMe(req, res, next) {
   try {
     // code
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
 async function postProfile(req, res, next) {
-    // Rowan
-    try {
-        // code
-    } catch (err) {
-        console.log(err);
-    }
-    
+  // Rowan
+  try {
+    // code
+  } catch (err) {
+      next(err);
+  }  
 }
 
 async function home(req, res, next) {
@@ -126,7 +132,7 @@ async function home(req, res, next) {
     let allUsers = await usersCollection.find({ seen: false }).toArray();
     res.render('home.ejs', { users: allUsers });
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
@@ -134,7 +140,7 @@ async function showUser(req, res, next) {
   try {
     res.render('currentUser.ejs');
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
@@ -162,7 +168,7 @@ async function match(req, res, next) {
       res.redirect('/');
     }
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
@@ -172,16 +178,16 @@ async function matchList(req, res, next) {
     let matches = await usersCollection.find({ match: true }).toArray();
     res.render('matchlist.ejs', { users: matches });
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
 async function filter(req, res, next) {
   // veerle
   try {
-    res.render('filter.ejs');
+    res.render('filter.ejs', {gender : req.session.gender, movie: req.session.movie});
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
@@ -189,16 +195,16 @@ async function postFilter(req, res, next) {
   // veerle
   try {
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
 async function error(req, res, next) {
-  // Veerle of Jordy
+  // Veerle
   try {
     res.render('404.ejs');
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
