@@ -215,7 +215,7 @@ async function updatePreferences (genderPreference, moviePreference) {
   // Veerle
   // Updates the database with the new preferences from the form:
   try {
-    await db.collection("datingUsers").updateOne(
+    await usersCollection.updateOne(
       {id: loggedInUser},
       {$set: { prefGender: genderPreference, prefMovies: moviePreference}}
     );
