@@ -131,6 +131,7 @@ async function home(req, res, next) {
   // Routes function home, graps every user with 'seen: false' and shows them on page.
   try {
     let allUsers = await usersCollection.find({ seen: false }).toArray();
+    // let filtered = await checkGenderPref(hierin moet een array komen van gebruikers VOOR filteren, thisUser);
     res.render('home.ejs', { users: allUsers });
   } catch (err) {
     next(err);
@@ -183,6 +184,34 @@ async function matchList(req, res, next) {
   }
 }
 
+function checkGenderPref (users, loggedIn) {
+  //Filters the users by gender and movie preferences and returns
+  //a boolean if the conditions are correct for both sides:
+  return users.filter(function (user) {
+    if (loggedIn[0].prefGender === user.gender && loggedIn[0].gender === user.prefGender) {
+      return checkMoviePref(user, loggedIn);
+    } else if (user.prefGender === "everyone" && loggedIn[0].prefGender === "everyone") {
+      return checkMoviePref(user, loggedIn);
+    } else if (user.prefGender === "everyone" && user.gender === loggedIn[0].prefGender) {
+      return checkMoviePref(user, loggedIn);
+    } else if (loggedIn[0].prefGender === "everyone" && user.prefGender === loggedIn[0].gender) {
+      return checkMoviePref(user, loggedIn);
+    }
+  })
+}
+
+function checkMoviePref (user, loggedIn) {
+  //Filters the users by gender and movie preferences and returns
+  //a boolean if the conditions are correct for both sides:
+  if (loggedIn[0].prefMovies === "") {
+    return true;
+  } else if (loggedIn[0].prefMovies !== "") {
+    return user.movies.find(function (movie) {
+      return movie === loggedIn[0].prefMovies;
+    });
+  }
+}
+
 async function filter(req, res, next) {
   // Veerle
   //Displays the filter page with the sessions:
@@ -215,7 +244,7 @@ async function updatePreferences (genderPreference, moviePreference) {
   // Veerle
   // Updates the database with the new preferences from the form:
   try {
-    await db.collection("datingUsers").updateOne(
+    await usersCollection.updateOne(
       {id: loggedInUser},
       {$set: { prefGender: genderPreference, prefMovies: moviePreference}}
     );
