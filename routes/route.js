@@ -22,10 +22,10 @@ mongo.MongoClient.connect(url, { useUnifiedTopology: true }, function(
 });
 
 // Routing
-router.get('/', signIn); // Rowan, eerste pagina (index)
+router.get('/signIn', signIn); // Rowan, eerste pagina (index)
 router.get('/registration', registration); // Rowan klaar
 router.post('/registration', createAccount); // Rowan klaar
-router.post('/home', logIn); // Rowan
+router.post('/login', logIn); // Rowan
 router.get('/profile', profileOfMe); // Rowan
 router.post('/profile', postProfile); // Rowan
 router.post('/updateProfile', updateProfile);
@@ -50,7 +50,7 @@ function deleteYourself(remove_u) {
 async function signIn(req, res, next) {
   // Rowan
   try {
-    res.render('index.ejs');
+    res.render('signIn.ejs');
   } catch (err) {
     console.log(err);
   }
@@ -59,7 +59,7 @@ async function signIn(req, res, next) {
 async function registration(req, res, next) {
   // Rowan
   try {
-    res.render('registration');
+    res.render('registration.ejs');
   } catch (err) {
     console.log(err);
   }
@@ -74,7 +74,14 @@ async function createAccount(req, res, next) {
         let password = req.body.password;
         let gender = req.body.gender;
         let age = req.body.age;
-
+        let photo = req.body.photo;
+        let work = req.body.work;
+        let movies = req.body.movies;
+        let prefGender = req.body.prefGender;
+        let prefMovie = req.body.prefMovie;
+        let liked = req.body.liked;
+        let disliked = req.body.disliked;
+        
 
         let data = {
             'firstName': firstName,
@@ -83,40 +90,48 @@ async function createAccount(req, res, next) {
             'password': password,
             'gender': gender,
             'age': age,
+            'photo': photo,
+            'work': work,
+            'movies': [],
+            'prefGender': "everyone",
+            'prefMovie': "",
+            'liked': [],
+            'disliked': [],
         };
     // Pusht de data + input naar database
-    await db.collection('users').insertOne(data);
+    await usersCollection.insertOne(data);
     console.log('Created new user');
-    res.render('succes');
+    res.render('profile.ejs');
     } catch {
         next(err);
     }
 }
-
+    
 async function logIn(req, res, next) {
   try {
-  usersCollection.findOne({email: req.body.email}, (err, data) => {
-      // user does not exist
-    if  (data == null) {
-        res.redirect("/home");
-        console.log("user does not exist")
+    usersCollection.findOne({email: req.body.email}, (data) => {
+      //user does not exist
+      if (data == null) {
+        res.redirect('/');
+        console.log('user does not exist')
         return;
-
-    } else {
-      // match from E-mail & password
-      if (req.body.password == data.password) {
-        req.session.user = data;
-        console.log("Logged in as " + req.session.user.name);
-        res.redirect("/");
-      } else if () {
-      // Invalid password
-      console.log("Invalid password");
-      res.redirect("/home");
       } else {
-    } catch (err) {
-      console.log(err);
-  
-  }
+        // match from e-mail and password
+        if (req.body.password == data.password) {
+          req.session.user = data;
+          console.log('logged in as ' + req.session.firstName + req.session.lastName);
+          res.render('profile.ejs');
+        } else {
+          //invalid password
+          console.log('invalid password');
+          red.redirect('login.ejs');
+        }
+      }
+    });
+  } catch(err) {
+    console.log(err);
+        }
+}
 
 async function profileOfMe(req, res, next) {
   // Rowan
