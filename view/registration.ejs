@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ("components/head.ejs") %>
+    <title>Dat.io – login</title>
+</head>
+    <body>
+        
+        <h1>Down to Date</h1>      
+            <form action="registration" id="registration" method="POST">
+    
+                <div class="reg-con-1"> 
+                    <label for="firstName"><b>First name</b></label>
+                    <input type="text" placeholder="First name" name="firstName" required>
+  
+                    <label for="lastName"><b>Last name</b></label>
+                    <input type="text" placeholder="Last name" name="lastName" required>  
+                </div>
+                
+                <div class="reg-con-2"> 
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" name="email" minlength="6 " maxlength="60 " placeholder="test@hotmail.com" required>
+                    <label for='password'><b>Password</b></label>
+                    <input type="password" name="password" minlength="6 " placeholder="Min 6 letters" required>
+                </div>
+
+                
+            
+                <div class="reg-con-3">
+                    <h2>Tell us something about yourself..</h2>
+                   
+                    <h3>What is your age?</h3>
+                    <label for="age">Age
+                        <input type="number" min="18" max="40" id="age" name="age" value="age">
+                    </label>
+
+                    <h3>What is your gender?</h3>
+                    <label for="male">Male
+                        <input type="radio" id="male" name="gender" value="male">
+                    </label>
+                    <label for="female">Female
+                        <input type="radio" id="female" name="gender" value="female">
+                    </label>
+                    <label for="other">Other
+                        <input type="radio" id="other" name="gender" value="other">
+                    </label>
+                </div>
+              
+                <button type="submit">Create</button>
+
+                <a href="login"><button type="button" class="toLogin">to login</button></a>
+            </form>
+
+    </body>
+</html>
