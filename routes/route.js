@@ -121,7 +121,7 @@ async function postProfile(req, res, next) {
 }
 
 function showMe(user) {
-  // To get myself out of array
+  // To get static user out of array with people
   return user.id === idLoggedIn;
 }
 
@@ -165,44 +165,74 @@ async function showUser(req, res, next) {
   }
 }
 
-async function match(req, res, next) {
-  // res.render('match.ejs');
-  try {
-    let users = await usersCollection.find({
-      seen: false
-    }).toArray();
-    let matchedUser = deleteYourself(users);
-    let x = completeCollection.length - 1;
+function updateDatabase(input, user) {
+  // function to use the like and dislike button on /home
+  if (input.like) {
+    usersCollection.updateOne({
+      id: idLoggedIn
+    }, {
+      $push: {
+        liked: user.id
+      }
+    });
+    return true;
+  } else if (input.dislike) {
+    usersCollection.updateOne({
+      id: idLoggedIn
+    }, {
+      $push: {
+        disliked: user.id
+      }
+    });
+    return false;
+  }
+}
 
-    if (req.body.like) {
-      usersCollection.updateOne({
-        _id: completeCollection[x]._id
-      }, {
-        $set: {
-          match: true,
-          seen: true
-        }
-      });
+async function match(req, res, next) {
+  // Route match page, when pressing like, database will be updated with 'seen: true' & 'match: true'. Users gets match page.
+  // When pressing dislike, database will be updated with 'seen: true' & match stays false. Index page will be rerendered.
+  try {
+    let database = await usersCollection.find().toArray();
+    let myself = database.filter(showMe);
+    let liked = myself[0].liked;
+    let disliked = myself[0].disliked;
+    let allUsers = await usersCollection
+      .find({
+        $and: [{
+          id: {
+            $ne: idLoggedIn
+          }
+        }, {
+          id: {
+            $nin: liked
+          }
+        }, {
+          id: {
+            $nin: disliked
+          }
+        }]
+      }).toArray();
+    let indexUser = allUsers.length - 1;
+    let user = allUsers[indexUser];
+
+    let value = updateDatabase(req.body, user);
+    if (value === true && user.liked.includes(idLoggedIn)) {
       console.log(
-        `you have a like with ${completeCollection[x].firstName}, and the ID is ${completeCollection[x]._id}`
+        `you have a like with ${user.firstName}, and the ID is ${user._id}, ${user.liked}`
       );
       res.render('match.ejs', {
-        users: matchedUser
-      }); // data uit database halen en printen onder noemer 'users' in EJS templates
-    } else if (req.body.dislike) {
-      usersCollection.updateOne({
-        _id: completeCollection[x]._id
-      }, {
-        $set: {
-          match: false,
-          seen: true
-        }
+        users: user
       });
-      res.redirect('/');
+    } else if (value === true) {
+      console.log(`You like ${user.firstName}, but she hasn't liked you yet.`);
+      res.redirect('/home');
+    } else if (value === false) {
+      res.redirect('/home');
     }
   } catch (err) {
-    next(err);
+    next(err)
   }
+
 }
 
 async function matchList(req, res, next) {
