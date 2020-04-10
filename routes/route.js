@@ -118,6 +118,7 @@ async function logIn(req, res, next) {
       } else {
         // match from e-mail and password
         if (req.body.password == data.password) {
+          req.session.loggedIN = true;
           req.session.user = data;
           console.log('logged in as ' + req.session.firstName + req.session.lastName);
           res.render('profile.ejs');
