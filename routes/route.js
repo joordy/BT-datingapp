@@ -5,6 +5,7 @@ require('dotenv').config();
 
 // Database calling
 let db = null;
+let loggedInUser; 
 let usersCollection = null;
 let url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_URL}${process.env.DB_END}`;
 
@@ -23,20 +24,20 @@ mongo.MongoClient.connect(url, { useUnifiedTopology: true }, function(
 
 // Routing
 router.get('/signIn', signIn); // Rowan, eerste pagina (index)
-router.get('/registration', registration); // Rowan klaar
-router.post('/registration', createAccount); // Rowan klaar
-router.post('/login', logIn); // Rowan
+router.get('/registration', registration); // Rowan - KLAAR
+router.post('/registration', createAccount); // Rowan - KLAAR
+router.post('/login', logIn); // Rowan - KlAAR
 router.get('/profile', profileOfMe); // Rowan
 router.post('/profile', postProfile); // Rowan
 router.post('/updateProfile', updateProfile);
-router.post('/forgotPassword', forgotPassword);
+router.post('/forgotPassword', forgotPassword); // Rowan - BIJNA KLAAR 
 router.get('/home', home); // Jordy & Veerle
 router.get('/currentUser', showUser); // Jordy
 router.post('/match', match); // Jordy
 router.get('/matchlist', matchList); // Jordy
-router.get('/filter', filter); // Veerle
-router.post('/home', postFilter); // Veerle
-router.get('/*', error); // Veerle
+router.get('/filter', filter); // Veerle - KLAAR
+router.post('/home', postFilter); // Veerle - BIJNA KLAAR
+router.get('/*', error); // Veerle - KLAAR
 
 function deleteYourself(remove_u) {
   // To remove yourself from match page
@@ -52,7 +53,7 @@ async function signIn(req, res, next) {
   try {
     res.render('signIn.ejs');
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
@@ -61,7 +62,7 @@ async function registration(req, res, next) {
   try {
     res.render('registration.ejs');
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
@@ -107,39 +108,43 @@ async function createAccount(req, res, next) {
     }
 }
     
-async function logIn(req, res, next) {
+function logIn(req, res) {
   try {
-    usersCollection.findOne({email: req.body.email}, (data) => {
-      //user does not exist
-      if (data == null) {
-        res.redirect('/');
-        console.log('user does not exist')
-        return;
-      } else {
-        // match from e-mail and password
-        if (req.body.password == data.password) {
-          req.session.loggedIN = true;
-          req.session.user = data;
-          console.log('logged in as ' + req.session.firstName + req.session.lastName);
-          res.render('profile.ejs');
-        } else {
-          //invalid password
-          console.log('invalid password');
-          red.redirect('login.ejs');
-        }
-      }
-    });
-  } catch(err) {
-    console.log(err);
-        }
+  usersCollection.findOne({email: req.body.email})
+      .then(data => {
+          if (data) {
+              if (data.password === req.body.password) {
+                  req.session.loggedIN = true;
+                  req.session.user = data;
+                  req.session.userName = data.firstName;
+                  res.render('profile.ejs');
+                  console.log('logged in as ' + req.session.userName);
+              } else {
+                  res.render('index.ejs');
+                  console.log('password incorrect');
+              }
+          } else {
+              res.render('index.ejs');
+              console.log('Cant find this account');
+          }
+      })
+    }  catch(err) {
+          console.log(err);
+      };
 }
 
 async function profileOfMe(req, res, next) {
   // Rowan
   try {
+    //Veerle: Rowan, hierin moet een session beginnen met de 
+    //globale: loggedInUser. < dit is de ingelogde gebruiker.
+    //Voor nu zet ik er even static code in zodat mijn code alvast kan werken: 
+    req.session.gender = 'everyone';
+    req.session.movie = '';
+    loggedInUser = 5;
     // code
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
@@ -157,27 +162,28 @@ async function updateProfile(req, res, next) {
   try {
     // code
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
-
-
 async function forgotPassword(req, res, next) {
   // Rowan
   try {
-    // code
+    //forgot password
+  res.render('forgotPassword');
   } catch (err) {
     console.log(err);
   }
 }
 
 async function home(req, res, next) {
+  // Jordy & Veerle
   // Routes function home, graps every user with 'seen: false' and shows them on page.
   try {
     let allUsers = await usersCollection.find({ seen: false }).toArray();
+    // let filtered = await checkGenderPref(hierin moet een array komen van gebruikers VOOR filteren, thisUser);
     res.render('home.ejs', { users: allUsers });
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
@@ -185,7 +191,7 @@ async function showUser(req, res, next) {
   try {
     res.render('currentUser.ejs');
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
@@ -213,7 +219,7 @@ async function match(req, res, next) {
       res.redirect('/');
     }
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
@@ -223,33 +229,86 @@ async function matchList(req, res, next) {
     let matches = await usersCollection.find({ match: true }).toArray();
     res.render('matchlist.ejs', { users: matches });
   } catch (err) {
-    console.log(err);
+    next(err);
+  }
+}
+
+function checkGenderPref (users, loggedIn) {
+  //Filters the users by gender and movie preferences and returns
+  //a boolean if the conditions are correct for both sides:
+  return users.filter(function (user) {
+    if (loggedIn[0].prefGender === user.gender && loggedIn[0].gender === user.prefGender) {
+      return checkMoviePref(user, loggedIn);
+    } else if (user.prefGender === "everyone" && loggedIn[0].prefGender === "everyone") {
+      return checkMoviePref(user, loggedIn);
+    } else if (user.prefGender === "everyone" && user.gender === loggedIn[0].prefGender) {
+      return checkMoviePref(user, loggedIn);
+    } else if (loggedIn[0].prefGender === "everyone" && user.prefGender === loggedIn[0].gender) {
+      return checkMoviePref(user, loggedIn);
+    }
+  })
+}
+
+function checkMoviePref (user, loggedIn) {
+  //Filters the users by gender and movie preferences and returns
+  //a boolean if the conditions are correct for both sides:
+  if (loggedIn[0].prefMovies === "") {
+    return true;
+  } else if (loggedIn[0].prefMovies !== "") {
+    return user.movies.find(function (movie) {
+      return movie === loggedIn[0].prefMovies;
+    });
   }
 }
 
 async function filter(req, res, next) {
-  // veerle
+  // Veerle
+  //Displays the filter page with the sessions:
   try {
-    res.render('filter.ejs');
+    res.render('filter.ejs', {gender : req.session.gender, movie: req.session.movie});
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
 async function postFilter(req, res, next) {
-  // veerle
+  // Veerle
+  //Retrieves the entered preferences and sends them to the 
+  //updatePreferences function. After this the index page is 
+  //redirected again:
   try {
+    if (req.body.remove) {
+      await updatePreferences('everyone', '');
+      req.session.gender = 'everyone';
+      req.session.movie = '';
+    } else {
+      await updatePreferences(req.body.gender, req.body.movies);
+    }
   } catch (err) {
-    console.log(err);
+    next(err);
+  }
+}
+
+async function updatePreferences (genderPreference, moviePreference) {
+  // Veerle
+  // Updates the database with the new preferences from the form:
+  try {
+    await usersCollection.updateOne(
+      {id: loggedInUser},
+      {$set: { prefGender: genderPreference, prefMovies: moviePreference}}
+    );
+  } catch {
+    next(err);
   }
 }
 
 async function error(req, res, next) {
-  // Veerle of Jordy
+  // Veerle
+  // Displays the error page:
   try {
     res.render('404.ejs');
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 }
 
