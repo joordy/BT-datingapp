@@ -118,7 +118,7 @@ function logIn(req, res) {
                   req.session.user = data;
                   req.session.userName = data.firstName;
                   res.render('profile.ejs');
-                  console.log('logged in as ' + req.session.userName);
+                  console.log('logged in as ' + req.session.user);
               } else {
                   res.render('index.ejs');
                   console.log('password incorrect');
