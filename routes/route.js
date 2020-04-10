@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongo = require('mongodb');
+const session = require('express-session');
 require('dotenv').config();
 
 // Database calling
@@ -24,13 +25,13 @@ mongo.MongoClient.connect(url, { useUnifiedTopology: true }, function(
 
 // Routing
 router.get('/signIn', signIn); // Rowan, eerste pagina (index)
-router.get('/registration', registration); // Rowan - KLAAR
-router.post('/registration', createAccount); // Rowan - KLAAR
-router.post('/login', logIn); // Rowan - KlAAR
+router.get('/registration', registration); // Rowan klaar
+router.post('/registration', createAccount); // Rowan klaar
+router.post('/login', logIn); // Rowan
 router.get('/profile', profileOfMe); // Rowan
 router.post('/profile', postProfile); // Rowan
 router.post('/updateProfile', updateProfile);
-router.post('/forgotPassword', forgotPassword); // Rowan - BIJNA KLAAR 
+router.post('/forgotPassword', forgotPassword);
 router.get('/home', home); // Jordy & Veerle
 router.get('/currentUser', showUser); // Jordy
 router.post('/match', match); // Jordy
@@ -84,21 +85,37 @@ async function createAccount(req, res, next) {
         let disliked = req.body.disliked;
         
 
+        // let data = {
+        //     'firstName': firstName,
+        //     'lastName': lastName,
+        //     'email': email,
+        //     'password': password,
+        //     'gender': gender,
+        //     'age': age,
+        //     'photo': photo,
+        //     'work': work,
+        //     'movies': [],
+        //     'prefGender': "everyone",
+        //     'prefMovie': "",
+        //     'liked': [],
+        //     'disliked': [],
+        // };
+
         let data = {
-            'firstName': firstName,
-            'lastName': lastName,
-            'email': email,
-            'password': password,
-            'gender': gender,
-            'age': age,
-            'photo': photo,
-            'work': work,
-            'movies': [],
-            'prefGender': "everyone",
-            'prefMovie': "",
-            'liked': [],
-            'disliked': [],
-        };
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          password: password,
+          gender: gender,
+          age: age,
+          photo: photo,
+          work: work,
+          movies: [],
+          prefGender: "everyone",
+          prefMovie: "",
+          liked: [],
+          disliked: [],
+      };
     // Pusht de data + input naar database
     await usersCollection.insertOne(data);
     console.log('Created new user');
@@ -108,23 +125,21 @@ async function createAccount(req, res, next) {
     }
 }
     
-function logIn(req, res) {
+async function logIn(req, res) {
   try {
   usersCollection.findOne({email: req.body.email})
       .then(data => {
           if (data) {
-              if (data.password === req.body.password) {
-                  req.session.loggedIN = true;
+              if (req.body.password == data.password) {
                   req.session.user = data;
-                  req.session.userName = data.firstName;
-                  res.render('profile.ejs');
-                  console.log('logged in as ' + req.session.user);
+                  res.render('profile.ejs', {user: data});
+                  console.log(`Logged in as ` + req.session.user )
               } else {
-                  res.render('index.ejs');
+                  res.redirect('signin.ejs');
                   console.log('password incorrect');
               }
           } else {
-              res.render('index.ejs');
+              res.redirect('/');
               console.log('Cant find this account');
           }
       })
@@ -132,6 +147,7 @@ function logIn(req, res) {
           console.log(err);
       };
 }
+
 
 async function profileOfMe(req, res, next) {
   // Rowan
@@ -165,11 +181,12 @@ async function updateProfile(req, res, next) {
     next(err);
   }
 }
+
+
 async function forgotPassword(req, res, next) {
   // Rowan
   try {
-    //forgot password
-  res.render('forgotPassword');
+    // code
   } catch (err) {
     console.log(err);
   }
