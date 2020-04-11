@@ -94,21 +94,23 @@ async function createAccount(req, res, next) {
           liked: [],
           disliked: [],
       };
+      id.forEach(function(users) {
+      usersCollection.find().toArray
       if (users.length > 0) {
         for (let i = 0; i <users.length; i++) { 
           console.log('user number' + users.length); 
         }
       } 
+    })
     // Pusht de data + input naar database
-    await usersCollection.insertOne(data, err);
+    await usersCollection.insertOne(data);
     console.log('Created new user');
     res.render('profile.ejs');
     } catch {
-        next(err);
+      next(err)
     }
 }
 
-    
 async function logIn(req, res,) {
   try{
 const rounds = 10

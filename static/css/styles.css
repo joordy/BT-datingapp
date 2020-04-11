@@ -195,6 +195,190 @@ footer ul li a img {
 }
 
 /******************************************************************************
+                          Sign In page
+*******************************************************************************/
+
+/** Main **/
+
+
+form {
+  width: 360px;
+  height: 420px;
+  display: block;
+  background-color: #141414;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  box-sizing: border-box;
+  }
+  
+.log-con-1{
+  display: contents;
+  align-items: center;
+  text-align: center;
+  padding: 16px;
+}
+
+.log-con-2{
+  display: contents;
+  align-items: center;
+  text-align: center;
+  padding: 16px;
+}
+
+  /* Full-width inputs */
+input[type=text], input[type=password], input[type=email] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #DE5F5A; 
+  background-color: #141414;
+  
+}
+
+  /* Set a style for all buttons */
+button {
+  background-color:   #DE5F5A;
+  color: black;
+  padding: 14px 20px;
+  margin: 14px 20px;
+  border: black;
+  cursor: pointer;
+  width: 90%;
+  display: initial;
+  border-radius: 25px; 
+}
+  
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.6;
+  transition: 0.5s;
+}
+
+  /* add style for button text */
+button[type=submit] {
+  color: white;
+  font-size: 1em;
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 3em;
+}
+
+button[type=button] {
+  color: white;
+  font-size: 1em;
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+}
+  
+/* Extra style for the button to register page */
+.toRegister {
+  width: auto;
+  padding: 10px 30px;
+  background-color: rgb(88, 87, 87);
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+  outline: none;
+  border: none;
+}
+
+/* forgot password */
+.psw {
+  float: right;
+  padding-top: 23px;
+  color: white;
+  margin-right: 1.5em;
+  text-decoration: none;
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* placeholder for input fields */
+.placeholder {
+  color: white;
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+a {
+  color: white;
+  text-decoration: none;
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a:hover {
+  color: #DE5F5A;
+  transition: 0.4s;
+}
+
+/******************************************************************************
+                          Registration page
+*******************************************************************************/
+
+/** Main **/
+
+
+.reg-con-1{
+  display: contents;
+  align-items: center;
+  text-align: center;
+  padding: 16px;
+}
+
+.reg-con-2{
+  display: contents;
+  align-items: center;
+  text-align: center;
+  padding: 16px;
+}
+
+.reg-con-3{
+  display: inline;
+  flex: initial;
+  align-items: center;
+  text-align: center;
+  padding: 16px;
+  color: white;
+}
+
+label {
+  text-align: center;
+}
+
+input[type=radio] {
+  align-items: center;
+  text-align: center;
+  padding: 12px 20px;
+  margin: 8px 0;
+}
+
+input[type=number] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+  border-bottom: 2px solid #DE5F5A;
+  background-color: #141414;
+}
+
+::placeholder {
+  color: grey;
+}
+
+input, select, textarea{
+  color: white;
+}
+
+/* Extra style for the button to login page */
+.toLogin {
+  width: auto;
+  padding: 10px 30px;
+  background-color: rgb(88, 87, 87);
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+  outline: none;
+  border: none;
+}
+
+
+/******************************************************************************
                           Filters page 
 *******************************************************************************/
 
