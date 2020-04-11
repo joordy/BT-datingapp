@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongo = require('mongodb');
 const bcrypt = require('bcrypt');
+let usersCollection = require('usersCollection')
 require('dotenv').config();
 
 // Database calling
@@ -107,7 +108,22 @@ async function createAccount(req, res, next,) {
       'liked': [],
       'disliked': [],
       };
+
+      const salt = 10 ;
+        bcrypt.hash(password, salt)
+          .then(function(hashedPassword) {
+              return usersCollection.saveUser(email, hashedPassword);
+          })
+          .then(function() {
+              res.send();
+          })
+          .catch(function(error){
+              console.log("Error saving user: ");
+              console.log(error);
+              next();
+          });
       
+
     usersCollection.insertOne(data);
     console.log('Created new user');
     res.render('profile.ejs');
@@ -117,34 +133,39 @@ async function createAccount(req, res, next,) {
   }
 
 
+
+
 async function logIn(req, res,) {
   try{
-const rounds = 10
-const password = req.body.password
-//
-bcrypt.hash(password, rounds, (err, hash) => {
-  if (err) {
-    console.error(err)
-    return
-  }
-  console.log(hash)
+
+// const rounds = 10
+// const password = req.body.password
+// //
+// bcrypt.hash(password, rounds, (err, hash) => {
+//   if (err) {
+//     console.error(err)
+//     return
+//   }
+//   console.log(hash)
+//   //
+//   bcrypt.compare(password, hash, (err, res) => {
+//     if (err) {
+//       console.error(err)
+//       return
+//     }
+//     console.log(res)
+//   })
+// })
+// //
+// const hashPassword = async () => {
+//   const hash = await bcrypt.hash(password, rounds)
+//   console.log(hash)
+//   console.log(await bcrypt.compare(password, hash))
+// }
+// hashPassword()
   //
-  bcrypt.compare(password, hash, (err, res) => {
-    if (err) {
-      console.error(err)
-      return
-    }
-    console.log(res)
-  })
-})
-//
-const hashPassword = async () => {
-  const hash = await bcrypt.hash(password, rounds)
-  console.log(hash)
-  console.log(await bcrypt.compare(password, hash))
-}
-hashPassword()
-  //
+
+
   usersCollection.findOne({email: req.body.email})
        .then(data => {
           if (data) {
