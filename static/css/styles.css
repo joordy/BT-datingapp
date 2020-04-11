@@ -207,9 +207,9 @@ footer ul li a img {
 }
 
 .swipe .noUsersError img {
-  width: 35%;
+  width: 25%;
   height: auto;
-  margin: 0% 30%;
+  margin: 0% 37%;
 }
 
 .swipe .noUsersError p {
@@ -228,11 +228,11 @@ footer ul li a img {
     box-shadow: 1px 1px 2px rgb(49, 49, 49);
     border: none;
     display: flex;
-    width: 80vw;
+    width: 68vw;
     justify-content: center;
     margin: 0 auto;
     margin-top: 5em;
-    padding: 0.8em 1em;
+    padding: 0.6em 0.5em;
 }
 
 /******************************************************************************
@@ -564,9 +564,9 @@ input:focus {
 }
 
 .error section img {
-  width: 35%;
+  width: 25%;
   height: auto;
-  margin: 0% 30%;
+  margin: 0% 37%;
 }
 
 .error section p {
@@ -585,15 +585,15 @@ input:focus {
   font-size: 1em;
   font-weight: 400;
   color: white;
-  background-color: #FF8484;
+  background-color: #EB4B71;
   box-shadow: 1px 1px 2px rgb(49, 49, 49);
   border: none;
   display: flex;
   width: 80vw;
   justify-content: center;
   margin: 0 auto;
-  margin-top: 5em;
-  padding: 0.8em 1em;
+  margin-top: 7em;
+  padding: 0.6em 1em;
 }
 
 /******************************************************************************
