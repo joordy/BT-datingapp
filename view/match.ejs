@@ -1,34 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include ("components/head.ejs") %>
-    <title>Dat.io – Profile</title>
-  </head>
 
-  <body class="match">
-    <header>
-      <%- include ("components/header-two.ejs") %>
-    </header>
-    <main>
-      <% let currentPerson = users.length - 1; %>
+<head>
+  <%- include ("components/head.ejs") %>
+  <title>Match</title>
+</head>
 
-      <section>
-        <img src="images/icons/matchheart.svg" alt="heart" />
-        <img
-          src="images/users/<%= users[currentPerson].photo %>.jpg"
-          alt="Image of matched user"
-        />
-        <img src="images/users/me.jpg" alt="Image of me" />
-      </section>
-      <section>
-        <h1>It's a match!</h1>
-        <h2>You and <%= users[currentPerson].name %> have liked each other.</h2>
-        <a href="matchlist"> Send Message </a>
-        <a href="home"> Keep Swiping </a>
-      </section>
-    </main>
-    <footer>
-      <%- include ("components/footer-p.ejs") %>
-    </footer>
-  </body>
+<body class="match">
+
+  <main>
+    <section>
+      <img src="images/icons/matchheart.svg" alt="">
+      <img src="images/users/<%=users.photo%>" alt="">
+      <img src="images/users/user0018.jpg" alt="">
+
+    </section>
+    <section>
+      <h1>It's a match!</h1>
+      <h2>You and <%= users.firstName %> have liked each other.</h2>
+      <a href="matchlist"> Send Message </a>
+      <a href="home"> Keep Swiping </a>
+    </section>
+  </main>
+  <!-- <script src="scripts/script.js"></script> -->
+</body>
+
 </html>
