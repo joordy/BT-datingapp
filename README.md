@@ -19,7 +19,7 @@ This is a datingapp made together with [@RowanHorn](https://github.com/rowanhorn
 
 #### Register/login:
 
-Wanneer een gebruiker voor het eerst op de applicatie een profiel gaat aanmaken, wilt de gebruiker dat verschillende opties krijgen om zijn profiel zo zelfstandig een eenvoudig mogelijk kunnen invullen, zodat andere gebruikers die zijn profiel vinden precies weten wat voor persoon de gebruiker is.
+> Wanneer een gebruiker voor het eerst op de applicatie een profiel gaat aanmaken, wilt de gebruiker dat verschillende opties krijgen om zijn profiel zo zelfstandig een eenvoudig mogelijk kunnen invullen, zodat andere gebruikers die zijn profiel vinden precies weten wat voor persoon de gebruiker is.
 
 #### Filter:
 
@@ -28,10 +28,6 @@ Wanneer een gebruiker voor het eerst op de applicatie een profiel gaat aanmaken,
 #### Liking/matching:
 
 > When the user is looking for a date, he wants to find one with mutial connections, so he can like them, and when the interest is mutual, they will be connected.
-
-Dat.io, a project of @RowanHorn, @VeerlePrins and @Joordy
-
-Lorem Ipsum
 
 ## Setup
 
