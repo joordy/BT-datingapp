@@ -126,7 +126,7 @@ function showMe(user) {
 
 async function home(req, res, next) {
   // Jordy & Veerle
-  // Routes function home, graps every user with 'seen: false' and shows them on page.
+  // Routes function home, graps every user not in 'liked' or 'disliked', meets the filters, and shows them on page.
   try {
     let database = await usersCollection.find().toArray(); // this code can be removed at the point sessions works.
     let myself = database.filter(showMe);
@@ -255,7 +255,8 @@ async function matchList(req, res, next) {
 }
 
 function checkGenderPref(users, loggedIn) {
-  //Filters the users by gender and movie preferences and returns
+  //Veerle
+  //Filters the users by gender and sends to checkMoviePref and returns
   //a boolean if the conditions are correct for both sides:
   return users.filter(function (user) {
     if (loggedIn[0].prefGender === user.gender && loggedIn[0].gender === user.prefGender) {
@@ -271,8 +272,9 @@ function checkGenderPref(users, loggedIn) {
 }
 
 function checkMoviePref(user, loggedIn) {
-  //Filters the users by gender and movie preferences and returns
-  //a boolean if the conditions are correct for both sides:
+  //Veerle
+  //Filters the users by movie preferences and returns
+  //a boolean if the conditions are correct:
   if (loggedIn[0].prefMovies === "") {
     return true;
   } else if (loggedIn[0].prefMovies !== "") {
@@ -284,7 +286,8 @@ function checkMoviePref(user, loggedIn) {
 
 async function filter(req, res, next) {
   // Veerle
-  //Displays the filter page with the sessions:
+  //Displays the filter page with the sessions for the 
+  //filter preferences:
   try {
     res.render('filter.ejs', {
       gender: req.session.gender,
@@ -298,7 +301,7 @@ async function filter(req, res, next) {
 async function postFilter(req, res, next) {
   // Veerle
   //Retrieves the entered preferences and sends them to the 
-  //updatePreferences function. After this the index page is 
+  //updatePreferences function. After this the /home page is 
   //redirected again:
   try {
     if (req.body.remove) {
@@ -308,6 +311,7 @@ async function postFilter(req, res, next) {
     } else {
       await updatePreferences(req.body.gender, req.body.movies);
     }
+    res.redirect("/home");
   } catch (err) {
     next(err);
   }
@@ -315,7 +319,8 @@ async function postFilter(req, res, next) {
 
 async function updatePreferences(genderPreference, moviePreference) {
   // Veerle
-  // Updates the database with the new preferences from the form:
+  // Updates the database with the new preferences from the filter 
+  // preferences form:
   try {
     await usersCollection.updateOne({
       id: idLoggedIn
