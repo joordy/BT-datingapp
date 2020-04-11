@@ -92,8 +92,8 @@ async function logIn(req, res, next) {
     //Veerle: Rowan, hierin moet een session beginnen met de 
     //globale: idLoggedIn. < dit is de ingelogde gebruiker.
     //Voor nu zet ik er even static code in zodat mijn code alvast kan werken: 
-    req.session.gender = 'everyone';
-    req.session.movie = '';
+    // req.session.gender = 'everyone';
+    // req.session.movie = '';
     // code
     // post gegevens signin, res.redirect('/home')
   } catch (err) {
@@ -147,7 +147,10 @@ async function home(req, res, next) {
         }
       }, ],
     }).toArray();
+    req.session.gender = myself[0].prefGender;
+    req.session.movie = myself[0].prefMovie;
     let filtered = await checkGenderPref(allUsers, myself);
+    console.log(filtered);
     res.render('home.ejs', {
       users: filtered
     });
@@ -261,11 +264,11 @@ function checkGenderPref(users, loggedIn) {
   return users.filter(function (user) {
     if (loggedIn[0].prefGender === user.gender && loggedIn[0].gender === user.prefGender) {
       return checkMoviePref(user, loggedIn);
-    } else if (user.prefGender === "everyone" && loggedIn[0].prefGender === "everyone") {
+    } else if (user.prefGender === 'everyone' && loggedIn[0].prefGender === 'everyone') {
       return checkMoviePref(user, loggedIn);
-    } else if (user.prefGender === "everyone" && user.gender === loggedIn[0].prefGender) {
+    } else if (user.prefGender === 'everyone' && user.gender === loggedIn[0].prefGender) {
       return checkMoviePref(user, loggedIn);
-    } else if (loggedIn[0].prefGender === "everyone" && user.prefGender === loggedIn[0].gender) {
+    } else if (loggedIn[0].prefGender === 'everyone' && user.prefGender === loggedIn[0].gender) {
       return checkMoviePref(user, loggedIn);
     }
   })
@@ -275,11 +278,11 @@ function checkMoviePref(user, loggedIn) {
   //Veerle
   //Filters the users by movie preferences and returns
   //a boolean if the conditions are correct:
-  if (loggedIn[0].prefMovies === "") {
+  if (loggedIn[0].prefMovie === '') {
     return true;
-  } else if (loggedIn[0].prefMovies !== "") {
+  } else if (loggedIn[0].prefMovie !== '') {
     return user.movies.find(function (movie) {
-      return movie === loggedIn[0].prefMovies;
+      return movie === loggedIn[0].prefMovie;
     });
   }
 }
@@ -306,8 +309,8 @@ async function postFilter(req, res, next) {
   try {
     if (req.body.remove) {
       await updatePreferences("everyone", "");
-      req.session.gender = "everyone";
-      req.session.movie = "";
+      req.session.gender = 'everyone';
+      req.session.movie = '';
     } else {
       await updatePreferences(req.body.gender, req.body.movies);
     }
