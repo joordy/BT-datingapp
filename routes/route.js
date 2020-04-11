@@ -61,55 +61,58 @@ async function registration(req, res, next) {
   }
 }
 
-async function createAccount(req, res, next) {
-    // Rowan
-    try {
-        let firstName = req.body.firstName;
-        let lastName = req.body.lastName;
-        let email = req.body.email;
-        let password = req.body.password;
-        let gender = req.body.gender;
-        let age = req.body.age;
-        let photo = req.body.photo;
-        let work = req.body.work;
-        let movies = req.body.movies;
-        let prefGender = req.body.prefGender;
-        let prefMovie = req.body.prefMovie;
-        let liked = req.body.liked;
-        let disliked = req.body.disliked;
+async function createAccount(req, res, next,) {
+  // Rowan
+  try {
+    let totalCount;
+    const allUsers = await usersCollection.find().toArray();
+    allUsers.forEach(function(user) {
+      totalCount = user.id;
+      console.log(totalCount);
+      })
+    console.log(totalCount);
+    totalCount += 1;
 
-        let data = {
-          id: [],
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          password: password,
-          gender: gender,
-          age: age,
-          photo: photo,
-          work: work,
-          movies: [],
-          prefGender: "everyone",
-          prefMovie: "",
-          liked: [],
-          disliked: [],
+  
+
+    let firstName = req.body.firstName;
+    let lastName = req.body.lastName;
+    let email = req.body.email;
+    let password = req.body.password;
+    let gender = req.body.gender;
+    let age = req.body.age;
+    let photo = req.body.photo;
+    let work = req.body.work;
+    let movies = req.body.movies;
+    let prefGender = req.body.prefGender;
+    let prefMovie = req.body.prefMovie;
+    let liked = req.body.liked;
+    let disliked = req.body.disliked;
+
+    let data = {
+      'id': totalCount,
+      'firstName': firstName,
+      'lastName': lastName,
+      'email': email,
+      'password': password,
+      'gender': gender,
+      'age': age,
+      'photo': photo, 
+      'work': work,
+      'movies': [],
+      'prefGender': "everyone",
+      'prefMovie': "",
+      'liked': [],
+      'disliked': [],
       };
-      id.forEach(function(users) {
-      usersCollection.find().toArray
-      if (users.length > 0) {
-        for (let i = 0; i <users.length; i++) { 
-          console.log('user number' + users.length); 
-        }
-      } 
-    })
-    // Pusht de data + input naar database
-    await usersCollection.insertOne(data);
+    usersCollection.insertOne(data);
     console.log('Created new user');
     res.render('profile.ejs');
-    } catch {
+      }  catch(err) {
       next(err)
     }
-}
+  }
+
 
 async function logIn(req, res,) {
   try{
