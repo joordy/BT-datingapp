@@ -64,6 +64,7 @@ async function registration(req, res, next) {
 async function createAccount(req, res, next,) {
   // Rowan
   try {
+    // Counts all users
     let totalCount;
     const allUsers = await usersCollection.find().toArray();
     allUsers.forEach(function(user) {
@@ -71,6 +72,7 @@ async function createAccount(req, res, next,) {
       console.log(totalCount);
       })
     console.log(totalCount);
+    // New user is totalcount + 1
     totalCount += 1;
 
   
@@ -105,6 +107,7 @@ async function createAccount(req, res, next,) {
       'liked': [],
       'disliked': [],
       };
+      
     usersCollection.insertOne(data);
     console.log('Created new user');
     res.render('profile.ejs');
