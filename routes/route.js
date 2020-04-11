@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongo = require('mongodb');
-const session = require('express-session');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 // Database calling
@@ -27,7 +27,7 @@ mongo.MongoClient.connect(url, { useUnifiedTopology: true }, function(
 router.get('/signIn', signIn); // Rowan, eerste pagina (index)
 router.get('/registration', registration); // Rowan klaar
 router.post('/registration', createAccount); // Rowan klaar
-router.post('/login', logIn); // Rowan
+router.post('/signIn', logIn); // Rowan
 router.get('/profile', profileOfMe); // Rowan
 router.post('/profile', postProfile); // Rowan
 router.post('/updateProfile', updateProfile);
@@ -70,6 +70,9 @@ async function registration(req, res, next) {
 async function createAccount(req, res, next) {
     // Rowan
     try {
+      // const hashedPassword = await bcrypt.hash(req.body.password, 10)
+      // usersCollection.push
+
         let firstName = req.body.firstName;
         let lastName = req.body.lastName;
         let email = req.body.email;
@@ -83,7 +86,7 @@ async function createAccount(req, res, next) {
         let prefMovie = req.body.prefMovie;
         let liked = req.body.liked;
         let disliked = req.body.disliked;
-        
+    
 
         // let data = {
         //     'firstName': firstName,
@@ -116,6 +119,7 @@ async function createAccount(req, res, next) {
           liked: [],
           disliked: [],
       };
+      
     // Pusht de data + input naar database
     await usersCollection.insertOne(data);
     console.log('Created new user');
@@ -133,9 +137,9 @@ async function logIn(req, res) {
               if (req.body.password == data.password) {
                   req.session.user = data;
                   res.render('profile.ejs', {user: data});
-                  console.log(`Logged in as ` + req.session.user )
+                  console.log(`Logged in as ` + req.session.firstName )
               } else {
-                  res.redirect('signin.ejs');
+                  res.render('signin.ejs');
                   console.log('password incorrect');
               }
           } else {
