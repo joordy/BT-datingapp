@@ -23,7 +23,7 @@
               <p>#<%= users[i].movies[1] %></p>
               <% } %> 
               <% if (users[i].movies[0] != undefined) {%>
-                <p>#<%= users[i].movies[1] %></p>
+                <p>#<%= users[i].movies[0] %></p>
                 <% } %>
             <figcaption>
               <h2>
@@ -47,9 +47,9 @@
     <% if (users.length === 0) { %>
       <section class="noUsersError">
           <h2>Ooooops</h2>
-          <img src="images/icons/noUsers.svg" alt="image person">
+          <img src="images/icons/noUsers.svg" alt="Person with error sign">
           <p>Unfortunately, there are no users who meet these preferences yet...</p>
-          <a href="filters">Go to filters</a>    
+          <a href="filter">Go to filters</a>    
       </section>
   <% } %>
   </main>

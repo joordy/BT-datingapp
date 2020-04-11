@@ -4,7 +4,7 @@ const mongo = require('mongodb');
 require('dotenv').config();
 
 // Database calling
-let idLoggedIn = 18;
+let idLoggedIn = 18
 let db = null;
 let usersCollection = null;
 let url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_URL}${process.env.DB_END}`;
@@ -28,7 +28,7 @@ mongo.MongoClient.connect(url, {
 router.get('/', signIn); // Rowan, eerste pagina (index)
 router.get('/registration', registration); // Rowan klaar
 router.post('/registration', createAccount); // Rowan klaar
-router.post('/home', logIn); // Rowan
+// router.post('/profile', logIn); // Rowan
 router.get('/profile', profileOfMe); // Rowan
 router.post('/profile', postProfile); // Rowan
 router.get('/home', home); // Jordy & Veerle
@@ -150,7 +150,6 @@ async function home(req, res, next) {
     req.session.gender = myself[0].prefGender;
     req.session.movie = myself[0].prefMovie;
     let filtered = await checkGenderPref(allUsers, myself);
-    console.log(filtered);
     res.render('home.ejs', {
       users: filtered
     });
@@ -314,7 +313,7 @@ async function postFilter(req, res, next) {
     } else {
       await updatePreferences(req.body.gender, req.body.movies);
     }
-    res.redirect('/home.ejs');
+    res.redirect("/home");
   } catch (err) {
     next(err);
   }
@@ -330,7 +329,7 @@ async function updatePreferences(genderPreference, moviePreference) {
     }, {
       $set: {
         prefGender: genderPreference,
-        prefMovies: moviePreference
+        prefMovie: moviePreference
       }
     });
   } catch {
