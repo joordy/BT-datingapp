@@ -2,36 +2,38 @@
 <html lang="en">
 
 <head>
-    <%- include ("components/head.ejs") %>
-        <title>Dat.io – Matchlist</title>
+  <%- include ("components/head.ejs") %>
+  <title>Match-List</title>
 </head>
 
 <body class="matchlist">
-    <header>
-        <%- include ("components/header-two.ejs") %>
-    </header>
-    <main>
-        <ul>
-            <% for (let i = 0; i < users.length; i++) { %>
-                <li>
-                    <article id="person-options">
-                        <figure>
-                            <img src="images/users/<%= users[i].photo %>.jpg" alt="Liked user" />
-                        </figure>
-                        <figcaption>
-                            <h2>
-                                <%= users[i].firstName %>
-                                    <%=users[i].lastName %>,
-                                        <%=users[i].age %>
-                            </h2>
-                            <p>You've got a match, lets talk!</p>
-                        </figcaption>
-                    </article>
-                </li>
-                <% }%>
-        </ul>
-    </main>
-    <%- include ("components/footer-m.ejs") %>
+  <header>
+    <%- include ("components/header-one.ejs") %>
+  </header>
+
+  <main>
+    <ul>
+      <% for (let i = 0; i < users.length; i++) { %>
+      <li>
+        <article id="person-options">
+          <figure>
+            <img src="images/users/<%= users[i].photo %>" alt="Liked user" />
+          </figure>
+          <figcaption>
+            <h2>
+              <%= users[i].firstName %> <%=users[i].lastName%>, <%= users[i].age %>
+            </h2>
+            <p>You've got a match, lets talk!</p>
+
+          </figcaption>
+        </article>
+      </li>
+      <% }%>
+    </ul>
+  </main>
+  <%- include ("components/footer-m.ejs") %>
+
+  <script src="scripts/script.js"></script>
 </body>
 
 </html>
