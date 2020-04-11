@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongo = require('mongodb');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 // Database calling
@@ -26,12 +27,14 @@ mongo.MongoClient.connect(
 );
 
 // Routing
-router.get('/', signIn); // Rowan, eerste pagina (index)
+router.get('/signIn', signIn); // Rowan, eerste pagina (index)
 router.get('/registration', registration); // Rowan klaar
 router.post('/registration', createAccount); // Rowan klaar
-// router.post('/profile', logIn); // Rowan
+router.post('/signIn', logIn); // Rowan
 router.get('/profile', profileOfMe); // Rowan
 router.post('/profile', postProfile); // Rowan
+router.post('/updateProfile', updateProfile);
+router.post('/forgotPassword', forgotPassword);
 router.get('/home', home); // Jordy & Veerle
 router.get('/currentUser', showUser); // Jordy
 router.post('/match', match); // Jordy
@@ -44,7 +47,7 @@ router.get('/*', error); // Veerle - KLAAR
 async function signIn(req, res, next) {
   // Rowan
   try {
-    res.render('index.ejs');
+    res.render('signIn.ejs');
   } catch (err) {
     next(err);
   }
@@ -53,40 +56,118 @@ async function signIn(req, res, next) {
 async function registration(req, res, next) {
   // Rowan
   try {
-    res.render('registration');
+    res.render('registration.ejs');
   } catch (err) {
     next(err);
   }
 }
 
-async function createAccount(req, res, next) {
+async function createAccount(req, res, next,) {
   // Rowan
   try {
+    // Counts all users
+    let totalCount;
+    const allUsers = await usersCollection.find().toArray();
+    allUsers.forEach(function(user) {
+      totalCount = user.id;
+      console.log(totalCount);
+      })
+    console.log(totalCount);
+    // New user is totalcount + 1
+    totalCount += 1;
+
+  
+
     let firstName = req.body.firstName;
     let lastName = req.body.lastName;
     let email = req.body.email;
     let password = req.body.password;
     let gender = req.body.gender;
     let age = req.body.age;
+    let photo = req.body.photo;
+    let work = req.body.work;
+    let movies = req.body.movies;
+    let prefGender = req.body.prefGender;
+    let prefMovie = req.body.prefMovie;
+    let liked = req.body.liked;
+    let disliked = req.body.disliked;
 
     let data = {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password,
-      gender: gender,
-      age: age,
-    };
-    // Pusht de data + input naar database
-    await db.collection('users').insertOne(data);
+      'id': totalCount,
+      'firstName': firstName,
+      'lastName': lastName,
+      'email': email,
+      'password': password,
+      'gender': gender,
+      'age': age,
+      'photo': photo, 
+      'work': work,
+      'movies': [],
+      'prefGender': "everyone",
+      'prefMovie': "",
+      'liked': [],
+      'disliked': [],
+      };
+      
+    usersCollection.insertOne(data);
     console.log('Created new user');
-    res.render('succes');
-  } catch {
-    next(err);
+    res.render('profile.ejs');
+      }  catch(err) {
+      next(err)
+    }
+ }
+
+async function logIn(req, res,) {
+  try{
+const rounds = 10
+const password = req.body.password
+//
+bcrypt.hash(password, rounds, (err, hash) => {
+  if (err) {
+    console.error(err)
+    return
   }
+  console.log(hash)
+  //
+  bcrypt.compare(password, hash, (err, res) => {
+    if (err) {
+      console.error(err)
+      return
+    }
+    console.log(res)
+  })
+})
+//
+const hashPassword = async () => {
+  const hash = await bcrypt.hash(password, rounds)
+  console.log(hash)
+  console.log(await bcrypt.compare(password, hash))
+}
+hashPassword()
+  //
+  usersCollection.findOne({email: req.body.email})
+       .then(data => {
+          if (data) {
+              if (req.body.password == data.password) {
+                  req.session.user = data;
+                  res.render('profile.ejs', {user: data});
+                  console.log(`Logged in as ` + req.session )
+              } else {
+                  res.render('signin.ejs');
+                  console.log('password incorrect');
+              }
+          } else {
+              res.redirect('/');
+              console.log('Cant find this account');
+          }
+      })
+    }  catch(err) {
+          console.log(err);
+      };
 }
 
-async function logIn(req, res, next) {
+
+async function profileOfMe(req, res, next) {
   // Rowan
   try {
     //Veerle: Rowan, hierin moet een session beginnen met de
@@ -94,16 +175,6 @@ async function logIn(req, res, next) {
     //Voor nu zet ik er even static code in zodat mijn code alvast kan werken:
     // req.session.gender = 'everyone';
     // req.session.movie = '';
-    // code
-    // post gegevens signin, res.redirect('/home')
-  } catch (err) {
-    next(err);
-  }
-}
-
-async function profileOfMe(req, res, next) {
-  // Rowan
-  try {
     // code
   } catch (err) {
     next(err);
@@ -115,13 +186,27 @@ async function postProfile(req, res, next) {
   try {
     // code
   } catch (err) {
+    console.log(err);
+  }  
+}
+
+async function updateProfile(req, res, next) {
+  // Rowan
+  try {
+    // code
+  } catch (err) {
     next(err);
   }
 }
 
-function showMe(user) {
-  // To get static user out of array with people
-  return user.id === idLoggedIn;
+
+async function forgotPassword(req, res, next) {
+  // Rowan
+  try {
+    // code
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 async function home(req, res, next) {
