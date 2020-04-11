@@ -1,0 +1,740 @@
+*,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: url('../images/background.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: black;
+}
+
+/** Header **/
+
+header {
+  margin: 1em 1em 0.5em 1em;
+}
+
+header ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+header ul li {
+  list-style-type: none;
+  text-decoration: none;
+}
+
+header ul li a {
+  text-decoration: none;
+  color: #4e50b8;
+}
+
+header ul li:nth-of-type(2) {
+  margin-left: 1em;
+}
+
+/** Footer **/
+
+footer {
+  background-color: white;
+  box-shadow: black;
+  padding: 0.3em 0em;
+  position: fixed;
+  z-index: 1000;
+  bottom: 0;
+  width: 100%;
+}
+
+footer ul {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer ul li {
+  list-style-type: none;
+  text-decoration: none;
+}
+
+footer ul li a img {
+  text-align: center;
+  font-size: 2rem;
+  color: black;
+  padding: 0.5rem 2.2rem;
+}
+
+/******************************************************************************
+                          Home page
+*******************************************************************************/
+
+/** Main **/
+
+.swipe main {
+  margin: 0em 1em;
+}
+
+.swipe main ul li {
+  list-style-type: none;
+}
+
+.swipe main ul li:last-of-type {
+  margin-bottom: 5em;
+}
+
+.swipe section {
+  margin-top: 1em;
+  border-radius: 1em;
+  box-shadow: 4px 4px 8px grey;
+}
+
+.swipe section figure {
+  /* background-color: white; */
+  height: 75vh;
+  position: relative;
+}
+
+.swipe section figure img:nth-last-of-type(1) {
+  width: 100%;
+  height: 100%;
+  border-radius: 1em;
+  /* height: 25em; */
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.swipe section figure a {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 1em;
+  top: 1em;
+}
+
+.swipe section figure p {
+  background-color: #999ace;
+  color: white;
+  font-weight: 300;
+  border-radius: 0.2em;
+  padding: 0.3em;
+  text-decoration: none;
+  position: absolute;
+  left: 1rem;
+}
+
+.swipe section figure p:nth-of-type(1) {
+  bottom: 9.5rem;
+}
+
+.swipe section figure p:nth-of-type(2) {
+  bottom: 12rem;
+}
+
+.swipe section figure figcaption {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  margin-top: -1rem;
+  padding-top: 0.5em;
+  width: 100%;
+  background-image: linear-gradient(to top,
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0.1));
+  color: white;
+  text-align: center;
+  border-radius: 0em 0em 1em 1em;
+}
+
+.swipe section figure figcaption h2 {
+  font-size: 1.5em;
+}
+
+.swipe section figure figcaption h3 {
+  font-weight: 300;
+  font-size: 1em;
+}
+
+.swipe section figure figcaption h3 i {
+  height: 16px;
+  width: auto;
+  margin-right: 0.5em;
+  margin-top: 0.2em;
+}
+
+.swipe section figure figcaption form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.swipe section figure figcaption form div {
+  width: 40%;
+}
+
+.swipe section figure figcaption form input[type='submit'] {
+  font-size: 32px;
+  padding: 0.4em 0.75em;
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  margin: 0 auto;
+  background-color: none;
+}
+
+.swipe section figure figcaption form input[type='submit']:nth-of-type(2) {
+  padding: 0.4em 0.6em;
+  background-color: #eb4b71;
+  color: white;
+}
+
+
+.swipe .noUsersError {
+  box-shadow: none;
+}
+
+.swipe .noUsersError h2 {
+  font-size: 2em;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.swipe .noUsersError img {
+  width: 25%;
+  height: auto;
+  margin: 0% 37%;
+}
+
+.swipe .noUsersError p {
+  text-align: center;
+  margin: 2em;
+}
+
+.swipe .noUsersError a {
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.5em;
+    font-size: 1em;
+    font-weight: 400;
+    color: white;
+    background-color: #EB4B71;
+    box-shadow: 1px 1px 2px rgb(49, 49, 49);
+    border: none;
+    display: flex;
+    width: 68vw;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 5em;
+    padding: 0.6em 0.5em;
+}
+
+/******************************************************************************
+                          Filters page 
+*******************************************************************************/
+
+/** Header **/
+
+.filtersPage header {
+  display: flex;
+  margin: 1em;
+  border-bottom: solid 1px #bdbdbd;
+  padding-bottom: 1em;
+}
+
+.filtersPage header h1 {
+  font-size: 2em;
+  margin: 0 auto;
+}
+
+.filtersPage header a {
+  color: black;
+}
+
+.filtersPage header a:active {
+  color: #4E50B8;
+}
+
+.filtersPage header a img {
+  padding-top: 0.5em;
+}
+
+/** Main **/
+
+.filtersPage main {
+  margin: 0em 1em;
+}
+
+.filtersPage main section {
+  margin: 0.5em 0em;
+}
+
+.filtersPage main section form button {
+  /* Save preferences button: */
+  border-radius: 0.5em;
+  font-size: 1em;
+  font-weight: 400;
+  color: white;
+  background-color: #EB4B71;
+  box-shadow: 1px 1px 2px rgb(49, 49, 49);
+  border: none;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 6em;
+  padding: 0.8em 1em;
+  width: 90%;
+}
+
+.filtersPage main section form fieldset {
+  border: none;
+  margin-bottom: 1em;
+}
+
+.filtersPage main section form fieldset label {
+  font-weight: 300;
+}
+
+.filtersPage main section form fieldset:nth-of-type(1) div {
+  display: inline-block;
+  margin-right: 8%;
+}
+
+.filtersPage main section form fieldset:nth-of-type(2) label {
+  display: block;
+  margin-bottom: 0.3em;
+}
+
+.filtersPage main section form fieldset:nth-of-type(2) input {
+  display: block;
+}
+
+.filtersPage main section form fieldset:nth-of-type(2) input:nth-of-type(1) {
+  margin-bottom: 0.5em;
+}
+
+.filtersPage main section form fieldset:nth-of-type(3) span {
+  font-size: 16px;
+  color: black;
+  font-weight: 300;
+}
+
+.filtersPage main section form fieldset legend {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  color: black;
+  font-weight: 500;
+}
+
+.filtersPage main section form fieldset select {
+  font-size: 1em;
+  background: white;
+  /* color: white; */
+  border: solid 2px #BCBDEA;
+  border-radius: 0.3em;
+  padding: 0.5em;
+  /* margin-bottom: 10em; */
+}
+
+.filtersPage main section form fieldset select:focus,
+input:focus {
+  outline: none;
+}
+
+.filtersPage main section form fieldset input {
+  font-size: 1em;
+  border: solid 2px #BCBDEA;
+  background-color: white;
+  border-radius: 0.3em;
+  padding: 0.5em;
+}
+
+.filtersPage main section form fieldset input:nth-of-type(7) {
+  opacity: 0;
+}
+
+.filtersPage main section form fieldset input[type='radio'] {
+  transform: scale(1.5);
+  margin-left: 0.4em;
+}
+
+#remove {
+  /* Save preferences button: */
+  border-radius: 0.5em;
+  font-size: 1em;
+  font-weight: 400;
+  color: #4E50B8;
+  background-color: White;
+  box-shadow: none;
+  border: 1px solid #BCBDEA;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 2em;
+  padding: 0.8em 1em;
+  width: 90%;
+}
+
+/******************************************************************************
+                          Match Page
+*******************************************************************************/
+
+.match {
+  background-image: none;
+  background-color: #4e50b8;
+  width: 100vw;
+  height: 100vh;
+}
+
+.match section:nth-of-type(1) {
+  width: 80%;
+  margin: 0% 10%;
+  display: flex;
+  height: 17em;
+}
+
+.match section:nth-of-type(1) img {
+  border-radius: 10px;
+}
+
+.match section:nth-of-type(1) img:nth-of-type(1) {
+  /* Match heart*/
+  width: 40%;
+  height: auto;
+  position: absolute;
+  top: 10em;
+  left: 30%;
+  z-index: 4;
+  transform: rotate(20deg);
+}
+
+.match section:nth-of-type(1) img:nth-of-type(2) {
+  /* photo of match*/
+  position: absolute;
+  top: 3em;
+  right: 4em;
+  z-index: 3;
+  height: 13em;
+  width: 8em;
+  object-fit: cover;
+  transform: rotate(25deg);
+}
+
+.match section:nth-of-type(1) img:nth-of-type(3) {
+  /* photo of user*/
+  position: absolute;
+  top: 5em;
+  z-index: 2;
+  width: 8em;
+  height: 11em;
+  object-fit: cover;
+  left: 4em;
+  transform: rotate(-25deg);
+}
+
+.match section:nth-of-type(2) {
+  display: block;
+  width: 100vw;
+  text-align: center;
+  margin-top: 6vh;
+}
+
+.match section h1 {
+  font-size: 2em;
+  color: white;
+}
+
+.match section h2 {
+  color: white;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 2em;
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.match section a {
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: #ef6a52;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 1em 0em;
+  border-radius: 5px;
+}
+
+.match section a:nth-of-type(1) {
+  margin-top: 5vh;
+}
+
+.match section a:nth-of-type(2) {
+  margin-top: 1.25em;
+  background-color: #8182c8;
+}
+
+/******************************************************************************
+                          Matchlist Page
+*******************************************************************************/
+
+.matchlist header {
+  margin-bottom: 2em;
+}
+
+.matchlist p {
+  padding: 0;
+  height: 1em;
+  text-align: left;
+  display: block;
+}
+
+.matchlist main {
+  height: 100%;
+}
+
+.matchlist main ul li {
+  display: flex;
+  width: 100vw;
+}
+
+.matchlist article {
+  width: 100%;
+  margin-top: -2px;
+  height: 120px;
+  padding: 3px 0px;
+  border-top: 2px solid rgb(216, 216, 216);
+  border-bottom: 2px solid rgb(216, 216, 216);
+}
+
+.matchlist main li:last-of-type {
+  margin-bottom: 5em;
+}
+
+.matchlist article figure {
+  position: absolute;
+  left: 1em;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  height: 100px;
+  width: 100px;
+}
+
+.matchlist article figure img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.matchlist article figcaption {
+  position: absolute;
+  right: 1em;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  width: 60%;
+}
+
+.matchlist article figcaption h2 {
+  font-size: 1.3em;
+  margin-bottom: 0.3em;
+}
+
+/******************************************************************************
+                          Error Page
+*******************************************************************************/
+
+/* .error {
+  padding: 0em 3em;
+  height: 80vh;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+} */
+
+.error section h2 {
+  font-size: 2em;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.error section img {
+  width: 25%;
+  height: auto;
+  margin: 0% 37%;
+}
+
+.error section p {
+  text-align: center;
+  margin: 2em;
+}
+
+.error section div {
+  margin: 0 auto;
+}
+
+.error section  a {
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.5em;
+  font-size: 1em;
+  font-weight: 400;
+  color: white;
+  background-color: #EB4B71;
+  box-shadow: 1px 1px 2px rgb(49, 49, 49);
+  border: none;
+  display: flex;
+  width: 80vw;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 7em;
+  padding: 0.6em 1em;
+}
+
+/******************************************************************************
+                          TABLET index header
+*******************************************************************************/
+
+@media all and (min-width: 768px) {
+  .swipe header {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 1em;
+  }
+
+  .swipe header ul li:nth-of-type(2) {
+    margin-left: 0;
+  }
+
+  .swipe header ul li:nth-of-type(3) {
+    margin-right: 0;
+  }
+
+  .swipe header ul li:nth-of-type(2) a img {
+    /* Logo: */
+    width: 130%;
+  }
+
+  .swipe header ul li:nth-of-type(3) a img {
+    /* Logo: */
+    width: 120%;
+  }
+
+  /******************************************************************************
+                          TABLET index main
+*******************************************************************************/
+  .swipe main {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  /* .swipe main section figure a {
+        width: 20%;
+        height: 20%;
+    } */
+}
+
+/******************************************************************************
+                          TABLET index main
+*******************************************************************************/
+
+@media all and (min-width: 768px) {
+  .swipe section {
+    margin-top: 1em;
+    border-radius: 1em;
+    box-shadow: 4px 4px 8px grey;
+  }
+
+  .swipe section figure {
+    height: 75vh;
+    position: relative;
+  }
+
+  .swipe section figure img:nth-last-of-type(1) {
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
+    /* height: 25em; */
+    object-fit: cover;
+    margin: 0 auto;
+  }
+
+  .swipe section figure a {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: 1em;
+    top: 1em;
+  }
+
+  .swipe section figure p {
+    background-color: #dcaba7;
+    color: white;
+    font-weight: 300;
+    border-radius: 0.2em;
+    padding: 0.3em;
+    text-decoration: none;
+    position: absolute;
+    left: 1rem;
+  }
+
+  .swipe section figure p:nth-of-type(1) {
+    bottom: 9.5rem;
+  }
+
+  .swipe section figure p:nth-of-type(2) {
+    bottom: 12rem;
+  }
+
+  .swipe section figure figcaption {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    margin-top: -1rem;
+    padding-top: 0.5em;
+    width: 100%;
+    background-image: linear-gradient(to top,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0.1));
+    color: white;
+    text-align: center;
+    border-radius: 0em 0em 1em 1em;
+  }
+
+  .swipe section figure figcaption h2 {
+    font-size: 1.5em;
+  }
+
+  .swipe section figure figcaption h3 {
+    font-weight: 300;
+    font-size: 1em;
+  }
+
+  .swipe section figure figcaption h3 i {
+    height: 16px;
+    width: auto;
+    margin-right: 0.5em;
+    margin-top: 0.2em;
+  }
+
+  .swipe section figure figcaption form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+  }
+
+  .swipe section figure figcaption form div {
+    width: 50%;
+  }
+
+  .swipe section figure figcaption form button {
+    margin: 0 auto;
+    background-color: none;
+  }
+}
