@@ -311,7 +311,7 @@ async function postFilter(req, res, next) {
     } else {
       await updatePreferences(req.body.gender, req.body.movies);
     }
-    res.redirect("/home");
+    res.redirect('/home.ejs');
   } catch (err) {
     next(err);
   }

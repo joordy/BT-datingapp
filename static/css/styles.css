@@ -240,12 +240,12 @@ footer ul li a img {
   font-size: 1em;
   font-weight: 400;
   color: white;
-  background-color: #ff8484;
+  background-color: #FF8484;
   box-shadow: 1px 1px 2px rgb(49, 49, 49);
   border: none;
   margin: 0 auto;
   position: fixed;
-  bottom: 4em;
+  bottom: 6em;
   padding: 0.8em 1em;
   width: 90%;
 }
@@ -320,6 +320,22 @@ input:focus {
 .filtersPage main section form fieldset input[type='radio'] {
   transform: scale(1.5);
   margin-left: 0.4em;
+}
+
+#remove {
+  /* Save preferences button: */
+  border-radius: 0.5em;
+  font-size: 1em;
+  font-weight: 400;
+  color: #FF8484;
+  background-color: White;
+  box-shadow: none;
+  border: 1px solid #FF8484;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 2em;
+  padding: 0.8em 1em;
+  width: 90%;
 }
 
 /******************************************************************************
