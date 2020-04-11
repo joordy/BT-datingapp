@@ -1,9 +1,10 @@
+<!-- Code van Veerle & Jordy -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <%- include ("components/head.ejs") %>
-  <title>Dat.io – Home</title>
+  <title>Home - Dat.io</title>
 </head>
 
 <body class="swipe">
@@ -18,8 +19,12 @@
           <figure>
             <img src="images/users/<%= users[i].photo %>" alt="Image of user">
             <a href="profile" class="info"><img src="images/icons/info.svg" alt=""></a>
-            <p>Movie1</p>
-            <p>Movie2</p>
+            <% if (users[i].movies[1] != undefined) {%>
+              <p>#<%= users[i].movies[1] %></p>
+              <% } %> 
+              <% if (users[i].movies[0] != undefined) {%>
+                <p>#<%= users[i].movies[1] %></p>
+                <% } %>
             <figcaption>
               <h2>
                 <%= users[i].firstName, users[i].lastName %>,
@@ -39,7 +44,14 @@
       </li>
       <% }%>
     </ul>
-
+    <% if (users.length === 0) { %>
+      <section class="noUsersError">
+          <h2>Ooooops</h2>
+          <img src="images/noUsers.svg" alt="image person">
+          <p>Unfortunately, there are no users who meet these preferences yet...</p>
+          <a href="filters">Go to filters</a>    
+      </section>
+  <% } %>
   </main>
   <%- include ("components/footer-h.ejs") %>
 </body>
