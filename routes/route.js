@@ -4,7 +4,7 @@ const mongo = require('mongodb');
 require('dotenv').config();
 
 // Database calling
-let idLoggedIn = 18;
+let idLoggedIn = 18
 let db = null;
 let usersCollection = null;
 let url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_URL}${process.env.DB_END}`;
@@ -28,7 +28,7 @@ mongo.MongoClient.connect(url, {
 router.get('/', signIn); // Rowan, eerste pagina (index)
 router.get('/registration', registration); // Rowan klaar
 router.post('/registration', createAccount); // Rowan klaar
-router.post('/home', logIn); // Rowan
+// router.post('/profile', logIn); // Rowan
 router.get('/profile', profileOfMe); // Rowan
 router.post('/profile', postProfile); // Rowan
 router.get('/home', home); // Jordy & Veerle
@@ -90,11 +90,10 @@ async function logIn(req, res, next) {
   // Rowan
   try {
     //Veerle: Rowan, hierin moet een session beginnen met de 
-    //globale: loggedInUser. < dit is de ingelogde gebruiker.
+    //globale: idLoggedIn. < dit is de ingelogde gebruiker.
     //Voor nu zet ik er even static code in zodat mijn code alvast kan werken: 
-    req.session.gender = 'everyone';
-    req.session.movie = '';
-    loggedInUser = 5;
+    // req.session.gender = 'everyone';
+    // req.session.movie = '';
     // code
     // post gegevens signin, res.redirect('/home')
   } catch (err) {
@@ -127,7 +126,7 @@ function showMe(user) {
 
 async function home(req, res, next) {
   // Jordy & Veerle
-  // Routes function home, graps every user with 'seen: false' and shows them on page.
+  // Routes function home, graps every user not in 'liked' or 'disliked', meets the filters, and shows them on page.
   try {
     let database = await usersCollection.find().toArray(); // this code can be removed at the point sessions works.
     let myself = database.filter(showMe);
@@ -148,9 +147,11 @@ async function home(req, res, next) {
         }
       }, ],
     }).toArray();
-    // let filtered = await checkGenderPref(hierin moet een array komen van gebruikers VOOR filteren, thisUser);
+    req.session.gender = myself[0].prefGender;
+    req.session.movie = myself[0].prefMovie;
+    let filtered = await checkGenderPref(allUsers, myself);
     res.render('home.ejs', {
-      users: allUsers
+      users: filtered
     });
   } catch (err) {
     next(err);
@@ -256,36 +257,39 @@ async function matchList(req, res, next) {
 }
 
 function checkGenderPref(users, loggedIn) {
-  //Filters the users by gender and movie preferences and returns
+  //Veerle
+  //Filters the users by gender and sends to checkMoviePref and returns
   //a boolean if the conditions are correct for both sides:
   return users.filter(function (user) {
     if (loggedIn[0].prefGender === user.gender && loggedIn[0].gender === user.prefGender) {
       return checkMoviePref(user, loggedIn);
-    } else if (user.prefGender === "everyone" && loggedIn[0].prefGender === "everyone") {
+    } else if (user.prefGender === 'everyone' && loggedIn[0].prefGender === 'everyone') {
       return checkMoviePref(user, loggedIn);
-    } else if (user.prefGender === "everyone" && user.gender === loggedIn[0].prefGender) {
+    } else if (user.prefGender === 'everyone' && user.gender === loggedIn[0].prefGender) {
       return checkMoviePref(user, loggedIn);
-    } else if (loggedIn[0].prefGender === "everyone" && user.prefGender === loggedIn[0].gender) {
+    } else if (loggedIn[0].prefGender === 'everyone' && user.prefGender === loggedIn[0].gender) {
       return checkMoviePref(user, loggedIn);
     }
   })
 }
 
 function checkMoviePref(user, loggedIn) {
-  //Filters the users by gender and movie preferences and returns
-  //a boolean if the conditions are correct for both sides:
-  if (loggedIn[0].prefMovies === "") {
+  //Veerle
+  //Filters the users by movie preferences and returns
+  //a boolean if the conditions are correct:
+  if (loggedIn[0].prefMovie === '') {
     return true;
-  } else if (loggedIn[0].prefMovies !== "") {
+  } else if (loggedIn[0].prefMovie !== '') {
     return user.movies.find(function (movie) {
-      return movie === loggedIn[0].prefMovies;
+      return movie === loggedIn[0].prefMovie;
     });
   }
 }
 
 async function filter(req, res, next) {
   // Veerle
-  //Displays the filter page with the sessions:
+  //Displays the filter page with the sessions for the 
+  //filter preferences:
   try {
     res.render('filter.ejs', {
       gender: req.session.gender,
@@ -299,16 +303,17 @@ async function filter(req, res, next) {
 async function postFilter(req, res, next) {
   // Veerle
   //Retrieves the entered preferences and sends them to the 
-  //updatePreferences function. After this the index page is 
+  //updatePreferences function. After this the /home page is 
   //redirected again:
   try {
     if (req.body.remove) {
-      await updatePreferences('everyone', '');
+      await updatePreferences("everyone", "");
       req.session.gender = 'everyone';
       req.session.movie = '';
     } else {
       await updatePreferences(req.body.gender, req.body.movies);
     }
+    res.redirect("/home");
   } catch (err) {
     next(err);
   }
@@ -316,14 +321,15 @@ async function postFilter(req, res, next) {
 
 async function updatePreferences(genderPreference, moviePreference) {
   // Veerle
-  // Updates the database with the new preferences from the form:
+  // Updates the database with the new preferences from the filter 
+  // preferences form:
   try {
     await usersCollection.updateOne({
-      id: loggedInUser
+      id: idLoggedIn
     }, {
       $set: {
         prefGender: genderPreference,
-        prefMovies: moviePreference
+        prefMovie: moviePreference
       }
     });
   } catch {
