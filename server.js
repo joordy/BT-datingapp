@@ -6,7 +6,7 @@ const session = require('express-session');
 const mongo = require('mongodb');
 const assert = require('assert');
 const routing = require('./routes/route.js');
-require("dotenv").config();
+require('dotenv').config();
 
 // Variables
 const app = express();
@@ -18,14 +18,15 @@ app.set('views', 'view');
 app.use(express.static('static'));
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(cookieParser());
-app.use(session({
+app.use(
+  session({
     secret: process.env.SESSION_SECRET,
     saveUninitialized: true,
-    resave: true
-        // cookie: { secure: true }
-}));
+    resave: true,
+    // cookie: { secure: true }
+  })
+);
 app.use('/', routing); // using routing module
-
 
 // Server deploying on https://localhost:4000.
 app.listen(PORT, () => console.log(`App is listening on ${PORT}!`));

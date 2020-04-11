@@ -224,7 +224,7 @@ async function match(req, res, next) {
         users: user
       });
     } else if (value === true) {
-      console.log(`You like ${user.firstName}, but she hasn't liked you yet.`);
+      console.log(`You like ${user.firstName}, but he/she hasn't liked you yet.`);
       res.redirect('/home');
     } else if (value === false) {
       res.redirect('/home');
@@ -238,9 +238,15 @@ async function match(req, res, next) {
 async function matchList(req, res, next) {
   // Route match overview, graps every user with 'match: true' and will be displayed on overview page.
   try {
+    let database = await usersCollection.find().toArray();
+    let myself = database.filter(showMe);
+    let liked = myself[0].liked;
     let matches = await usersCollection.find({
-      match: true
+      id: {
+        $in: liked
+      }
     }).toArray();
+
     res.render('matchlist.ejs', {
       users: matches
     });

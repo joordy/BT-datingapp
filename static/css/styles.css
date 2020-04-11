@@ -342,16 +342,6 @@ input:focus {
 
 .match section:nth-of-type(1) img {
   border-radius: 10px;
-  /* Global Styling*/
-  /* width: 40%;
-  max-width: 10em;
-  height: auto;
-  border-radius: 5px;
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;*/
 }
 
 .match section:nth-of-type(1) img:nth-of-type(1) {
@@ -363,14 +353,6 @@ input:focus {
   left: 30%;
   z-index: 4;
   transform: rotate(20deg);
-  /* transform: rotate(25deg);
-  border-radius: 5px;
-  margin-left: auto;
-  margin-right: auto;
-  top: 3em;
-  left: 0;
-  right: 0;
-  margin-right: 5em; */
 }
 
 .match section:nth-of-type(1) img:nth-of-type(2) {
@@ -383,13 +365,6 @@ input:focus {
   width: 8em;
   object-fit: cover;
   transform: rotate(25deg);
-
-  /* transform: rotate(-25deg);
-  top: 6em;
-  width: 30%;
-  max-width: 7em;
-  height: auto;
-  margin-left: 5em; */
 }
 
 .match section:nth-of-type(1) img:nth-of-type(3) {
@@ -402,15 +377,6 @@ input:focus {
   object-fit: cover;
   left: 4em;
   transform: rotate(-25deg);
-  /* width: 40%;
-  max-width: 10em;
-  height: auto;
-  border-radius: 5px;
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0; */
 }
 
 .match section:nth-of-type(2) {
