@@ -90,11 +90,10 @@ async function logIn(req, res, next) {
   // Rowan
   try {
     //Veerle: Rowan, hierin moet een session beginnen met de 
-    //globale: loggedInUser. < dit is de ingelogde gebruiker.
+    //globale: idLoggedIn. < dit is de ingelogde gebruiker.
     //Voor nu zet ik er even static code in zodat mijn code alvast kan werken: 
     req.session.gender = 'everyone';
     req.session.movie = '';
-    loggedInUser = 5;
     // code
     // post gegevens signin, res.redirect('/home')
   } catch (err) {
@@ -148,9 +147,9 @@ async function home(req, res, next) {
         }
       }, ],
     }).toArray();
-    // let filtered = await checkGenderPref(hierin moet een array komen van gebruikers VOOR filteren, thisUser);
+    let filtered = await checkGenderPref(allUsers, myself);
     res.render('home.ejs', {
-      users: allUsers
+      users: filtered
     });
   } catch (err) {
     next(err);
@@ -267,9 +266,9 @@ async function postFilter(req, res, next) {
   //redirected again:
   try {
     if (req.body.remove) {
-      await updatePreferences('everyone', '');
-      req.session.gender = 'everyone';
-      req.session.movie = '';
+      await updatePreferences("everyone", "");
+      req.session.gender = "everyone";
+      req.session.movie = "";
     } else {
       await updatePreferences(req.body.gender, req.body.movies);
     }
@@ -283,7 +282,7 @@ async function updatePreferences(genderPreference, moviePreference) {
   // Updates the database with the new preferences from the form:
   try {
     await usersCollection.updateOne({
-      id: loggedInUser
+      id: idLoggedIn
     }, {
       $set: {
         prefGender: genderPreference,

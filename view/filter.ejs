@@ -3,67 +3,68 @@
 <html lang="en">
 
 <head>
-    <%- include ("components/head.ejs") %>
-        <title>Dat.io – Filters</title>
+    <%- include ("partials/head.ejs") %> 
+    <title>Filters | loveback</title>
 </head>
 
 <body class="filtersPage">
-  <header>
-    <a href="/"><img src="images/exit.svg" alt=""></a>
-    <h1>My filters</h1>
-  </header>
-  <main>
-    <section>
-      <form action="/" method="POST">
-          <fieldset>
-              <legend>Gender:</legend>
-              <div>
-                  <input type="radio" name="gender" id="genderMan" value="Man" <%if(gender === "Man"){%>
-                      <%="checked"%>
-                  <%}%>>
-                  <label for="genderMen">Men</label>
-              </div>
-              <div>
-                  <input type="radio" name="gender" id="genderWoman" value="Woman" <%if(gender === "Woman"){%>
-                      <%="checked"%>
-                  <%}%>>
-                  <label for="genderWoman">Women</label>
-              </div>
-              <div>
-                  <input type="radio" name="gender" id="genderEveryone" value="Everyone" <%if(gender === "Everyone" || gender === undefined){%>
-                      <%="checked"%>
-                  <%}%>>
-                  <label for="genderAnything">Everyone</label>
-              </div>
-          </fieldset>
-          <fieldset>
-              <legend>Movie genres:</legend>
-              <div class="selectbox">
-                  <select name="movies" id="">
-                      <option value=""<%if(movie === ""){%>
-                          <%="selected"%>
-                      <%}%>>--Please choose an option</option>
-                      <option value="actionMovies"<%if(movie === "actionMovies"){%>
-                          <%="selected"%>
-                      <%}%>>#actionMovies</option>
-                      <option value="adventureMovies" <%if(movie === "adventureMovies"){%>
-                          <%="selected"%>
-                      <%}%>>#adventureMovies</option>
-                      <option value="comedyMovies" <%if(movie === "comedyMovies"){%>
-                          <%="selected"%>
-                      <%}%>>#comedyMovies</option>
-                      <option value="horrorMovies" <%if(movie === "horrorMovies"){%>
-                          <%="selected"%>
-                      <%}%>>#horrorMovies</option>
-                  </select>
-              </div>
-          </fieldset>
-          <button id="Submit">
-              Save preferences
-          </button>
-      </form>
-  </section>    
-  </main>
+    <header>
+        <a href="/"><img src="images/exit.svg" alt=""></a>
+        <h1>My filters</h1>
+    </header>
+    <main>
+        <section>
+            <form action="/" method="POST">
+                <fieldset>
+                    <legend>Gender:</legend>
+                    <div>
+                        <input type="radio" name="gender" id="genderMan" value="man" <%if(gender === "man"){%>
+                            <%="checked"%>
+                        <%}%>>
+                        <label for="genderMen">Men</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="gender" id="genderWoman" value="woman" <%if(gender === "woman"){%>
+                            <%="checked"%>
+                        <%}%>>
+                        <label for="genderWoman">Women</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="gender" id="genderEveryone" value="everyone" <%if(gender === "everyone" || gender === undefined){%>
+                            <%="checked"%>
+                        <%}%>>
+                        <label for="genderAnything">Everyone</label>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Movie genres:</legend>
+                    <div class="selectbox">
+                        <select name="movies" id="">
+                            <option value=""<%if(movie === ""){%>
+                                <%="selected"%>
+                            <%}%>>--Please choose an option</option>
+                            <option value="actionMovies"<%if(movie === "actionMovies"){%>
+                                <%="selected"%>
+                            <%}%>>#actionMovies</option>
+                            <option value="adventureMovies" <%if(movie === "adventureMovies"){%>
+                                <%="selected"%>
+                            <%}%>>#adventureMovies</option>
+                            <option value="comedyMovies" <%if(movie === "comedyMovies"){%>
+                                <%="selected"%>
+                            <%}%>>#comedyMovies</option>
+                            <option value="horrorMovies" <%if(movie === "horrorMovies"){%>
+                                <%="selected"%>
+                            <%}%>>#horrorMovies</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <button id="Submit">
+                    Save preferences
+                </button>
+                <input id="remove" type="submit" name="remove" value="Remove preferences">
+            </form>
+        </section>
+    </main>
 </body>
 
 </html>
