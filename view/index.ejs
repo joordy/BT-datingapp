@@ -1,1 +1,59 @@
-<!-- login page -->
+<!-- Code van Veerle & Jordy -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include ("components/head.ejs") %>
+  <title>Home - Dat.io</title>
+</head>
+
+<body class="swipe">
+  <header>
+    <%- include ("components/header-one.ejs") %>
+  </header>
+  <main>
+    <ul>
+      <% for (let i = 0; i <users.length; i++) { %>
+      <li>
+        <section>
+          <figure>
+            <img src="images/users/<%= users[i].photo %>" alt="Image of user">
+            <a href="profile" class="info"><img src="images/icons/info.svg" alt=""></a>
+            <% if (users[i].movies[1] != undefined) {%>
+              <p>#<%= users[i].movies[1] %></p>
+              <% } %> 
+              <% if (users[i].movies[0] != undefined) {%>
+                <p>#<%= users[i].movies[0] %></p>
+                <% } %>
+            <figcaption>
+              <h2>
+                <%= users[i].firstName, users[i].lastName %>,
+                <%= users[i].age %>
+              </h2>
+              <h3>
+                <%= users[i].work %>
+              </h3>
+              <form action="/match" method="POST">
+                <input type="submit" name="dislike" class="dislike" data-id="<%=users[i]._id%>" value="&times;">
+                <div></div>
+                <input type="submit" name="like" class="like" data-id="<%=users[i]._id%>" value="❤">
+              </form>
+            </figcaption>
+          </figure>
+        </section>
+      </li>
+      <% }%>
+    </ul>
+    <% if (users.length === 0) { %>
+      <section class="noUsersError">
+          <h2>Ooooops</h2>
+          <img src="images/icons/noUsers.svg" alt="Person with error sign">
+          <p>Unfortunately, there are no users to like...Come back later or change your filters!</p>
+          <a href="filter">Go to filters</a>    
+      </section>
+  <% } %>
+  </main>
+  <%- include ("components/footer-h.ejs") %>
+</body>
+
+</html>
