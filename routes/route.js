@@ -321,6 +321,16 @@ async function match(req, res, next) {
     } else if (value === true) {
       console.log(
         `You like ${user.firstName}, but he/she hasn't liked you yet.`
+<<<<<<< HEAD
+     );
+     res.redirect('/home');
+   } else if (value === false) {
+     res.redirect('/home');
+   }
+ } catch (err) {
+   next(err);
+ }
+=======
       );
       res.redirect('/');
     } else if (value === false) {
@@ -329,6 +339,7 @@ async function match(req, res, next) {
   } catch (err) {
     next(err);
   }
+>>>>>>> develop
 }
  
 async function matchList(req, res, next) {
