@@ -445,7 +445,6 @@ input[type='email'] {
   width: 90%;
   height: auto;
   margin: 1em 5% 5em 5%;
-  /* background-color: white; */
   color: black;
 }
 
@@ -467,8 +466,6 @@ input[type='email'] {
 /******************************************************************************
                           Filters page 
 *******************************************************************************/
-
-/** Header **/
 
 .filtersPage header {
   display: flex;
