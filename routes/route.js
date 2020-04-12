@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const mongo = require('mongodb');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 // Database calling
-let idLoggedIn = 18;
+let idLoggedIn = 17;
 let db = null;
 let usersCollection = null;
 let url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_URL}${process.env.DB_END}`;
@@ -26,25 +27,27 @@ mongo.MongoClient.connect(
 );
 
 // Routing
-router.get('/', signIn); // Rowan, eerste pagina (index)
+router.get('/signIn', signIn); // Rowan, eerste pagina (index)
 router.get('/registration', registration); // Rowan klaar
 router.post('/registration', createAccount); // Rowan klaar
-// router.post('/profile', logIn); // Rowan
+router.post('/signIn', logIn); // Rowan
 router.get('/profile', profileOfMe); // Rowan
 router.post('/profile', postProfile); // Rowan
-router.get('/home', home); // Jordy & Veerle
+router.post('/updateProfile', updateProfile);
+router.post('/forgotPassword', forgotPassword);
+router.get('/', home); // Jordy & Veerle
 router.get('/currentUser', showUser); // Jordy
 router.post('/match', match); // Jordy
 router.get('/matchlist', matchList); // Jordy
 router.get('/filter', filter); // Veerle - KLAAR
-router.post('/home', postFilter); // Veerle - BIJNA KLAAR
+router.post('/', postFilter); // Veerle - BIJNA KLAAR
 router.get('/*', error); // Veerle - KLAAR
 
 // Routing functions
 async function signIn(req, res, next) {
   // Rowan
   try {
-    res.render('index.ejs');
+    res.render('signIn.ejs');
   } catch (err) {
     next(err);
   }
@@ -53,7 +56,7 @@ async function signIn(req, res, next) {
 async function registration(req, res, next) {
   // Rowan
   try {
-    res.render('registration');
+    res.render('registration.ejs');
   } catch (err) {
     next(err);
   }
@@ -62,48 +65,130 @@ async function registration(req, res, next) {
 async function createAccount(req, res, next) {
   // Rowan
   try {
-    let firstName = req.body.firstName;
-    let lastName = req.body.lastName;
-    let email = req.body.email;
-    let password = req.body.password;
-    let gender = req.body.gender;
-    let age = req.body.age;
+    const allUsers = await usersCollection.find().toArray();
+    let totalCount = allUsers.length + 1;
+    // rounds(of salt) is the number of times in which the password is generated
+    const rounds = 10;
+    const password = req.body.password;
+    // hashes the password with salt
+    bcrypt.hash(password, rounds, (err, hash) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      //logs the hash code
+      console.log(hash);
 
-    let data = {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password,
-      gender: gender,
-      age: age,
-    };
-    // Pusht de data + input naar database
-    await db.collection('users').insertOne(data);
-    console.log('Created new user');
-    res.render('succes');
-  } catch {
+      // body pulled from forms
+      let firstName = req.body.firstName;
+      let lastName = req.body.lastName;
+      let email = req.body.email;
+      let gender = req.body.gender;
+      let age = req.body.age;
+      let photo = req.body.photo;
+      let work = req.body.work;
+
+      // makes age integer
+      age = parseInt(age);
+
+      // daata send to the DB
+      let data = {
+        id: totalCount,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: hash,
+        gender: gender,
+        age: age,
+        photo: photo,
+        work: work,
+        movies: [],
+        prefGender: 'everyone',
+        prefMovie: '',
+        liked: [],
+        disliked: [],
+      };
+      const hashPassword = async () => {
+        const hash = await bcrypt.hash(password, rounds);
+        console.log(hash);
+      };
+      hashPassword();
+
+      usersCollection.insertOne(data);
+      console.log('Created new user');
+      res.render('profile.ejs');
+    });
+  } catch (err) {
     next(err);
   }
 }
 
-async function logIn(req, res, next) {
-  // Rowan
+async function logIn(req, res) {
   try {
-    //Veerle: Rowan, hierin moet een session beginnen met de
-    //globale: idLoggedIn. < dit is de ingelogde gebruiker.
-    //Voor nu zet ik er even static code in zodat mijn code alvast kan werken:
-    // req.session.gender = 'everyone';
-    // req.session.movie = '';
-    // code
-    // post gegevens signin, res.redirect('/home')
+    const rounds = 10;
+    const password = req.body.password;
+    //
+    bcrypt.hash(password, rounds, (err, hash) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      console.log(hash);
+
+      bcrypt.compare(password, hash, (err, res) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        console.log(res);
+      });
+      //
+      const hashPassword = async () => {
+        const hash = await bcrypt.hash(password, rounds);
+        console.log(hash);
+        console.log(await bcrypt.compare(password, hash));
+      };
+      hashPassword();
+
+      // //
+      usersCollection.findOne({ email: req.body.email }).then((data) => {
+        if (data) {
+          if (
+            req.session.regenerate(function (err) {
+              // will have a new session here
+            })
+          ) {
+            req.session.user = data;
+            console.log(req.session.user);
+            res.render('profile.ejs', { user: data });
+            console.log(`Logged in as ` + req.session.user.firstName);
+            req.session.loggedIN = true;
+          } else {
+            res.render('signin.ejs');
+            console.log('password incorrect');
+          }
+        } else {
+          res.redirect('/');
+          console.log('Cant find this account');
+        }
+      });
+    });
   } catch (err) {
-    next(err);
+    console.log(err);
   }
 }
 
 async function profileOfMe(req, res, next) {
   // Rowan
   try {
+    let database = await usersCollection.find().toArray(); // this code can be removed at the point sessions works.
+    let myself = database.filter(showMe);
+    res.render('profile.ejs', { user: myself });
+    //Veerle: Rowan, hierin moet een session beginnen met de
+    //globale: idLoggedIn. < dit is de ingelogde gebruiker.
+    //Voor nu zet ik er even static code in zodat mijn code alvast kan werken:
+    // req.session.gender = 'everyone';
+    // req.session.movie = '';
     // code
   } catch (err) {
     next(err);
@@ -115,7 +200,25 @@ async function postProfile(req, res, next) {
   try {
     // code
   } catch (err) {
+    console.log(err);
+  }
+}
+
+async function updateProfile(req, res, next) {
+  // Rowan
+  try {
+    // code
+  } catch (err) {
     next(err);
+  }
+}
+
+async function forgotPassword(req, res, next) {
+  // Rowan
+  try {
+    // code
+  } catch (err) {
+    console.log(err);
   }
 }
 
@@ -144,7 +247,7 @@ async function home(req, res, next) {
     req.session.gender = myself[0].prefGender;
     req.session.movie = myself[0].prefMovie;
     let filtered = await checkGenderPref(allUsers, myself);
-    res.render('home.ejs', {
+    res.render('index.ejs', {
       users: filtered,
     });
   } catch (err) {
@@ -213,20 +316,22 @@ async function match(req, res, next) {
     let user = filtered[indexUser];
 
     let value = updateDatabase(req.body, user);
+
     if (value === true && user.liked.includes(idLoggedIn)) {
       console.log(
         `you have a like with ${user.firstName}, and the ID is ${user._id}, ${user.liked}`
       );
       res.render('match.ejs', {
         users: user,
+        userLoggedIn: myself,
       });
     } else if (value === true) {
       console.log(
         `You like ${user.firstName}, but he/she hasn't liked you yet.`
       );
-      res.redirect('/home');
+      res.redirect('/');
     } else if (value === false) {
-      res.redirect('/home');
+      res.redirect('/');
     }
   } catch (err) {
     next(err);
@@ -247,8 +352,20 @@ async function matchList(req, res, next) {
       })
       .toArray();
 
+    console.log(myself[0].liked);
+    let lijstje = [];
+
+    await matches.forEach(function (user) {
+      user.liked.forEach(function (id) {
+        if (id === myself[0].id) {
+          lijstje.push(user);
+        }
+      });
+    });
+
+    console.log(lijstje);
     res.render('matchlist.ejs', {
-      users: matches,
+      users: lijstje,
     });
   } catch (err) {
     next(err);
@@ -324,7 +441,7 @@ async function postFilter(req, res, next) {
     } else {
       await updatePreferences(req.body.gender, req.body.movies);
     }
-    res.redirect('/home');
+    res.redirect('/');
   } catch (err) {
     next(err);
   }

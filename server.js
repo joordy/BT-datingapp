@@ -10,7 +10,7 @@ require('dotenv').config();
 
 // Variables
 const app = express();
-const PORT = process.env.DB_PORT;
+const PORT = process.env.DB_PORT || process.env.PORT;
 
 // Middleware set-up
 app.set('view engine', 'ejs');
@@ -21,12 +21,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    saveUninitialized: true,
+    cookie: { maxAge: 6000 },
     resave: true,
-    // cookie: { secure: true }
+    saveUninitialized: true,
+    secure: true,
+
   })
 );
+
 app.use('/', routing); // using routing module
 
-// Server deploying on https://localhost:4000.
+// Server deploying on https://localhost:
 app.listen(PORT, () => console.log(`App is listening on ${PORT}!`));
