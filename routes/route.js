@@ -352,8 +352,20 @@ async function matchList(req, res, next) {
       })
       .toArray();
 
+    console.log(myself[0].liked);
+    let lijstje = [];
+
+    await matches.forEach(function (user) {
+      user.liked.forEach(function (id) {
+        if (id === myself[0].id) {
+          lijstje.push(user);
+        }
+      });
+    });
+
+    console.log(lijstje);
     res.render('matchlist.ejs', {
-      users: matches,
+      users: lijstje,
     });
   } catch (err) {
     next(err);
