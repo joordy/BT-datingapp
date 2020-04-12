@@ -6,11 +6,12 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  background: url('../images/background.png') no-repeat center center fixed;
+  /* background: url('../images/background.png') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover; */
+  background-color: #dbdcef;
   color: black;
 }
 
@@ -77,133 +78,127 @@ footer ul li a img {
 /** Main **/
 
 .swipe main {
-  margin: 0em 1em;
+  margin: 0vh 5vw;
 }
 
+.swipe main ul {
+  width: 90vw;
+}
 .swipe main ul li {
+  width: 90vw;
+  position: absolute;
   list-style-type: none;
-}
-
-.swipe main ul li:last-of-type {
-  margin-bottom: 5em;
+  margin-top: 0.5em;
+  margin-bottom: 5rem;
 }
 
 .swipe section {
-  margin-top: 1em;
-  border-radius: 1em;
-  box-shadow: 4px 4px 8px grey;
-}
-
-.swipe section figure {
-  /* background-color: white; */
-  height: 75vh;
   position: relative;
-}
-
-.swipe section figure img:nth-last-of-type(1) {
   width: 100%;
-  height: 100%;
+  height: 75vh;
+  background-color: white;
   border-radius: 1em;
-  /* height: 25em; */
+  box-shadow: 2px 2px 4px grey;
+}
+
+.swipe section img:nth-of-type(1) {
+  width: 90%;
+  height: 70%;
   object-fit: cover;
-  margin: 0 auto;
+  margin: 5% 5% 0% 5%;
 }
 
-.swipe section figure a {
-  width: 24px;
-  height: 24px;
+.swipe .info {
+  max-width: 3em;
   position: absolute;
-  left: 1em;
-  top: 1em;
+  left: 1.5em;
+  top: 1.5em;
 }
 
-.swipe section figure p {
+.swipe section p {
   background-color: #999ace;
   color: white;
   font-weight: 300;
+  font-size: 14px;
   border-radius: 0.2em;
-  padding: 0.3em;
+  padding: 0.5em 0.9em;
   text-decoration: none;
   position: absolute;
-  left: 1rem;
+  left: 1.5rem;
 }
 
-.swipe section figure p:nth-of-type(1) {
-  bottom: 9.5rem;
+.swipe section p:nth-of-type(1) {
+  bottom: 10rem;
 }
 
-.swipe section figure p:nth-of-type(2) {
-  bottom: 12rem;
+.swipe section p:nth-of-type(2) {
+  bottom: 13rem;
 }
 
-.swipe section figure figcaption {
+.swipe section article {
   position: absolute;
   z-index: 1;
   bottom: 0;
   margin-top: -1rem;
   padding-top: 0.5em;
   width: 100%;
-  background-image: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 1),
-    rgba(0, 0, 0, 0.1)
-  );
-  color: white;
+  background-color: white;
+  color: black;
   text-align: center;
   border-radius: 0em 0em 1em 1em;
 }
 
-.swipe section figure figcaption h2 {
+.swipe section article h2 {
+  margin-top: 0.5em;
   font-size: 1.5em;
 }
 
-.swipe section figure figcaption h3 {
+.swipe section article h3 {
   font-weight: 300;
   font-size: 1em;
 }
 
-.swipe section figure figcaption h3 i {
-  height: 16px;
-  width: auto;
-  margin-right: 0.5em;
-  margin-top: 0.2em;
-}
-
-.swipe section figure figcaption form {
-  width: 100%;
+.swipe section article form {
+  width: 90%;
+  margin: 0% 5%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 1em;
 }
 
-.swipe section figure figcaption form div {
+.swipe section article form div {
   width: 40%;
 }
 
-.swipe section figure figcaption form input[type='submit'] {
+.swipe section article form input[type='submit'] {
   font-size: 32px;
   padding: 0.4em 0.75em;
-  background-color: white;
+  background-color: #e8e8e8;
   border: none;
   border-radius: 50%;
   margin: 0 auto;
   background-color: none;
+  box-shadow: 2px 2px 4px grey;
 }
 
-.swipe section figure figcaption form input[type='submit']:nth-of-type(2) {
+.swipe section article form input[type='submit']:nth-of-type(2) {
   padding: 0.4em 0.6em;
   background-color: #eb4b71;
   color: white;
 }
 
 .swipe .noUsersError {
-  box-shadow: none;
+  margin-top: 1em;
+  width: 100%;
+  height: 75vh;
+  background-color: white;
+  border-radius: 1em;
 }
 
 .swipe .noUsersError h2 {
+  padding-top: 1.5em;
   font-size: 2em;
   text-align: center;
-  margin-top: 1em;
   margin-bottom: 1em;
 }
 
@@ -214,8 +209,12 @@ footer ul li a img {
 }
 
 .swipe .noUsersError p {
+  position: relative;
+  padding: 0;
+  background: none;
+  color: black;
   text-align: center;
-  margin: 2em;
+  margin-top: 5em;
 }
 
 .swipe .noUsersError a {
@@ -232,7 +231,7 @@ footer ul li a img {
   width: 68vw;
   justify-content: center;
   margin: 0 auto;
-  margin-top: 5em;
+  margin-top: 2em;
   padding: 0.6em 0.5em;
 }
 
@@ -351,8 +350,6 @@ input[type='email'] {
   transition: 0.4s;
 }
 
-
-
 /******************************************************************************
                           Registration page
 *******************************************************************************/
@@ -419,6 +416,52 @@ input[type='email'] {
   font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
   outline: none;
   border: none;
+}
+
+/******************************************************************************
+                          Profile page
+*******************************************************************************/
+
+.profile div {
+  margin-top: 1.5em;
+  width: 100%;
+}
+.profile main img {
+  width: 12em;
+  height: 12em;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+}
+
+.profile main h2 {
+  text-align: center;
+  margin: 0.7em 0em;
+  color: #4e50b8;
+}
+
+.profile main section {
+  width: 90%;
+  height: auto;
+  margin: 1em 5% 5em 5%;
+  /* background-color: white; */
+  color: black;
+}
+
+.profile main section div {
+  background: white;
+  width: 90%;
+  border-radius: 1em;
+  margin: 0em 0em 1em 0em;
+  border: 2px solid #4e51b2;
+  padding: 0.5em 1em 0.5em 1em;
+}
+
+.profile input[type='submit'] {
+  padding: 1em 2em;
+  background-color: white;
+  margin: 0em 3em;
 }
 
 /******************************************************************************
@@ -690,6 +733,7 @@ input:focus {
 }
 
 .matchlist article {
+  background-color: white;
   width: 100%;
   margin-top: -2px;
   height: 120px;

@@ -1,37 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include ("components/head.ejs") %>
-        <title>Dat.io – Matchlist</title>
-</head>
+    <title>Dat.io – Matchlist</title>
+  </head>
 
-<body class="matchlist">
+  <body class="matchlist">
     <header>
-        <%- include ("components/header-two.ejs") %>
+      <%- include ("components/header-two.ejs") %>
     </header>
     <main>
-        <ul>
-            <% for (let i = 0; i < users.length; i++) { %>
-                <li>
-                    <article id="person-options">
-                        <figure>
-                            <img src="images/users/<%= users[i].photo %>.jpg" alt="Liked user" />
-                        </figure>
-                        <figcaption>
-                            <h2>
-                                <%= users[i].firstName %>
-                                    <%=users[i].lastName %>,
-                                        <%=users[i].age %>
-                            </h2>
-                            <p>You've got a match, lets talk!</p>
-                        </figcaption>
-                    </article>
-                </li>
-                <% }%>
-        </ul>
+      <ul>
+        <% for (let i = 0; i < users.length; i++) { %>
+        <li>
+          <article id="person-options">
+            <figure>
+              <img src="images/users/<%= users[i].photo %>" alt="Liked user" />
+            </figure>
+            <figcaption>
+              <h2>
+                <%= users[i].firstName %> <%=users[i].lastName %>,
+                <%=users[i].age %>
+              </h2>
+              <p>You've got a match, lets talk!</p>
+            </figcaption>
+          </article>
+        </li>
+        <% }%>
+      </ul>
     </main>
     <%- include ("components/footer-m.ejs") %>
-</body>
-
+  </body>
 </html>
