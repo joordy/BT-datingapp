@@ -5,7 +5,7 @@ const mongo = require('mongodb');
 require('dotenv').config();
 
 // Database calling
-let idLoggedIn = 18;
+let idLoggedIn = 17;
 let db = null;
 let usersCollection = null;
 let url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_URL}${process.env.DB_END}`;
@@ -166,6 +166,9 @@ async function logIn(req, res) {
 async function profileOfMe(req, res, next) {
   // Rowan
   try {
+    let database = await usersCollection.find().toArray(); // this code can be removed at the point sessions works.
+    let myself = database.filter(showMe);
+    res.render('profile.ejs', { user: myself });
     //Veerle: Rowan, hierin moet een session beginnen met de
     //globale: idLoggedIn. < dit is de ingelogde gebruiker.
     //Voor nu zet ik er even static code in zodat mijn code alvast kan werken:
@@ -298,12 +301,15 @@ async function match(req, res, next) {
     let user = filtered[indexUser];
 
     let value = updateDatabase(req.body, user);
+
     if (value === true && user.liked.includes(idLoggedIn)) {
       console.log(
         `you have a like with ${user.firstName}, and the ID is ${user._id}, ${user.liked}`
       );
       res.render('match.ejs', {
-        users: user, userLoggedIn: myself});
+        users: user,
+        userLoggedIn: myself,
+      });
     } else if (value === true) {
       console.log(
         `You like ${user.firstName}, but he/she hasn't liked you yet.`
@@ -330,10 +336,16 @@ async function matchList(req, res, next) {
         },
       })
       .toArray();
+    let lijstje = [];
 
-    res.render('matchlist.ejs', {
-      users: matches,
+    await matches.forEach(function (user) {
+      user.liked.forEach(function (id) {
+        if (id === myself[0].id) {
+          lijstje.push(user);
+        }
+      });
     });
+    res.render('matchlist.ejs', { users: lijstje });
   } catch (err) {
     next(err);
   }
