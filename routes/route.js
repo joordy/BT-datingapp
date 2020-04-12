@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongo = require('mongodb');
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 // Database calling
@@ -65,51 +65,59 @@ async function registration(req, res, next) {
 async function createAccount(req, res, next) {
   // Rowan
   try {
-    // Counts all users
-    let totalCount;
     const allUsers = await usersCollection.find().toArray();
-    allUsers.forEach(function (user) {
-      totalCount = user.id;
-      console.log(totalCount);
+    let totalCount = allUsers.length + 1;
+    // rounds(of salt) is the number of times in which the password is generated
+    const rounds = 10;
+    const password = req.body.password;
+    // hashes the password with salt
+    bcrypt.hash(password, rounds, (err, hash) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      //logs the hash code
+      console.log(hash);
+
+      // body pulled from forms
+      let firstName = req.body.firstName;
+      let lastName = req.body.lastName;
+      let email = req.body.email;
+      let gender = req.body.gender;
+      let age = req.body.age;
+      let photo = req.body.photo;
+      let work = req.body.work;
+
+      // makes age integer
+      age = parseInt(age);
+
+      // daata send to the DB
+      let data = {
+        id: totalCount,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: hash,
+        gender: gender,
+        age: age,
+        photo: photo,
+        work: work,
+        movies: [],
+        prefGender: 'everyone',
+        prefMovie: '',
+        liked: [],
+        disliked: [],
+      };
+      const hashPassword = async () => {
+        const hash = await bcrypt.hash(password, rounds);
+        console.log(hash);
+      };
+      hashPassword();
+
+      usersCollection.insertOne(data);
+      console.log('Created new user');
+      res.render('profile.ejs');
     });
-    console.log(totalCount);
-    // New user is totalcount + 1
-    totalCount += 1;
-
-    let firstName = req.body.firstName;
-    let lastName = req.body.lastName;
-    let email = req.body.email;
-    let password = req.body.password;
-    let gender = req.body.gender;
-    let age = req.body.age;
-    let photo = req.body.photo;
-    let work = req.body.work;
-    let movies = req.body.movies;
-    let prefGender = req.body.prefGender;
-    let prefMovie = req.body.prefMovie;
-    let liked = req.body.liked;
-    let disliked = req.body.disliked;
-
-    let data = {
-      id: totalCount,
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password,
-      gender: gender,
-      age: age,
-      photo: photo,
-      work: work,
-      movies: [],
-      prefGender: 'everyone',
-      prefMovie: '',
-      liked: [],
-      disliked: [],
-    };
-
-    usersCollection.insertOne(data);
-    console.log('Created new user');
-    res.render('profile.ejs');
   } catch (err) {
     next(err);
   }
@@ -126,7 +134,7 @@ async function logIn(req, res) {
         return;
       }
       console.log(hash);
-      //
+
       bcrypt.compare(password, hash, (err, res) => {
         if (err) {
           console.error(err);
@@ -134,29 +142,36 @@ async function logIn(req, res) {
         }
         console.log(res);
       });
-    });
-    //
-    const hashPassword = async () => {
-      const hash = await bcrypt.hash(password, rounds);
-      console.log(hash);
-      console.log(await bcrypt.compare(password, hash));
-    };
-    hashPassword();
-    //
-    usersCollection.findOne({ email: req.body.email }).then((data) => {
-      if (data) {
-        if (req.body.password == data.password) {
-          req.session.user = data;
-          res.render('profile.ejs', { user: data });
-          console.log(`Logged in as ` + req.session);
+      //
+      const hashPassword = async () => {
+        const hash = await bcrypt.hash(password, rounds);
+        console.log(hash);
+        console.log(await bcrypt.compare(password, hash));
+      };
+      hashPassword();
+
+      // //
+      usersCollection.findOne({ email: req.body.email }).then((data) => {
+        if (data) {
+          if (
+            req.session.regenerate(function (err) {
+              // will have a new session here
+            })
+          ) {
+            req.session.user = data;
+            console.log(req.session.user);
+            res.render('profile.ejs', { user: data });
+            console.log(`Logged in as ` + req.session.user.firstName);
+            req.session.loggedIN = true;
+          } else {
+            res.render('signin.ejs');
+            console.log('password incorrect');
+          }
         } else {
-          res.render('signin.ejs');
-          console.log('password incorrect');
+          res.redirect('/');
+          console.log('Cant find this account');
         }
-      } else {
-        res.redirect('/');
-        console.log('Cant find this account');
-      }
+      });
     });
   } catch (err) {
     console.log(err);
@@ -336,16 +351,10 @@ async function matchList(req, res, next) {
         },
       })
       .toArray();
-    let lijstje = [];
 
-    await matches.forEach(function (user) {
-      user.liked.forEach(function (id) {
-        if (id === myself[0].id) {
-          lijstje.push(user);
-        }
-      });
+    res.render('matchlist.ejs', {
+      users: matches,
     });
-    res.render('matchlist.ejs', { users: lijstje });
   } catch (err) {
     next(err);
   }
