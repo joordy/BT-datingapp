@@ -21,11 +21,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    saveUninitialized: true,
+    cookie: { maxAge: 6000 },
     resave: true,
-    // cookie: { secure: true }
+    saveUninitialized: true,
+    secure: true,
+
   })
 );
+
 app.use('/', routing); // using routing module
 
 // Server deploying on https://localhost:
