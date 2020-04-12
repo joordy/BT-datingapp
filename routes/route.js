@@ -321,16 +321,6 @@ async function match(req, res, next) {
     } else if (value === true) {
       console.log(
         `You like ${user.firstName}, but he/she hasn't liked you yet.`
-<<<<<<< HEAD
-     );
-     res.redirect('/home');
-   } else if (value === false) {
-     res.redirect('/home');
-   }
- } catch (err) {
-   next(err);
- }
-=======
       );
       res.redirect('/');
     } else if (value === false) {
@@ -339,7 +329,6 @@ async function match(req, res, next) {
   } catch (err) {
     next(err);
   }
->>>>>>> develop
 }
  
 async function matchList(req, res, next) {
@@ -421,24 +410,6 @@ async function filter(req, res, next) {
 }
  
 async function postFilter(req, res, next) {
-<<<<<<< HEAD
- // Veerle
- //Retrieves the entered preferences and sends them to the
- //updatePreferences function. After this the /home page is
- //redirected again:
- try {
-   if (req.body.remove) {
-     await updatePreferences('everyone', '');
-     req.session.gender = 'everyone';
-     req.session.movie = '';
-   } else {
-     await updatePreferences(req.body.gender, req.body.movies);
-   }
-   res.redirect('/home');
- } catch (err) {
-   next(err);
- }
-=======
   // Veerle
   //Retrieves the entered preferences and sends them to the
   //updatePreferences function. After this the /home page is
@@ -455,7 +426,6 @@ async function postFilter(req, res, next) {
   } catch (err) {
     next(err);
   }
->>>>>>> develop
 }
  
 async function updatePreferences(genderPreference, moviePreference) {
