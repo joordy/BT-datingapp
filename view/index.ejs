@@ -14,44 +14,39 @@
   <main>
     <ul>
       <% for (let i = 0; i <users.length; i++) { %>
-      <li>
-        <section>
-          <figure>
-            <img src="images/users/<%= users[i].photo %>" alt="Image of user">
-            <a href="profile" class="info"><img src="images/icons/info.svg" alt=""></a>
-            <% if (users[i].movies[1] != undefined) {%>
-              <p>#<%= users[i].movies[1] %></p>
+        <li>
+          <section>
+            <a href="#">
+              <img src="images/users/<%= users[i].photo %>" alt="Image of user">
+              <a href="profile" class="info"><img src="images/icons/info.svg" alt=""></a>
+              <% if (users[i].movies[1] != undefined) {%>
+                <p>#<%= users[i].movies[1] %></p>
               <% } %> 
               <% if (users[i].movies[0] != undefined) {%>
                 <p>#<%= users[i].movies[0] %></p>
-                <% } %>
-            <figcaption>
-              <h2>
-                <%= users[i].firstName, users[i].lastName %>,
-                <%= users[i].age %>
-              </h2>
-              <h3>
-                <%= users[i].work %>
-              </h3>
-              <form action="/match" method="POST">
-                <input type="submit" name="dislike" class="dislike" data-id="<%=users[i]._id%>" value="&times;">
-                <div></div>
-                <input type="submit" name="like" class="like" data-id="<%=users[i]._id%>" value="❤">
-              </form>
-            </figcaption>
-          </figure>
-        </section>
-      </li>
+              <% } %>
+              <article>
+                <h2> <%= users[i].firstName%>, <%= users[i].age %> </h2>
+                <h3><%= users[i].work %></h3>
+                <form action="/match" method="POST">
+                  <input type="submit" name="dislike" class="dislike" data-id="<%=users[i]._id%>" value="&times;">
+                  <div></div>
+                  <input type="submit" name="like" class="like" data-id="<%=users[i]._id%>" value="❤">
+                </form>
+              </article>
+            </a>
+          </section>
+        </li>
       <% }%>
     </ul>
     <% if (users.length === 0) { %>
-      <section class="noUsersError">
+      <div class="noUsersError">
           <h2>Ooooops</h2>
           <img src="images/icons/noUsers.svg" alt="Person with error sign">
           <p>Unfortunately, there are no users to like...Come back later or change your filters!</p>
           <a href="filter">Go to filters</a>    
-      </section>
-  <% } %>
+      </div>
+    <% } %>
   </main>
   <%- include ("components/footer-h.ejs") %>
 </body>
