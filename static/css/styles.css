@@ -143,9 +143,11 @@ footer ul li a img {
   margin-top: -1rem;
   padding-top: 0.5em;
   width: 100%;
-  background-image: linear-gradient(to top,
-      rgba(0, 0, 0, 1),
-      rgba(0, 0, 0, 0.1));
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0.1)
+  );
   color: white;
   text-align: center;
   border-radius: 0em 0em 1em 1em;
@@ -194,7 +196,6 @@ footer ul li a img {
   color: white;
 }
 
-
 .swipe .noUsersError {
   box-shadow: none;
 }
@@ -218,21 +219,21 @@ footer ul li a img {
 }
 
 .swipe .noUsersError a {
-    text-align: center;
-    text-decoration: none;
-    border-radius: 0.5em;
-    font-size: 1em;
-    font-weight: 400;
-    color: white;
-    background-color: #EB4B71;
-    box-shadow: 1px 1px 2px rgb(49, 49, 49);
-    border: none;
-    display: flex;
-    width: 68vw;
-    justify-content: center;
-    margin: 0 auto;
-    margin-top: 5em;
-    padding: 0.6em 0.5em;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.5em;
+  font-size: 1em;
+  font-weight: 400;
+  color: white;
+  background-color: #eb4b71;
+  box-shadow: 1px 1px 2px rgb(49, 49, 49);
+  border: none;
+  display: flex;
+  width: 68vw;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 5em;
+  padding: 0.6em 0.5em;
 }
 
 /******************************************************************************
@@ -241,8 +242,7 @@ footer ul li a img {
 
 /** Main **/
 
-
-form {
+.signin form {
   width: 360px;
   height: 420px;
   display: block;
@@ -250,40 +250,41 @@ form {
   top: 50%;
   left: 50%;
   position: absolute;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   box-sizing: border-box;
-  }
-  
-.log-con-1{
+}
+
+.signin .log-con-1 {
   display: contents;
   align-items: center;
   text-align: center;
   padding: 16px;
 }
 
-.log-con-2{
+.signin .log-con-2 {
   display: contents;
   align-items: center;
   text-align: center;
   padding: 16px;
 }
 
-  /* Full-width inputs */
-input[type=text], input[type=password], input[type=email] {
+/* Full-width inputs */
+.signin input[type='text'],
+input[type='password'],
+input[type='email'] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
   box-sizing: border-box;
   border: none;
-  border-bottom: 2px solid #DE5F5A; 
+  border-bottom: 2px solid #de5f5a;
   background-color: #141414;
-  
 }
 
-  /* Set a style for all buttons */
-button {
-  background-color:   #DE5F5A;
+/* Set a style for all buttons */
+.signin button {
+  background-color: #de5f5a;
   color: black;
   padding: 14px 20px;
   margin: 14px 20px;
@@ -291,31 +292,31 @@ button {
   cursor: pointer;
   width: 90%;
   display: initial;
-  border-radius: 25px; 
+  border-radius: 25px;
 }
-  
+
 /* Add a hover effect for buttons */
-button:hover {
+.signin button:hover {
   opacity: 0.6;
   transition: 0.5s;
 }
 
-  /* add style for button text */
-button[type=submit] {
+/* add style for button text */
+.signin button[type='submit'] {
   color: white;
   font-size: 1em;
   font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
   margin-top: 3em;
 }
 
-button[type=button] {
+.signin button[type='button'] {
   color: white;
   font-size: 1em;
   font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
 }
-  
+
 /* Extra style for the button to register page */
-.toRegister {
+.signin .toRegister {
   width: auto;
   padding: 10px 30px;
   background-color: rgb(88, 87, 87);
@@ -325,7 +326,7 @@ button[type=button] {
 }
 
 /* forgot password */
-.psw {
+.signin .psw {
   float: right;
   padding-top: 23px;
   color: white;
@@ -334,22 +335,23 @@ button[type=button] {
   font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
 }
 /* placeholder for input fields */
-.placeholder {
+.signin .placeholder {
   color: white;
   font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
-a {
+.signin a {
   color: white;
   text-decoration: none;
   font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-a:hover {
-  color: #DE5F5A;
+.signin a:hover {
+  color: #de5f5a;
   transition: 0.4s;
 }
+
+
 
 /******************************************************************************
                           Registration page
@@ -357,22 +359,21 @@ a:hover {
 
 /** Main **/
 
-
-.reg-con-1{
+.registration .reg-con-1 {
   display: contents;
   align-items: center;
   text-align: center;
   padding: 16px;
 }
 
-.reg-con-2{
+.registration .reg-con-2 {
   display: contents;
   align-items: center;
   text-align: center;
   padding: 16px;
 }
 
-.reg-con-3{
+.registration .reg-con-3 {
   display: inline;
   flex: initial;
   align-items: center;
@@ -381,35 +382,37 @@ a:hover {
   color: white;
 }
 
-label {
+.registration label {
   text-align: center;
 }
 
-input[type=radio] {
+.registration input[type='radio'] {
   align-items: center;
   text-align: center;
   padding: 12px 20px;
   margin: 8px 0;
 }
 
-input[type=number] {
+.registration input[type='number'] {
   padding: 12px 20px;
   margin: 8px 0;
   border: none;
-  border-bottom: 2px solid #DE5F5A;
+  border-bottom: 2px solid #de5f5a;
   background-color: #141414;
 }
 
-::placeholder {
+.registration ::placeholder {
   color: grey;
 }
 
-input, select, textarea{
+.registration input,
+.registration select,
+.registration textarea {
   color: white;
 }
 
 /* Extra style for the button to login page */
-.toLogin {
+.registration .toLogin {
   width: auto;
   padding: 10px 30px;
   background-color: rgb(88, 87, 87);
@@ -417,7 +420,6 @@ input, select, textarea{
   outline: none;
   border: none;
 }
-
 
 /******************************************************************************
                           Filters page 
@@ -442,7 +444,7 @@ input, select, textarea{
 }
 
 .filtersPage header a:active {
-  color: #4E50B8;
+  color: #4e50b8;
 }
 
 .filtersPage header a img {
@@ -465,7 +467,7 @@ input, select, textarea{
   font-size: 1em;
   font-weight: 400;
   color: white;
-  background-color: #EB4B71;
+  background-color: #eb4b71;
   box-shadow: 1px 1px 2px rgb(49, 49, 49);
   border: none;
   margin: 0 auto;
@@ -519,7 +521,7 @@ input, select, textarea{
   font-size: 1em;
   background: white;
   /* color: white; */
-  border: solid 2px #BCBDEA;
+  border: solid 2px #bcbdea;
   border-radius: 0.3em;
   padding: 0.5em;
   /* margin-bottom: 10em; */
@@ -532,7 +534,7 @@ input:focus {
 
 .filtersPage main section form fieldset input {
   font-size: 1em;
-  border: solid 2px #BCBDEA;
+  border: solid 2px #bcbdea;
   background-color: white;
   border-radius: 0.3em;
   padding: 0.5em;
@@ -552,10 +554,10 @@ input:focus {
   border-radius: 0.5em;
   font-size: 1em;
   font-weight: 400;
-  color: #4E50B8;
+  color: #4e50b8;
   background-color: White;
   box-shadow: none;
-  border: 1px solid #BCBDEA;
+  border: 1px solid #bcbdea;
   margin: 0 auto;
   position: fixed;
   bottom: 2em;
@@ -762,14 +764,14 @@ input:focus {
   margin: 0 auto;
 }
 
-.error section  a {
+.error section a {
   text-align: center;
   text-decoration: none;
   border-radius: 0.5em;
   font-size: 1em;
   font-weight: 400;
   color: white;
-  background-color: #EB4B71;
+  background-color: #eb4b71;
   box-shadow: 1px 1px 2px rgb(49, 49, 49);
   border: none;
   display: flex;
@@ -882,9 +884,11 @@ input:focus {
     margin-top: -1rem;
     padding-top: 0.5em;
     width: 100%;
-    background-image: linear-gradient(to top,
-        rgba(0, 0, 0, 1),
-        rgba(0, 0, 0, 0.1));
+    background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0.1)
+    );
     color: white;
     text-align: center;
     border-radius: 0em 0em 1em 1em;
