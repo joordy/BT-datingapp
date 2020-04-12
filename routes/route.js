@@ -35,12 +35,12 @@ router.get('/profile', profileOfMe); // Rowan
 router.post('/profile', postProfile); // Rowan
 router.post('/updateProfile', updateProfile);
 router.post('/forgotPassword', forgotPassword);
-router.get('/home', home); // Jordy & Veerle
+router.get('/', home); // Jordy & Veerle
 router.get('/currentUser', showUser); // Jordy
 router.post('/match', match); // Jordy
 router.get('/matchlist', matchList); // Jordy
 router.get('/filter', filter); // Veerle - KLAAR
-router.post('/home', postFilter); // Veerle - BIJNA KLAAR
+router.post('/', postFilter); // Veerle - BIJNA KLAAR
 router.get('/*', error); // Veerle - KLAAR
 
 // Routing functions
@@ -229,7 +229,7 @@ async function home(req, res, next) {
     req.session.gender = myself[0].prefGender;
     req.session.movie = myself[0].prefMovie;
     let filtered = await checkGenderPref(allUsers, myself);
-    res.render('home.ejs', {
+    res.render('index.ejs', {
       users: filtered,
     });
   } catch (err) {
@@ -303,15 +303,14 @@ async function match(req, res, next) {
         `you have a like with ${user.firstName}, and the ID is ${user._id}, ${user.liked}`
       );
       res.render('match.ejs', {
-        users: user,
-      });
+        users: user, userLoggedIn: myself});
     } else if (value === true) {
       console.log(
         `You like ${user.firstName}, but he/she hasn't liked you yet.`
       );
-      res.redirect('/home');
+      res.redirect('/');
     } else if (value === false) {
-      res.redirect('/home');
+      res.redirect('/');
     }
   } catch (err) {
     next(err);
@@ -409,7 +408,7 @@ async function postFilter(req, res, next) {
     } else {
       await updatePreferences(req.body.gender, req.body.movies);
     }
-    res.redirect('/home');
+    res.redirect('/');
   } catch (err) {
     next(err);
   }
