@@ -15,16 +15,16 @@
 
     <form action="/registration" id="registration" method="POST">
       <h2>Welcome to Dat.io! Would you like to introduce yourself?</h2>       
-        <div class="reg-con-1">
-          <label for="firstName"><b>First name</b></label>
+        <div>
+          <label for="firstName">First name</label>
           <input type="text" placeholder="First name" name="firstName" required />
 
-          <label for="lastName"><b>Last name</b></label>
+          <label for="lastName">Last name</label>
           <input type="text" placeholder="Last name" name="lastName" required />
         </div>
 
-       <div class="reg-con-2">
-         <label for="email"><b>Email</b></label>
+       <div>
+         <label for="email">Email</label>
          <input
           type="email"
           name="email"
@@ -33,7 +33,7 @@
           placeholder="example@hotmail.com"
           required
         />
-        <label for="password"><b>Password</b></label>
+        <label for="password">Password</label>
         <input
           type="password"
           name="password"
@@ -45,10 +45,10 @@
 
       <h2>Tell us something about yourself..</h2>
       
-      <div class="reg-con-3">
+      <div>
         
         <label for="age"
-          ><b>What is your age?</b>
+          >What is your age?
           <input
             type="number"
             min="18"
@@ -70,27 +70,22 @@
           <input type="radio" id="woman" name="gender" value="woman" />
         </label>
 
-        <!-- <label for="photo">
-          <b>Upload a photo of yourself!</b>
-          <input type="file" name="fileToUpload" id="fileToUpload" />
-        </label> -->
-
         <label for="photo">
-          <b>Upload a photo of yourself!</b></label>
+          Upload a photo of yourself!</label>
         <input type="file" name="file" id="file" class="inputfile" />
         <label for="photo">Choose a file</label>
 
         <label for="work"
-          ><b>What is your current occupation?</b>
+          >What is your current occupation?
           <input type="text" placeholder="Teacher of the year" name="work" required />
         </label>
       </div>
 
       <button type="submit">Create</button>
 
-      <a href="registration"
-        ><button type="button" class="toSignIn">Sign in</button></a
-      >
+    
+        <a href="signin" class="toSignIn">Sign in</a>
+      
     </form>
   </body>
 </html>

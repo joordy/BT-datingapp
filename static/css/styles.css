@@ -261,14 +261,14 @@ footer ul li a img {
   box-sizing: border-box;
 }
 
-.signin .log-con-1 {
+.signin div:nth-of-type(1) {
   display: contents;
   align-items: center;
   text-align: center;
   padding: 16px;
 }
 
-.signin .log-con-2 {
+.signin div:nth-of-type(2) {
   display: contents;
   align-items: center;
   text-align: center;
@@ -286,7 +286,6 @@ input[type='email'] {
   box-sizing: border-box;
   border: none;
   border-bottom: 2px solid  #eb4b71;
-  /* border-bottom: 2px solid  #4e50b8; */
   background-color: white;
 }
 
@@ -296,7 +295,6 @@ input[type='email'] {
   font-size: 1em;
   font-weight: 400;
   background-color: #eb4b71;
-  /* background-color: #4e50b8; */
   box-shadow: 1px 1px 2px rgb(49, 49, 49);
   color: white;
   padding: 14px 20px;
@@ -363,7 +361,12 @@ input[type='email'] {
   color: #4e50b8;
   text-decoration: none;
   font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 2em;
+  margin-left: 1.4em;
+  font-size: smaller;
+  display: inline-block;
 }
+
 
 .signin a:hover {
   color: #de5f5a;
@@ -397,22 +400,23 @@ input[type='email'] {
   align-items: left;
   text-align: left;
   font-size: 16px;
+  font-weight: 700;
 }
 .registration form {
   width: 360px;
-  /* height: 420px; */
   display: block;
   background: white;
   border: solid 2px #bcbdea;
   border-radius: 0.3em;
   padding: 0.5em;
+  padding-bottom: 2em;
   top: 50%;
   left: 50%;
   position: absolute;
   transform: translate(-50%,-50%);
   box-sizing: border-box;
-  margin-top: 14em;
-  margin-bottom: 8em;
+  margin-top: 18em;
+  margin-bottom: 10em;
 }
 
 /* Full-width inputs */
@@ -426,43 +430,49 @@ input[type='email'] {
   box-sizing: border-box;
   border: none;
   border-bottom: 2px solid  #eb4b71;
-  /* border-bottom: 2px solid  #4e50b8; */
   background-color: white;
 }
 
-.registration .reg-con-1 {
+.registration div:nth-of-type(1) {
   display: contents;
   align-items: center;
   text-align: center;
   padding: 16px;
 }
 
-.registration .reg-con-2 {
+.registration div:nth-of-type(2) {
   display: contents;
   align-items: center;
   text-align: center;
   padding: 16px;
 }
 
-.registration .reg-con-3 {
+.registration div:nth-of-type(3) {
   display: contents;
   align-items: center;
   text-align: center;
   padding: 16px;
+  font-weight: 100;
 }
 
 .registration label {
   text-align: left;
   display: inline-block;
   margin-top: 1em;
+  font-weight: 700;
 }
 
+.registration .man {
+  text-align: left;
+  display: inline-block;
+  margin-top: 1em;
+  font-weight: 100;
+}
 .registration button {
   border-radius: 0.5em;
   font-size: 1em;
-  font-weight: 400;
+  font-weight: 100;
   background-color: #eb4b71;
-  /* background-color: #4e50b8; */
   box-shadow: 1px 1px 2px rgb(49, 49, 49);
   color: white;
   padding: 14px 20px;
@@ -495,6 +505,7 @@ input[type='email'] {
   text-align: center;
   padding: 12px 20px;
   margin: 8px 0;
+  font-weight: 100;
 }
 
 .registration input[type='number'] {
@@ -558,7 +569,7 @@ input[type='email'] {
 }
 
 /* Extra style for the button to sign in page */
-.registration .toSignIn {
+.registration a {
   font-size: 1em;
   width: auto;
   padding: 10px 30px;
@@ -568,6 +579,9 @@ input[type='email'] {
   outline: none;
   border: solid 2px #bcbdea;
   border-radius: 0.3em;
+  margin-left: 1.4em;
+  margin-top: 1em;
+  display: inline-block;
 }
 
 /******************************************************************************
