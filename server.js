@@ -36,7 +36,7 @@ app.use('/', swipingRouter); // Liking and filtering routes
 app.use('/', profileRouter); // Profile routing
 app.use('/', errorRouter); // Error 404 routing
 
-// Server deploying on https://localhost:8000
+// Server deploying on https://localhost:
 app.listen(PORT, function () {
   console.log(`App is listening on ${PORT}!`);
 });
