@@ -240,32 +240,30 @@ footer ul li a img {
 *******************************************************************************/
 
 .signin main {
-  width: 80vw;
+  width: 90vw;
   height: 25em;
   background-color: white;
   border: solid 2px #bcbdea;
   border-radius: 0.3em;
   margin: 0 auto;
-  margin-top: 5em;
+  margin-top: 10vh;
 }
 
 .signin main div:nth-of-type(1) {
   margin: 2em 10%;
   width: 80%;
-  /* background-color: hotpink; */
   display: block;
 }
 
 .signin main div label {
   display: block;
+  font-weight: 700;
   margin-top: 1em;
 }
 
 .signin main form div input {
   width: 100%;
   padding: 12px 0px;
-  /* padding: 12px 20px; */
-  /* margin: 8px 0; */
   display: inline-block;
   box-sizing: border-box;
   border: none;
@@ -276,14 +274,17 @@ footer ul li a img {
 .signin main form div:nth-of-type(2) {
   margin-top: 2em;
 }
+
 .signin main form div:nth-of-type(2) input:nth-of-type(1) {
   width: 20px;
   margin-left: 10%;
   margin-bottom: 2em;
 }
 
-.swipe main div:nth-of-type(2) label:nth-of-type(1) {
+.swipe main div:nth-of-type(2) label {
   padding-left: 2em;
+  font-weight: 400;
+  font-size: 0.8em;
 }
 
 .signin main div:nth-of-type(2) button {
@@ -311,7 +312,7 @@ footer ul li a img {
   text-decoration: none;
 }
 .signin div:nth-of-type(2) div a:nth-of-type(1) {
-  padding: 10px 20px;
+  padding: 10px 2%;
   background-color: hotpink;
   border-radius: 0.5em;
   background: white;
@@ -320,7 +321,8 @@ footer ul li a img {
 }
 
 .signin div:nth-of-type(2) div a:nth-of-type(2) {
-  padding: 10px 0px;
+  padding: 15px 0px;
+  font-size: 0.7em;
 }
 
 /******************************************************************************
@@ -328,13 +330,14 @@ footer ul li a img {
 *******************************************************************************/
 
 .registration main {
-  width: 80vw;
+  width: 90vw;
   margin: 0 auto;
   margin-top: 3em;
-  height: 255em;
   background-color: white;
   border: solid 2px #bcbdea;
   border-radius: 0.3em;
+  padding-bottom: 5em;
+  margin-bottom: 5em;
 }
 
 .registration main form {
@@ -342,10 +345,9 @@ footer ul li a img {
   margin: 0% 5%;
 }
 .registration main form h2 {
-  margin: 1em 0em 1em 0em;
+  margin: 1.5em 0em 1em 0em;
 }
 .registration main form div {
-  /* background-color: hotpink; */
   margin-bottom: 1em;
 }
 
@@ -366,118 +368,14 @@ footer ul li a img {
   background-color: white;
 }
 
-/* .registration h2 {
-  text-decoration: none;
-  color: #000000;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  align-items: center;
-  text-align: center;
+.registration main form div:nth-of-type(3) div {
+  display: flex;
+  justify-content: flex-start;
 }
 
-.registration h3 {
-  text-decoration: none;
-  color: #000000;
-  margin-top: 1em;
-  align-items: left;
-  text-align: left;
-  font-size: 16px;
-  font-weight: 700;
-}
-.registration form {
-  width: 360px;
-  display: block;
-  background: white;
-  border: solid 2px #bcbdea;
-  border-radius: 0.3em;
-  padding: 0.5em;
-  padding-bottom: 2em;
-  top: 50%;
-  left: 50%;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  box-sizing: border-box;
-  margin-top: 18em;
-  margin-bottom: 10em;
-}
-
-.registration input[type='text'],
-input[type='password'],
-input[type='email'] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  box-sizing: border-box;
-  border: none;
-  border-bottom: 2px solid #eb4b71;
-  background-color: white;
-}
-
-.registration div:nth-of-type(1) {
-  display: contents;
-  align-items: center;
-  text-align: center;
-  padding: 16px;
-}
-
-.registration div:nth-of-type(2) {
-  display: contents;
-  align-items: center;
-  text-align: center;
-  padding: 16px;
-}
-
-.registration div:nth-of-type(3) {
-  display: contents;
-  align-items: center;
-  text-align: center;
-  padding: 16px;
-  font-weight: 100;
-}
-
-.registration label {
-  text-align: left;
-  display: inline-block;
-  margin-top: 1em;
-  font-weight: 700;
-}
-
-.registration .man {
-  text-align: left;
-  display: inline-block;
-  margin-top: 1em;
-  font-weight: 100;
-}
-.registration button {
-  border-radius: 0.5em;
-  font-size: 1em;
-  font-weight: 100;
-  background-color: #eb4b71;
-  box-shadow: 1px 1px 2px rgb(49, 49, 49);
-  color: white;
-  padding: 14px 20px;
-  margin: 14px 20px;
-  border: black;
-  cursor: pointer;
-  width: 90%;
-  display: initial;
-}
-
-.registration button[type='submit'] {
-  color: white;
-  font-size: 1em;
-  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
-  margin-top: 3em;
-  border-radius: 0.5em;
-  font-size: 1em;
-  font-weight: 400;
-}
-
-.registration button[type='button'] {
-  color: #4e50b8;
-  font-size: 1em;
-  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+.registration main form div:nth-of-type(3) div label {
+  margin-right: 10%;
+  font-weight: 500;
 }
 
 .registration input[type='radio'] {
@@ -488,80 +386,41 @@ input[type='email'] {
   font-weight: 100;
 }
 
-.registration input[type='number'] {
-  width: 15%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  border: none;
-  border-bottom: 2px solid #eb4b71;
-}
-
-.registration input[type='file'] {
+.registration .inputfile {
   color: #4e50b8;
+  background-color: #d7d7d7;
+  border: none;
   margin-right: 1.5em;
   text-decoration: none;
-  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
-}
-.registration .inputfile {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
 }
 
-.registration .inputfile + label {
-  width: 25%;
+.registration main form button {
   border-radius: 0.5em;
-  font-size: 0.8em;
-  font-weight: 400;
-  background-color: #4e50b8;
-  color: white;
-  display: block;
-  padding: 0.5em;
-  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
-  margin-left: 1.5em;
-}
-
-.registration .inputfile:focus + label,
-.inputfile + label:hover {
-  background-color: #eb4b71;
-}
-
-.inputfile + label {
-  cursor: pointer; 
-}
-
-.registration input[type='file']:hover {
-  color: #de5f5a;
-  transition: 0.4s;
-}
-
-.registration ::placeholder {
-  color: grey;
-}
-
-.registration input,
-.registration select,
-.registration textarea {
-  color: black;
-}
-
-.registration a {
   font-size: 1em;
-  width: auto;
-  padding: 10px 30px;
+  font-weight: 400;
+  background-color: #eb4b71;
+  box-shadow: 1px 1px 2px rgb(49, 49, 49);
+  color: white;
+  padding: 14px 20px;
+  border: black;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 0.5em;
+  margin-top: 3em;
+}
+.registration main form a {
+  font-size: 1em;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 0px;
   background: white;
   color: #4e50b8;
-  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
-  outline: none;
   border: solid 2px #bcbdea;
-  border-radius: 0.3em;
-  margin-left: 1.4em;
+  border-radius: 0.5em;
   margin-top: 1em;
   display: inline-block;
-} */
+}
 
 /******************************************************************************
                           Profile page
@@ -1057,6 +916,22 @@ input:focus {
     margin-bottom: 0.3em;
     width: 40%;
   }
+
+  /*******************************************
+              Tablet sign-in 
+  *******************************************/
+
+  .signin main {
+    width: 60vw;
+  }
+
+  /*******************************************
+              Tablet sign-in 
+  *******************************************/
+
+  .registration main {
+    width: 60vw;
+  }
 }
 
 @media all and (min-width: 900px) {
@@ -1147,6 +1022,22 @@ input:focus {
     margin-top: 0.5em;
     margin-bottom: 0.3em;
     width: 26%;
+  }
+
+  /*******************************************
+              Tablet sign-in 
+  *******************************************/
+
+  .signin main {
+    width: 40vw;
+  }
+
+  /*******************************************
+              Tablet sign-in 
+  *******************************************/
+
+  .registration main {
+    width: 40vw;
   }
 }
 
@@ -1242,5 +1133,21 @@ input:focus {
     margin-top: 0.5em;
     margin-bottom: 0.3em;
     width: 23%;
+  }
+
+  /*******************************************
+              Tablet sign-in 
+  *******************************************/
+
+  .signin main {
+    width: 35vw;
+  }
+
+  /*******************************************
+              Tablet sign-in 
+  *******************************************/
+
+  .registration main {
+    width: 35vw;
   }
 }

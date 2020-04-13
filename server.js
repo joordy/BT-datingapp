@@ -1,5 +1,6 @@
 // require packages
 const express = require('express');
+const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const slug = require('slug');
 const session = require('express-session');
@@ -19,6 +20,11 @@ const PORT = process.env.PORT || process.env.DB_PORT;
 // Middleware set-up
 app.set('view engine', 'ejs');
 app.set('views', 'view');
+app.use(helmet.frameguard({ action: 'deny' }));
+app.use(helmet.ieNoOpen());
+app.use(helmet.hidePoweredBy({ setTo: 'PHP 4.2.0' }));
+app.use(helmet.xssFilter({ setOnOldIE: true }));
+
 app.use(express.static('static'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
