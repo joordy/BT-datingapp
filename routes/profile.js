@@ -34,9 +34,8 @@ router.post('/forgotPassword', forgotPassword);
 async function profileOfMe(req, res, next) {
   // Rowan
   try {
-    let database = await usersCollection.find().toArray(); // this code can be removed at the point sessions works.
-    let myself = database.filter(showMe);
-    res.render('profile.ejs', { user: myself });
+    console.log(req.session.user);
+    res.render('profile.ejs', { user: req.session.user });
     //Veerle: Rowan, hierin moet een session beginnen met de
     //globale: idLoggedIn. < dit is de ingelogde gebruiker.
     //Voor nu zet ik er even static code in zodat mijn code alvast kan werken:
