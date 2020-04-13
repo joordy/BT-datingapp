@@ -1,10 +1,10 @@
 # Dat.io
 
-**Dat.io** is a dating application made with Node.js, Express and EJS which provides the main function of our application such as register, filter, like and match!
+**[Dat.io](https://bt-datingapp.herokuapp.com/)** is a dating application made with Node.js, Express and EJS which provides the main function of our application such as register, filter, like and match!
 
 (image's, of 3/4/5 screens in a row?)
 
-This is a datingapp made together with [@RowanHorn](https://github.com/rowanhorn1412), [@VeerlePrins](https://github.com/veerleprins) and [@Joordy](https://github.com/joordy). With the application Dat.io makes it possible to register, logging in, filter the users, liking a user and ofcourse match with the users you like, when the interest is mutual. To read the process of creating the complete application, you can have a look in [our Wiki](https://github.com/joordy/BT-datingapp/wiki).
+This is a datingapp made together with [@RowanHorn](https://github.com/rowanhorn1412), [@VeerlePrins](https://github.com/veerleprins) and [@Joordy](https://github.com/joordy). With the application Dat.io makes it possible to register, logging in, filter the users, liking a user and ofcourse match with the users you like, when the interest is mutual. To read the process of creating the complete application, you can have a look in [our Wiki](https://github.com/joordy/BT-datingapp/wiki). Visit our application **[here](https://bt-datingapp.herokuapp.com/)**.
 
 ## Table of content
 
@@ -19,7 +19,7 @@ This is a datingapp made together with [@RowanHorn](https://github.com/rowanhorn
 
 #### Register/login:
 
-> Wanneer een gebruiker voor het eerst op de applicatie een profiel gaat aanmaken, wilt de gebruiker dat verschillende opties krijgen om zijn profiel zo zelfstandig een eenvoudig mogelijk kunnen invullen, zodat andere gebruikers die zijn profiel vinden precies weten wat voor persoon de gebruiker is.
+> When a user is going to create a profile on the application for the first time, the user wants to be given various options to fill in his profile as independently as possible, so that other users who find his profile know exactly what kind of person the user is. The user also wants to be sure that his account is safe.
 
 #### Filter:
 
@@ -27,7 +27,7 @@ This is a datingapp made together with [@RowanHorn](https://github.com/rowanhorn
 
 #### Liking/matching:
 
-> When the user is looking for a date, he wants to find one with mutial connections, so he can like them, and when the interest is mutual, they will be connected.
+> When the user is looking for a date, he wants to find one with mutual connections, so he can like them, and when the interest is mutual, they will be connected.
 
 ## Setup
 
@@ -53,11 +53,16 @@ Go to the repository in the terminal and add the following line of code below:
 
 ## Usage
 
-You can visit [localhost:8000](http://localhost:8000/) to view the application. Or open the app with [Heroku](www.github.com/joordy/BT-datingapp), to try the deployed version.
+You can visit [localhost:8000](http://localhost:8000/) to view the application. Or open the app with [Heroku](https://bt-datingapp.herokuapp.com/), to try the deployed version.
 
 ## Database
 
-Lorem Ipsum
+For the Datio dating application, we used a new database collection with all our users' data stored inside. This data consists of the following components:
+
+![Database structure](https://user-images.githubusercontent.com/35265583/79114896-c3104580-7d84-11ea-8581-dd5cd8118323.png)
+
+When you have liked persons, the database will look like this.
+![Liked after](https://user-images.githubusercontent.com/35265583/79119645-1f796200-7d91-11ea-9f70-e754d5a6c96e.png)
 
 ## License
 
