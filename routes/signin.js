@@ -40,54 +40,64 @@ async function signIn(req, res, next) {
 
 async function logIn(req, res) {
   try {
-    const rounds = 10;
-    const password = req.body.password;
-    //
-    bcrypt.hash(password, rounds, (err, hash) => {
-      if (err) {
-        console.error(err);
-        return;
+    bcrypt.compare(req.body.password, hash, function(err, res){
+      if (res) {
+        console.log('It matches')
+        res.redirect('/');
+      } else {
+        console.log('no match');
+        res.redirect('/signIn');
       }
-      console.log(hash);
+    })
+    // const rounds = 10;
+    // const password = req.body.password;
+    // console.log(req.body.password);
+    // //
+    // // bcrypt.hash(password, rounds, (err, hash) => {
+    // //   if (err) {
+    // //     console.error(err);
+    // //     return;
+    // //   }
+    // //   console.log(hash);
 
-      bcrypt.compare(password, hash, (err, res) => {
-        if (err) {
-          console.error(err);
-          return;
-        }
-        console.log(res);
-      });
-      //
-      const hashPassword = async () => {
-        const hash = await bcrypt.hash(password, rounds);
-        console.log(hash);
-        console.log(await bcrypt.compare(password, hash));
-      };
-      hashPassword();
+    //   bcrypt.compare(password, hash, (err, res) => {
+    //     if (err) {
+    //       console.error(err);
+    //       return;
+    //     }
+    //     console.log(res);
+    //   });
+    //   //
+    //   const hashPassword = async () => {
+    //     const hash = await bcrypt.hash(password, rounds);
+    //     console.log(hash);
+    //     console.log(await bcrypt.compare(password, hash));
+    //   };
+    //   hashPassword();
 
-      // //
-      usersCollection.findOne({ email: req.body.email }).then((data) => {
-        if (data) {
-          if (
-            req.session.regenerate(function (err) {
-              // will have a new session here
-            })
-          ) {
-            req.session.user = data;
-            console.log(req.session.user);
-            res.render('profile.ejs', { user: data });
-            console.log('Logged in as' + req.session.user.firstName);
-            req.session.loggedIN = true;
-          } else {
-            res.render('signin.ejs');
-            console.log('password incorrect');
-          }
-        } else {
-          res.redirect('/');
-          console.log('Cant find this account');
-        }
-      });
-    });
+    //   // //
+    //   usersCollection.findOne({ email: req.body.email }).then((data) => {
+    //     if (data) {
+    //       if (data.password === hash
+    //         // req.session.regenerate(function (err) {
+    //         //   // will have a new session here
+    //         // })
+    //       ) {
+    //         req.session.user = data;
+    //         console.log(req.session.user);
+    //         res.render('profile.ejs', { user: data });
+    //         console.log('Logged in as ' + req.session.user.firstName);
+    //         req.session.loggedIN = true;
+    //       } else {
+    //         res.render('signin.ejs');
+    //         console.log('password incorrect');
+    //       }
+    //     } else {
+    //       res.redirect('/signIn');
+    //       console.log('Cant find this account');
+    //     }
+    //   });
+    // // });
   } catch (err) {
     console.log(err);
   }

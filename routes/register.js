@@ -44,28 +44,32 @@ async function createAccount(req, res, next) {
     const allUsers = await usersCollection.find().toArray();
     let totalCount = allUsers.length + 1;
     // rounds(of salt) is the number of times in which the password is generated
-    const rounds = 10;
+    // const rounds = 10;
     const password = req.body.password;
     // hashes the password with salt
-    bcrypt.hash(password, rounds, (err, hash) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      //logs the hash code
-      console.log(hash);
+    console.log(password);
+    let hashPassword = bcrypt.hashSync(password, 10);
+    console.log(hashPassword);
+    // bcrypt.hash(password, rounds, (err, hash) => {
+    //   if (err) {
+    //     console.error(err);
+    //     return;
+    //   }
+    
+    //   //logs the hash code
+    //   console.log(hash);
 
       // body pulled from forms
       let firstName = req.body.firstName;
       let lastName = req.body.lastName;
       let email = req.body.email;
       let gender = req.body.gender;
-      let age = req.body.age;
+      let age = parseInt(req.body.age);
       let photo = req.body.photo;
       let work = req.body.work;
 
       // makes age integer
-      age = parseInt(age);
+      // age = parseInt(age);
 
       // daata send to the DB
       let data = {
@@ -73,7 +77,7 @@ async function createAccount(req, res, next) {
         firstName: firstName,
         lastName: lastName,
         email: email,
-        password: hash,
+        password: hashPassword,
         gender: gender,
         age: age,
         photo: photo,
@@ -84,16 +88,16 @@ async function createAccount(req, res, next) {
         liked: [],
         disliked: [],
       };
-      const hashPassword = async () => {
-        const hash = await bcrypt.hash(password, rounds);
-        console.log(hash);
-      };
-      hashPassword();
+      // const hashPassword = async () => {
+      //   const hash = await bcrypt.hash(password, rounds);
+      //   console.log(hash);
+      // };
+      // hashPassword();
 
       usersCollection.insertOne(data);
       console.log('Created new user');
-      res.render('profile.ejs');
-    });
+      res.render('signIn.ejs');
+    // });
   } catch (err) {
     next(err);
   }

@@ -16,6 +16,7 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || process.env.DB_PORT;
+// const loggedIn;
 
 // Middleware set-up
 app.set('view engine', 'ejs');
