@@ -23,7 +23,7 @@ app.set('views', 'view');
 app.use(helmet.frameguard({ action: 'deny' }));
 app.use(helmet.ieNoOpen());
 app.use(helmet.hidePoweredBy({ setTo: 'PHP 4.2.0' }));
-app.use(helmet.xssFilter({setOnOldIE: true}));
+app.use(helmet.xssFilter({ setOnOldIE: true }));
 
 app.use(express.static('static'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,11 +36,11 @@ app.use(
     secure: true,
   })
 );
-app.use('/', signinRouter); // signin routes
-app.use('/', registerRouter); // register routes
+app.use('/', signinRouter); // Signin routes
+app.use('/', registerRouter); // Register routes
 app.use('/', swipingRouter); // Liking and filtering routes
-app.use('/', profileRouter); // Profile routing
-app.use('/', errorRouter); // Error 404 routing
+app.use('/', profileRouter); // Profile routes
+app.use('/', errorRouter); // Error 404 routes
 
 // Server deploying on https://localhost:
 app.listen(PORT, function () {
