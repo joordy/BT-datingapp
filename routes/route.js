@@ -161,7 +161,7 @@ async function logIn(req, res) {
             req.session.user = data;
             console.log(req.session.user);
             res.render('profile.ejs', { user: data });
-            console.log(`Logged in as ` + req.session.user.firstName);
+            console.log('Logged in as' + req.session.user.firstName);
             req.session.loggedIN = true;
           } else {
             res.render('signin.ejs');
@@ -267,26 +267,14 @@ function updateDatabase(input, user) {
   // function to use the like and dislike button on /home
   if (input.like) {
     usersCollection.updateOne(
-      {
-        id: idLoggedIn,
-      },
-      {
-        $push: {
-          liked: user.id,
-        },
-      }
+      { id: idLoggedIn },
+      { $push: { liked: user.id } }
     );
     return true;
   } else if (input.dislike) {
     usersCollection.updateOne(
-      {
-        id: idLoggedIn,
-      },
-      {
-        $push: {
-          disliked: user.id,
-        },
-      }
+      { id: idLoggedIn },
+      { $push: { disliked: user.id } }
     );
     return false;
   }
@@ -344,15 +332,7 @@ async function matchList(req, res, next) {
     let database = await usersCollection.find().toArray();
     let myself = database.filter(showMe);
     let liked = myself[0].liked;
-    let matches = await usersCollection
-      .find({
-        id: {
-          $in: liked,
-        },
-      })
-      .toArray();
-
-    console.log(myself[0].liked);
+    let matches = await usersCollection.find({ id: { $in: liked } }).toArray();
     let lijstje = [];
 
     await matches.forEach(function (user) {
@@ -363,7 +343,6 @@ async function matchList(req, res, next) {
       });
     });
 
-    console.log(lijstje);
     res.render('matchlist.ejs', {
       users: lijstje,
     });
@@ -453,18 +432,11 @@ async function updatePreferences(genderPreference, moviePreference) {
   // preferences form:
   try {
     await usersCollection.updateOne(
-      {
-        id: idLoggedIn,
-      },
-      {
-        $set: {
-          prefGender: genderPreference,
-          prefMovie: moviePreference,
-        },
-      }
+      { id: idLoggedIn },
+      { $set: { prefGender: genderPreference, prefMovie: moviePreference } }
     );
-  } catch {
-    next(err);
+  } catch (err) {
+    console.log(err);
   }
 }
 
