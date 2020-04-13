@@ -4,7 +4,9 @@
   "description": "Datingapplication made for team project of CMD Amsterdam",
   "main": "server.js",
   "scripts": {
-    "test": "npm run"
+    "test": "npm run",
+    "lint": "eslint ./",
+    "lint:fix": "eslint --fix"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,7 @@
   },
   "homepage": "https://github.com/joordy/BT-datingapp#readme",
   "devDependencies": {
+    "eslint": "^6.8.0",
     "nodemon": "^2.0.2"
   },
   "dependencies": {
@@ -24,7 +27,6 @@
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.0.2",
-    "eslint": "^6.8.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "lodash": "^4.17.15",
