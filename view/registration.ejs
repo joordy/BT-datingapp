@@ -4,28 +4,36 @@
     <%- include ("components/head.ejs") %>
     <title>Dat.io – registration</title>
   </head>
+  
   <body class="registration">
-    <h1>Dat.io</h1>
+   
+    <ul>
+      <li>
+        <h1>Dat.io</h1>
+      </li>
+    </ul>
+
     <form action="/registration" id="registration" method="POST">
-      <div class="reg-con-1">
-        <label for="firstName"><b>First name</b></label>
-        <input type="text" placeholder="First name" name="firstName" required />
+      <h2>Welcome to Dat.io! Would you like to introduce yourself?</h2>       
+        <div>
+          <label for="firstName">First name</label>
+          <input type="text" placeholder="First name" name="firstName" required />
 
-        <label for="lastName"><b>Last name</b></label>
-        <input type="text" placeholder="Last name" name="lastName" required />
-      </div>
+          <label for="lastName">Last name</label>
+          <input type="text" placeholder="Last name" name="lastName" required />
+        </div>
 
-      <div class="reg-con-2">
-        <label for="email"><b>Email</b></label>
-        <input
+       <div>
+         <label for="email">Email</label>
+         <input
           type="email"
           name="email"
           minlength="6 "
           maxlength="60 "
-          placeholder="test@hotmail.com"
+          placeholder="example@hotmail.com"
           required
         />
-        <label for="password"><b>Password</b></label>
+        <label for="password">Password</label>
         <input
           type="password"
           name="password"
@@ -35,12 +43,12 @@
         />
       </div>
 
-      <div class="reg-con-3">
-        <h2>Tell us something about yourself..</h2>
-
-        <h3>What is your age?</h3>
+      <h2>Tell us something about yourself..</h2>
+      
+      <div>
+        
         <label for="age"
-          >Age
+          >What is your age?
           <input
             type="number"
             min="18"
@@ -48,6 +56,7 @@
             id="age"
             name="age"
             value="age"
+            placeholder="18+"
           />
         </label>
 
@@ -61,24 +70,22 @@
           <input type="radio" id="woman" name="gender" value="woman" />
         </label>
 
-        <h3>Upload a photo of yourself!</h3>
         <label for="photo">
-          Upload photo
-          <input type="file" name="fileToUpload" id="fileToUpload" />
-        </label>
+          Upload a photo of yourself!</label>
+        <input type="file" name="file" id="file" class="inputfile" />
+        <label for="photo">Choose a file</label>
 
-        <h3>What is your current occupation?</h3>
         <label for="work"
-          >Work
-          <input type="text" placeholder="work" name="work" required />
+          >What is your current occupation?
+          <input type="text" placeholder="Teacher of the year" name="work" required />
         </label>
       </div>
 
       <button type="submit">Create</button>
 
-      <a href="login"
-        ><button type="button" class="toLogin">to login</button></a
-      >
+    
+        <a href="signin" class="toSignIn">Sign in</a>
+      
     </form>
   </body>
 </html>
