@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("components/head.ejs") %>
+    <title>Dat.io – registration</title>
+  </head>
+  <body class="registration">
+    <h1>Dat.io</h1>
+    <form action="/registration" id="registration" method="POST">
+      <div class="reg-con-1">
+        <label for="firstName"><b>First name</b></label>
+        <input type="text" placeholder="First name" name="firstName" required />
+
+        <label for="lastName"><b>Last name</b></label>
+        <input type="text" placeholder="Last name" name="lastName" required />
+      </div>
+
+      <div class="reg-con-2">
+        <label for="email"><b>Email</b></label>
+        <input
+          type="email"
+          name="email"
+          minlength="6 "
+          maxlength="60 "
+          placeholder="test@hotmail.com"
+          required
+        />
+        <label for="password"><b>Password</b></label>
+        <input
+          type="password"
+          name="password"
+          minlength="6 "
+          placeholder="Min 6 letters"
+          required
+        />
+      </div>
+
+      <div class="reg-con-3">
+        <h2>Tell us something about yourself..</h2>
+
+        <h3>What is your age?</h3>
+        <label for="age"
+          >Age
+          <input
+            type="number"
+            min="18"
+            max="99"
+            id="age"
+            name="age"
+            value="age"
+          />
+        </label>
+
+        <h3>What is your gender?</h3>
+        <label for="man"
+          >Man
+          <input type="radio" id="man" name="gender" value="man" />
+        </label>
+        <label for="woman"
+          >Woman
+          <input type="radio" id="woman" name="gender" value="woman" />
+        </label>
+
+        <h3>Upload a photo of yourself!</h3>
+        <label for="photo">
+          Upload photo
+          <input type="file" name="fileToUpload" id="fileToUpload" />
+        </label>
+
+        <h3>What is your current occupation?</h3>
+        <label for="work"
+          >Work
+          <input type="text" placeholder="work" name="work" required />
+        </label>
+      </div>
+
+      <button type="submit">Create</button>
+
+      <a href="login"
+        ><button type="button" class="toLogin">to login</button></a
+      >
+    </form>
+  </body>
+</html>

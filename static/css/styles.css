@@ -1,0 +1,969 @@
+*,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  /* background: url('../images/background.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+  background-color: #dbdcef;
+  color: black;
+}
+
+/** Header **/
+
+header {
+  margin: 1em 1em 0.5em 1em;
+}
+
+header ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+header ul li {
+  list-style-type: none;
+  text-decoration: none;
+}
+
+header ul li a {
+  text-decoration: none;
+  color: #4e50b8;
+}
+
+header ul li:nth-of-type(2) {
+  margin-left: 1em;
+}
+
+/** Footer **/
+
+footer {
+  background-color: white;
+  box-shadow: black;
+  padding: 0.3em 0em;
+  position: fixed;
+  z-index: 1000;
+  bottom: 0;
+  width: 100%;
+}
+
+footer ul {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer ul li {
+  list-style-type: none;
+  text-decoration: none;
+}
+
+footer ul li a img {
+  text-align: center;
+  font-size: 2rem;
+  color: black;
+  padding: 0.5rem 2.2rem;
+}
+
+/******************************************************************************
+                          Home page
+*******************************************************************************/
+
+/** Main **/
+
+.swipe main {
+  margin: 0vh 5vw;
+}
+
+.swipe main ul {
+  width: 90vw;
+}
+.swipe main ul li {
+  width: 90vw;
+  position: absolute;
+  list-style-type: none;
+  margin-top: 0.5em;
+  margin-bottom: 5rem;
+}
+
+.swipe section {
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  background-color: white;
+  border-radius: 1em;
+  box-shadow: 2px 2px 4px grey;
+}
+
+.swipe section img:nth-of-type(1) {
+  width: 90%;
+  height: 70%;
+  object-fit: cover;
+  margin: 5% 5% 0% 5%;
+}
+
+.swipe .info {
+  max-width: 3em;
+  position: absolute;
+  left: 1.5em;
+  top: 1.5em;
+}
+
+.swipe section p {
+  background-color: #999ace;
+  color: white;
+  font-weight: 300;
+  font-size: 14px;
+  border-radius: 0.2em;
+  padding: 0.5em 0.9em;
+  text-decoration: none;
+  position: absolute;
+  left: 1.5rem;
+}
+
+.swipe section p:nth-of-type(1) {
+  bottom: 10rem;
+}
+
+.swipe section p:nth-of-type(2) {
+  bottom: 13rem;
+}
+
+.swipe section article {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  margin-top: -1rem;
+  padding-top: 0.5em;
+  width: 100%;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 0em 0em 1em 1em;
+}
+
+.swipe section article h2 {
+  margin-top: 0.5em;
+  font-size: 1.5em;
+}
+
+.swipe section article h3 {
+  font-weight: 300;
+  font-size: 1em;
+}
+
+.swipe section article form {
+  width: 90%;
+  margin: 0% 5%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.swipe section article form div {
+  width: 40%;
+}
+
+.swipe section article form input[type='submit'] {
+  font-size: 32px;
+  padding: 0.4em 0.75em;
+  background-color: #e8e8e8;
+  border: none;
+  border-radius: 50%;
+  margin: 0 auto;
+  background-color: none;
+  box-shadow: 2px 2px 4px grey;
+}
+
+.swipe section article form input[type='submit']:nth-of-type(2) {
+  padding: 0.4em 0.6em;
+  background-color: #eb4b71;
+  color: white;
+}
+
+.swipe .noUsersError {
+  margin-top: 1em;
+  width: 100%;
+  height: 75vh;
+  background-color: white;
+  border-radius: 1em;
+}
+
+.swipe .noUsersError h2 {
+  padding-top: 1.5em;
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.swipe .noUsersError img {
+  width: 25%;
+  height: auto;
+  margin: 0% 37%;
+}
+
+.swipe .noUsersError p {
+  position: relative;
+  padding: 0;
+  background: none;
+  color: black;
+  text-align: center;
+  margin-top: 5em;
+}
+
+.swipe .noUsersError a {
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.5em;
+  font-size: 1em;
+  font-weight: 400;
+  color: white;
+  background-color: #eb4b71;
+  box-shadow: 1px 1px 2px rgb(49, 49, 49);
+  border: none;
+  display: flex;
+  width: 68vw;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 2em;
+  padding: 0.6em 0.5em;
+}
+
+/******************************************************************************
+                          Sign In page
+*******************************************************************************/
+
+/** Main **/
+
+.signin form {
+  width: 360px;
+  height: 420px;
+  display: block;
+  background-color: #141414;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+}
+
+.signin .log-con-1 {
+  display: contents;
+  align-items: center;
+  text-align: center;
+  padding: 16px;
+}
+
+.signin .log-con-2 {
+  display: contents;
+  align-items: center;
+  text-align: center;
+  padding: 16px;
+}
+
+/* Full-width inputs */
+.signin input[type='text'],
+input[type='password'],
+input[type='email'] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #de5f5a;
+  background-color: #141414;
+}
+
+/* Set a style for all buttons */
+.signin button {
+  background-color: #de5f5a;
+  color: black;
+  padding: 14px 20px;
+  margin: 14px 20px;
+  border: black;
+  cursor: pointer;
+  width: 90%;
+  display: initial;
+  border-radius: 25px;
+}
+
+/* Add a hover effect for buttons */
+.signin button:hover {
+  opacity: 0.6;
+  transition: 0.5s;
+}
+
+/* add style for button text */
+.signin button[type='submit'] {
+  color: white;
+  font-size: 1em;
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 3em;
+}
+
+.signin button[type='button'] {
+  color: white;
+  font-size: 1em;
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Extra style for the button to register page */
+.signin .toRegister {
+  width: auto;
+  padding: 10px 30px;
+  background-color: rgb(88, 87, 87);
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+  outline: none;
+  border: none;
+}
+
+/* forgot password */
+.signin .psw {
+  float: right;
+  padding-top: 23px;
+  color: white;
+  margin-right: 1.5em;
+  text-decoration: none;
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* placeholder for input fields */
+.signin .placeholder {
+  color: white;
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.signin a {
+  color: white;
+  text-decoration: none;
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.signin a:hover {
+  color: #de5f5a;
+  transition: 0.4s;
+}
+
+/******************************************************************************
+                          Registration page
+*******************************************************************************/
+
+/** Main **/
+
+.registration .reg-con-1 {
+  display: contents;
+  align-items: center;
+  text-align: center;
+  padding: 16px;
+}
+
+.registration .reg-con-2 {
+  display: contents;
+  align-items: center;
+  text-align: center;
+  padding: 16px;
+}
+
+.registration .reg-con-3 {
+  display: inline;
+  flex: initial;
+  align-items: center;
+  text-align: center;
+  padding: 16px;
+  color: white;
+}
+
+.registration label {
+  text-align: center;
+}
+
+.registration input[type='radio'] {
+  align-items: center;
+  text-align: center;
+  padding: 12px 20px;
+  margin: 8px 0;
+}
+
+.registration input[type='number'] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+  border-bottom: 2px solid #de5f5a;
+  background-color: #141414;
+}
+
+.registration ::placeholder {
+  color: grey;
+}
+
+.registration input,
+.registration select,
+.registration textarea {
+  color: white;
+}
+
+/* Extra style for the button to login page */
+.registration .toLogin {
+  width: auto;
+  padding: 10px 30px;
+  background-color: rgb(88, 87, 87);
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+  outline: none;
+  border: none;
+}
+
+/******************************************************************************
+                          Profile page
+*******************************************************************************/
+
+.profile div {
+  margin-top: 1.5em;
+  width: 100%;
+}
+.profile main img {
+  width: 12em;
+  height: 12em;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+}
+
+.profile main h2 {
+  text-align: center;
+  margin: 0.7em 0em;
+  color: #4e50b8;
+}
+
+.profile main section {
+  width: 90%;
+  height: auto;
+  margin: 1em 5% 5em 5%;
+  color: black;
+}
+
+.profile main section div {
+  background: white;
+  width: 90%;
+  border-radius: 1em;
+  margin: 0em 0em 1em 0em;
+  border: 2px solid #4e51b2;
+  padding: 0.5em 1em 0.5em 1em;
+}
+
+.profile input[type='submit'] {
+  padding: 1em 2em;
+  background-color: white;
+  margin: 0em 3em;
+}
+
+/******************************************************************************
+                          Filters page 
+*******************************************************************************/
+
+.filtersPage header {
+  display: flex;
+  margin: 1em;
+  border-bottom: solid 1px #bdbdbd;
+  padding-bottom: 1em;
+}
+
+.filtersPage header h1 {
+  font-size: 2em;
+  margin: 0 auto;
+}
+
+.filtersPage header a {
+  color: black;
+}
+
+.filtersPage header a:active {
+  color: #4e50b8;
+}
+
+.filtersPage header a img {
+  padding-top: 0.5em;
+}
+
+/** Main **/
+
+.filtersPage main {
+  margin: 0em 1em;
+}
+
+.filtersPage main section {
+  margin: 0.5em 0em;
+}
+
+.filtersPage main section form button {
+  /* Save preferences button: */
+  border-radius: 0.5em;
+  font-size: 1em;
+  font-weight: 400;
+  color: white;
+  background-color: #eb4b71;
+  box-shadow: 1px 1px 2px rgb(49, 49, 49);
+  border: none;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 6em;
+  padding: 0.8em 1em;
+  width: 90%;
+}
+
+.filtersPage main section form fieldset {
+  border: none;
+  margin-bottom: 1em;
+}
+
+.filtersPage main section form fieldset label {
+  font-weight: 300;
+}
+
+.filtersPage main section form fieldset:nth-of-type(1) div {
+  display: inline-block;
+  margin-right: 8%;
+}
+
+.filtersPage main section form fieldset:nth-of-type(2) label {
+  display: block;
+  margin-bottom: 0.3em;
+}
+
+.filtersPage main section form fieldset:nth-of-type(2) input {
+  display: block;
+}
+
+.filtersPage main section form fieldset:nth-of-type(2) input:nth-of-type(1) {
+  margin-bottom: 0.5em;
+}
+
+.filtersPage main section form fieldset:nth-of-type(3) span {
+  font-size: 16px;
+  color: black;
+  font-weight: 300;
+}
+
+.filtersPage main section form fieldset legend {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  color: black;
+  font-weight: 500;
+}
+
+.filtersPage main section form fieldset select {
+  font-size: 1em;
+  background: white;
+  /* color: white; */
+  border: solid 2px #bcbdea;
+  border-radius: 0.3em;
+  padding: 0.5em;
+  /* margin-bottom: 10em; */
+}
+
+.filtersPage main section form fieldset select:focus,
+input:focus {
+  outline: none;
+}
+
+.filtersPage main section form fieldset input {
+  font-size: 1em;
+  border: solid 2px #bcbdea;
+  background-color: white;
+  border-radius: 0.3em;
+  padding: 0.5em;
+}
+
+.filtersPage main section form fieldset input:nth-of-type(7) {
+  opacity: 0;
+}
+
+.filtersPage main section form fieldset input[type='radio'] {
+  transform: scale(1.5);
+  margin-left: 0.4em;
+}
+
+#remove {
+  /* Save preferences button: */
+  border-radius: 0.5em;
+  font-size: 1em;
+  font-weight: 400;
+  color: #4e50b8;
+  background-color: White;
+  box-shadow: none;
+  border: 1px solid #bcbdea;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 2em;
+  padding: 0.8em 1em;
+  width: 90%;
+}
+
+/******************************************************************************
+                          Match Page
+*******************************************************************************/
+
+.match {
+  background-image: none;
+  background-color: #4e50b8;
+  width: 100vw;
+  height: 100vh;
+}
+
+.match section:nth-of-type(1) {
+  width: 80%;
+  margin: 0% 10%;
+  display: flex;
+  height: 17em;
+}
+
+.match section:nth-of-type(1) img {
+  border-radius: 10px;
+}
+
+.match section:nth-of-type(1) img:nth-of-type(1) {
+  /* Match heart*/
+  width: 40%;
+  height: auto;
+  position: absolute;
+  top: 10em;
+  left: 30%;
+  z-index: 4;
+  transform: rotate(20deg);
+}
+
+.match section:nth-of-type(1) img:nth-of-type(2) {
+  /* photo of match*/
+  position: absolute;
+  top: 3em;
+  right: 4em;
+  z-index: 3;
+  height: 13em;
+  width: 8em;
+  object-fit: cover;
+  transform: rotate(25deg);
+}
+
+.match section:nth-of-type(1) img:nth-of-type(3) {
+  /* photo of user*/
+  position: absolute;
+  top: 5em;
+  z-index: 2;
+  width: 8em;
+  height: 11em;
+  object-fit: cover;
+  left: 4em;
+  transform: rotate(-25deg);
+}
+
+.match section:nth-of-type(2) {
+  display: block;
+  width: 100vw;
+  text-align: center;
+  margin-top: 6vh;
+}
+
+.match section h1 {
+  font-size: 2em;
+  color: white;
+}
+
+.match section h2 {
+  color: white;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 2em;
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.match section a {
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: #ef6a52;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 1em 0em;
+  border-radius: 5px;
+}
+
+.match section a:nth-of-type(1) {
+  margin-top: 5vh;
+}
+
+.match section a:nth-of-type(2) {
+  margin-top: 1.25em;
+  background-color: #8182c8;
+}
+
+/******************************************************************************
+                          Matchlist Page
+*******************************************************************************/
+
+.matchlist header {
+  margin-bottom: 2em;
+}
+
+.matchlist p {
+  padding: 0;
+  height: 1em;
+  text-align: left;
+  display: block;
+}
+
+.matchlist main {
+  height: 100%;
+}
+
+.matchlist main ul li {
+  display: flex;
+  width: 100vw;
+}
+
+.matchlist article {
+  background-color: white;
+  width: 100%;
+  margin-top: -2px;
+  height: 120px;
+  padding: 3px 0px;
+  border-top: 2px solid rgb(216, 216, 216);
+  border-bottom: 2px solid rgb(216, 216, 216);
+}
+
+.matchlist main li:last-of-type {
+  margin-bottom: 5em;
+}
+
+.matchlist article figure {
+  position: absolute;
+  left: 1em;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  height: 100px;
+  width: 100px;
+}
+
+.matchlist article figure img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.matchlist article figcaption {
+  position: absolute;
+  right: 1em;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  width: 60%;
+}
+
+.matchlist article figcaption h2 {
+  font-size: 1.3em;
+  margin-bottom: 0.3em;
+}
+
+/******************************************************************************
+                          Error Page
+*******************************************************************************/
+
+/* .error {
+  padding: 0em 3em;
+  height: 80vh;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+} */
+
+.error section h2 {
+  font-size: 2em;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.error section img {
+  width: 25%;
+  height: auto;
+  margin: 0% 37%;
+}
+
+.error section p {
+  text-align: center;
+  margin: 2em;
+}
+
+.error section div {
+  margin: 0 auto;
+}
+
+.error section a {
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.5em;
+  font-size: 1em;
+  font-weight: 400;
+  color: white;
+  background-color: #eb4b71;
+  box-shadow: 1px 1px 2px rgb(49, 49, 49);
+  border: none;
+  display: flex;
+  width: 80vw;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 7em;
+  padding: 0.6em 1em;
+}
+
+/******************************************************************************
+                          TABLET index header
+*******************************************************************************/
+
+@media all and (min-width: 768px) {
+  .swipe header {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 1em;
+  }
+
+  .swipe header ul li:nth-of-type(2) {
+    margin-left: 0;
+  }
+
+  .swipe header ul li:nth-of-type(3) {
+    margin-right: 0;
+  }
+
+  .swipe header ul li:nth-of-type(2) a img {
+    /* Logo: */
+    width: 130%;
+  }
+
+  .swipe header ul li:nth-of-type(3) a img {
+    /* Logo: */
+    width: 120%;
+  }
+
+  /******************************************************************************
+                          TABLET index main
+*******************************************************************************/
+  .swipe main {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  /* .swipe main section figure a {
+        width: 20%;
+        height: 20%;
+    } */
+}
+
+/******************************************************************************
+                          TABLET index main
+*******************************************************************************/
+
+@media all and (min-width: 768px) {
+  .swipe section {
+    margin-top: 1em;
+    border-radius: 1em;
+    box-shadow: 4px 4px 8px grey;
+  }
+
+  .swipe section figure {
+    height: 75vh;
+    position: relative;
+  }
+
+  .swipe section figure img:nth-last-of-type(1) {
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
+    /* height: 25em; */
+    object-fit: cover;
+    margin: 0 auto;
+  }
+
+  .swipe section figure a {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: 1em;
+    top: 1em;
+  }
+
+  .swipe section figure p {
+    background-color: #dcaba7;
+    color: white;
+    font-weight: 300;
+    border-radius: 0.2em;
+    padding: 0.3em;
+    text-decoration: none;
+    position: absolute;
+    left: 1rem;
+  }
+
+  .swipe section figure p:nth-of-type(1) {
+    bottom: 9.5rem;
+  }
+
+  .swipe section figure p:nth-of-type(2) {
+    bottom: 12rem;
+  }
+
+  .swipe section figure figcaption {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    margin-top: -1rem;
+    padding-top: 0.5em;
+    width: 100%;
+    background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0.1)
+    );
+    color: white;
+    text-align: center;
+    border-radius: 0em 0em 1em 1em;
+  }
+
+  .swipe section figure figcaption h2 {
+    font-size: 1.5em;
+  }
+
+  .swipe section figure figcaption h3 {
+    font-weight: 300;
+    font-size: 1em;
+  }
+
+  .swipe section figure figcaption h3 i {
+    height: 16px;
+    width: auto;
+    margin-right: 0.5em;
+    margin-top: 0.2em;
+  }
+
+  .swipe section figure figcaption form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+  }
+
+  .swipe section figure figcaption form div {
+    width: 50%;
+  }
+
+  .swipe section figure figcaption form button {
+    margin: 0 auto;
+    background-color: none;
+  }
+}

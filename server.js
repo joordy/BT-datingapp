@@ -10,7 +10,7 @@ require('dotenv').config();
 
 // Variables
 const app = express();
-const PORT = process.env.PORT || process.env.DB_PORT;
+const PORT = process.env.DB_PORT || process.env.PORT;
 
 // Middleware set-up
 app.set('view engine', 'ejs');
@@ -21,11 +21,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    cookie: { maxAge: 6000},
+    cookie: { maxAge: 6000 },
     resave: true,
     saveUninitialized: true,
     secure: true,
-    // cookie: { secure: true }
+
   })
 );
 

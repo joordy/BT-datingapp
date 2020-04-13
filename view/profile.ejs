@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("components/head.ejs") %>
+    <title>Dat.io – Profile</title>
+  </head>
+
+  <body class="profile">
+    <header>
+      <%- include ("components/header-two.ejs") %>
+    </header>
+    <main>
+      <form action="">
+        <div>
+          <img src="images/users/<%= user[0].photo %>" alt="Image of user" />
+        </div>
+
+        <h2>My profile</h2>
+        <section>
+          <div>
+            <label for="Name">firstName</label>
+          </div>
+          <div>
+            <label for="password">Password</label>
+          </div>
+          <div>
+            <label for="email">Email</label>
+          </div>
+          <div>
+            <label for="age">Age</label>
+          </div>
+          <div>
+            <p>What do you like?</p>
+            <h3>Movies:</h3>
+            <form action="">
+              <!-- <input type="select" />
+              <input type="select" /> -->
+            </form>
+          </div>
+
+          <input type="submit" value="Sign Out" />
+        </section>
+      </form>
+    </main>
+    <%- include ("components/footer-p.ejs") %>
+  </body>
+</html>
