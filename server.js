@@ -6,11 +6,11 @@ const session = require('express-session');
 const mongo = require('mongodb');
 const assert = require('assert');
 const routing = require('./routes/route.js');
-require("dotenv").config();
+require('dotenv').config();
 
 // Variables
 const app = express();
-const PORT = process.env.DB_PORT || process.env.PORT;
+const PORT = process.env.PORT || process.env.DB_PORT;
 
 // Middleware set-up
 app.set('view engine', 'ejs');
@@ -18,14 +18,18 @@ app.set('views', 'view');
 app.use(express.static('static'));
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(cookieParser());
-app.use(session({
+app.use(
+  session({
     secret: process.env.SESSION_SECRET,
+    cookie: { maxAge: 6000},
+    resave: true,
     saveUninitialized: true,
-    resave: true
-        // cookie: { secure: true }
-}));
+    secure: true,
+    // cookie: { secure: true }
+  })
+);
+
 app.use('/', routing); // using routing module
 
-
-// Server deploying on https://localhost:4000.
+// Server deploying on https://localhost:
 app.listen(PORT, () => console.log(`App is listening on ${PORT}!`));
