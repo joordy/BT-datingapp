@@ -31,6 +31,11 @@ router.post('/profile', postProfile); // Rowan
 router.post('/updateProfile', updateProfile);
 router.post('/forgotPassword', forgotPassword);
 
+function showMe(user) {
+  // To get static user out of array with people
+  return user.id === idLoggedIn;
+}
+
 async function profileOfMe(req, res, next) {
   // Rowan
   try {

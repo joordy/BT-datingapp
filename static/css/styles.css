@@ -124,15 +124,15 @@ footer ul li a img {
   padding: 0.5em 0.9em;
   text-decoration: none;
   position: absolute;
-  left: 1.5rem;
+  left: 2.75em;
 }
 
 .swipe section p:nth-of-type(1) {
-  bottom: 10rem;
+  bottom: 23vh;
 }
 
 .swipe section p:nth-of-type(2) {
-  bottom: 13rem;
+  bottom: 28vh;
 }
 
 .swipe section article {
@@ -467,9 +467,15 @@ input[type='email'] {
                           Filters page 
 *******************************************************************************/
 
+.filtersPage {
+  width: 90%;
+  margin: 0 auto;
+  height: 100vh;
+}
+
 .filtersPage header {
   display: flex;
-  margin: 1em;
+  margin: 1em 0em 1em 0em;
   border-bottom: solid 1px #bdbdbd;
   padding-bottom: 1em;
 }
@@ -491,18 +497,7 @@ input[type='email'] {
   padding-top: 0.5em;
 }
 
-/** Main **/
-
-.filtersPage main {
-  margin: 0em 1em;
-}
-
-.filtersPage main section {
-  margin: 0.5em 0em;
-}
-
 .filtersPage main section form button {
-  /* Save preferences button: */
   border-radius: 0.5em;
   font-size: 1em;
   font-weight: 400;
@@ -560,11 +555,9 @@ input[type='email'] {
 .filtersPage main section form fieldset select {
   font-size: 1em;
   background: white;
-  /* color: white; */
   border: solid 2px #bcbdea;
   border-radius: 0.3em;
   padding: 0.5em;
-  /* margin-bottom: 10em; */
 }
 
 .filtersPage main section form fieldset select:focus,
@@ -589,8 +582,7 @@ input:focus {
   margin-left: 0.4em;
 }
 
-#remove {
-  /* Save preferences button: */
+.remove {
   border-radius: 0.5em;
   font-size: 1em;
   font-weight: 400;
@@ -598,10 +590,9 @@ input:focus {
   background-color: White;
   box-shadow: none;
   border: 1px solid #bcbdea;
-  margin: 0 auto;
   position: fixed;
   bottom: 2em;
-  padding: 0.8em 1em;
+  padding: 0.8em 0em;
   width: 90%;
 }
 
@@ -629,11 +620,12 @@ input:focus {
 
 .match section:nth-of-type(1) img:nth-of-type(1) {
   /* Match heart*/
-  width: 40%;
+  width: 10em;
   height: auto;
   position: absolute;
   top: 10em;
-  left: 30%;
+  left: 50%;
+  margin-left: -5em;
   z-index: 4;
   transform: rotate(20deg);
 }
@@ -725,7 +717,6 @@ input:focus {
 }
 
 .matchlist main ul li {
-  display: flex;
   width: 100vw;
 }
 
@@ -775,14 +766,6 @@ input:focus {
                           Error Page
 *******************************************************************************/
 
-/* .error {
-  padding: 0em 3em;
-  height: 80vh;
-  text-align: center;
-  display: table-cell;
-  vertical-align: middle;
-} */
-
 .error section h2 {
   font-size: 2em;
   text-align: center;
@@ -827,143 +810,292 @@ input:focus {
                           TABLET index header
 *******************************************************************************/
 
-@media all and (min-width: 768px) {
-  .swipe header {
+@media all and (min-width: 600px) {
+  /** Header **/
+  header ul {
+    width: 60vw;
+    margin: 0 auto;
+  }
+
+  /** Header **/
+  footer ul {
+    width: 60vw;
+    margin: 0 auto;
+  }
+
+  .swipe main ul {
+    width: 60vw;
+    margin: 0 auto;
+  }
+  .swipe main ul li {
+    width: 60vw;
+  }
+  .swipe section p {
+    left: 4em;
+  }
+
+  .swipe section p:nth-of-type(1) {
+    bottom: 23vh;
+  }
+
+  .swipe section p:nth-of-type(2) {
+    bottom: 28vh;
+  }
+
+  .swipe section article form {
     width: 80%;
     margin: 0 auto;
-    margin-top: 1em;
-  }
-
-  .swipe header ul li:nth-of-type(2) {
-    margin-left: 0;
-  }
-
-  .swipe header ul li:nth-of-type(3) {
-    margin-right: 0;
-  }
-
-  .swipe header ul li:nth-of-type(2) a img {
-    /* Logo: */
-    width: 130%;
-  }
-
-  .swipe header ul li:nth-of-type(3) a img {
-    /* Logo: */
-    width: 120%;
-  }
-
-  /******************************************************************************
-                          TABLET index main
-*******************************************************************************/
-  .swipe main {
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  /* .swipe main section figure a {
-        width: 20%;
-        height: 20%;
-    } */
-}
-
-/******************************************************************************
-                          TABLET index main
-*******************************************************************************/
-
-@media all and (min-width: 768px) {
-  .swipe section {
-    margin-top: 1em;
-    border-radius: 1em;
-    box-shadow: 4px 4px 8px grey;
-  }
-
-  .swipe section figure {
-    height: 75vh;
-    position: relative;
-  }
-
-  .swipe section figure img:nth-last-of-type(1) {
-    width: 100%;
-    height: 100%;
-    border-radius: 1em;
-    /* height: 25em; */
-    object-fit: cover;
-    margin: 0 auto;
-  }
-
-  .swipe section figure a {
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    left: 1em;
-    top: 1em;
-  }
-
-  .swipe section figure p {
-    background-color: #dcaba7;
-    color: white;
-    font-weight: 300;
-    border-radius: 0.2em;
-    padding: 0.3em;
-    text-decoration: none;
-    position: absolute;
-    left: 1rem;
-  }
-
-  .swipe section figure p:nth-of-type(1) {
-    bottom: 9.5rem;
-  }
-
-  .swipe section figure p:nth-of-type(2) {
-    bottom: 12rem;
-  }
-
-  .swipe section figure figcaption {
-    position: absolute;
-    z-index: 1;
-    bottom: 0;
-    margin-top: -1rem;
-    padding-top: 0.5em;
-    width: 100%;
-    background-image: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 1),
-      rgba(0, 0, 0, 0.1)
-    );
-    color: white;
-    text-align: center;
-    border-radius: 0em 0em 1em 1em;
-  }
-
-  .swipe section figure figcaption h2 {
-    font-size: 1.5em;
-  }
-
-  .swipe section figure figcaption h3 {
-    font-weight: 300;
-    font-size: 1em;
-  }
-
-  .swipe section figure figcaption h3 i {
-    height: 16px;
-    width: auto;
-    margin-right: 0.5em;
-    margin-top: 0.2em;
-  }
-
-  .swipe section figure figcaption form {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 1em;
   }
 
-  .swipe section figure figcaption form div {
-    width: 50%;
+  /*******************************************
+              Tablet Filter 
+  *******************************************/
+
+  .filtersPage {
+    width: 60%;
   }
 
-  .swipe section figure figcaption form button {
+  .filtersPage main section form button {
+    width: 60%;
+  }
+
+  .remove {
+    width: 60%;
+  }
+
+  /*******************************************
+              Tablet match 
+  *******************************************/
+
+  .match section:nth-of-type(1) img:nth-of-type(2) {
+    /* photo of match*/
+    right: 10em;
+  }
+
+  .match section:nth-of-type(1) img:nth-of-type(3) {
+    /* photo of user*/
+    left: 10em;
+  }
+
+  .match section a {
+    width: 60vw;
+  }
+
+  /*******************************************
+              Tablet matchlist 
+  *******************************************/
+
+  .matchlist main {
+    height: 100%;
+  }
+
+  .matchlist main ul li {
+    width: 60%;
     margin: 0 auto;
-    background-color: none;
+    list-style-type: none;
+  }
+
+  .matchlist article figure {
+    position: absolute;
+    left: 21vw;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    height: 100px;
+    width: 100px;
+  }
+
+  .matchlist article figcaption {
+    position: absolute;
+    right: 20vw;
+    margin-top: 0.5em;
+    margin-bottom: 0.3em;
+    width: 40%;
+  }
+}
+
+@media all and (min-width: 900px) {
+  /*******************************************
+              Tablet Home 
+  *******************************************/
+
+  /** Header **/
+  header ul {
+    width: 40vw;
+    margin: 0 auto;
+  }
+
+  /** Header **/
+  footer ul {
+    width: 40vw;
+    margin: 0 auto;
+  }
+
+  .swipe main ul {
+    width: 40vw;
+    margin: 0 auto;
+  }
+  .swipe main ul li {
+    width: 40vw;
+  }
+
+  /*******************************************
+              Tablet Filter 
+  *******************************************/
+
+  .filtersPage {
+    width: 40%;
+  }
+
+  .filtersPage main section form button {
+    width: 40%;
+  }
+
+  .remove {
+    width: 40%;
+  }
+
+  /*******************************************
+              Tablet Match 
+  *******************************************/
+
+  .match section:nth-of-type(1) img:nth-of-type(2) {
+    /* photo of match*/
+    right: 15em;
+  }
+
+  .match section:nth-of-type(1) img:nth-of-type(3) {
+    /* photo of user*/
+    left: 15em;
+  }
+
+  .match section a {
+    width: 50vw;
+  }
+
+  /*******************************************
+              Tablet matchlist 
+  *******************************************/
+
+  .matchlist main {
+    height: 100%;
+  }
+
+  .matchlist main ul li {
+    width: 40%;
+    margin: 0 auto;
+    list-style-type: none;
+  }
+
+  .matchlist article figure {
+    position: absolute;
+    left: 31vw;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    height: 100px;
+    width: 100px;
+  }
+
+  .matchlist article figcaption {
+    position: absolute;
+    right: 30vw;
+    margin-top: 0.5em;
+    margin-bottom: 0.3em;
+    width: 26%;
+  }
+}
+
+/******************************************************************************
+                          LAPTOP index header
+*******************************************************************************/
+
+@media all and (min-width: 1160px) {
+  /*******************************************
+              Laptop Home 
+  *******************************************/
+
+  /** Header **/
+  header ul {
+    width: 35%;
+    margin: 0 auto;
+  }
+
+  /** Footer **/
+  footer ul {
+    width: 35%;
+    margin: 0 auto;
+  }
+
+  .swipe main ul {
+    width: 35vw;
+    margin: 0 auto;
+  }
+  .swipe main ul li {
+    width: 35%;
+  }
+
+  /*******************************************
+              Tablet Filter 
+  *******************************************/
+
+  .filtersPage {
+    width: 35%;
+  }
+
+  .filtersPage main section form button {
+    width: 35%;
+  }
+
+  .remove {
+    width: 35%;
+  }
+
+  /*******************************************
+              Laptop matchlist 
+  *******************************************/
+
+  .match section:nth-of-type(1) img:nth-of-type(2) {
+    /* photo of match*/
+    right: 20em;
+  }
+
+  .match section:nth-of-type(1) img:nth-of-type(3) {
+    /* photo of user*/
+    left: 20em;
+  }
+
+  .match section a {
+    width: 40vw;
+  }
+
+  /*******************************************
+              Laptop matchlist 
+  *******************************************/
+
+  .matchlist main {
+    height: 100%;
+  }
+
+  .matchlist main ul li {
+    width: 35%;
+    margin: 0 auto;
+    list-style-type: none;
+  }
+
+  .matchlist article figure {
+    position: absolute;
+    left: 33.5vw;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    height: 100px;
+    width: 100px;
+  }
+
+  .matchlist article figcaption {
+    position: absolute;
+    right: 32.5vw;
+    margin-top: 0.5em;
+    margin-bottom: 0.3em;
+    width: 23%;
   }
 }
