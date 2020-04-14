@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-   <%- include ("components/head.ejs") %>
+  <head>
+    <%- include ("components/head.ejs") %>
     <title>Dat.io – sign in</title>
-</head>
-    <body>
-    
-       
-       <form action="/signIn" id="signIn" method="POST">
-          
-            <div class="login-con-1">
-              <label for="email"><b>Email</b></label>
-              <input type="email" placeholder="email" name="email" >
-      
-              <label for="password"><b>Password</b></label>
-              <input type="password" placeholder="Password" name="password" >
-            </div>
-          
-        
-    
-        <div class="login-con-2">
+  </head>
+  <body class="signin">
+    <header>
+      <%- include ("components/header-two.ejs") %>
+    </header>
+    <main>
+      <p><%=text%></p>
+      <form action="/signIn" id="signIn" method="POST">
+        <div>
+          <label for="email">Email</label>
+          <input type="email" placeholder="example@mail.com" name="email" />
+
+          <label for="password">Password</label>
+          <input type="password" placeholder="******" name="password" />
+        </div>
+
+        <div>
           <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me</label>
-              <button type="submit">Login</button>
-               <a href="registration"><button type="button" class="toRegister">Register</button></a>
-                <a href="forgot">Forgot password?</a>
-          
+            <input type="checkbox" checked="checked" name="remember" />
+            Remember me
+          </label>
+
+          <button type="submit">Login</button>
+          <div>
+            <a href="registration">Registration</a>
+            <a href="forgot">Forgot password?</a>
+          </div>
         </div>
       </form>
-
-    </body>
-
-
-
+    </main>
+  </body>
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 
 <head>
   <%- include ("components/head.ejs") %>
@@ -37,3 +38,37 @@
 </body>
 
 </html>
+=======
+  <head>
+    <%- include ("components/head.ejs") %>
+    <title>Dat.io – Matchlist</title>
+  </head>
+
+  <body class="matchlist">
+    <header>
+      <%- include ("components/header-two.ejs") %>
+    </header>
+    <main>
+      <ul>
+        <% for (let i = 0; i < users.length; i++) { %>
+        <li>
+          <article id="person-options">
+            <figure>
+              <img src="images/users/<%= users[i].photo %>" alt="Liked user" />
+            </figure>
+            <figcaption>
+              <h2>
+                <%= users[i].firstName %> <%=users[i].lastName %>,
+                <%=users[i].age %>
+              </h2>
+              <p>You've got a match, lets talk!</p>
+            </figcaption>
+          </article>
+        </li>
+        <% }%>
+      </ul>
+    </main>
+    <%- include ("components/footer-m.ejs") %>
+  </body>
+</html>
+>>>>>>> 59d9efc2b1b9d9c6999ee49ea4ad1739cbbbbabf

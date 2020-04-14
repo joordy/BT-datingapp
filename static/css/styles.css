@@ -6,11 +6,12 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  background: url('../images/background.png') no-repeat center center fixed;
+  /* background: url('../images/background.png') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover; */
+  background-color: #dbdcef;
   color: black;
 }
 
@@ -77,134 +78,421 @@ footer ul li a img {
 /** Main **/
 
 .swipe main {
-  margin: 0em 1em;
+  margin: 0vh 5vw;
 }
 
+.swipe main ul {
+  width: 90vw;
+}
 .swipe main ul li {
+  width: 90vw;
+  position: absolute;
   list-style-type: none;
-}
-
-.swipe main ul li:last-of-type {
-  margin-bottom: 5em;
+  margin-top: 0.5em;
+  margin-bottom: 5rem;
 }
 
 .swipe section {
-  margin-top: 1em;
-  border-radius: 1em;
-  box-shadow: 4px 4px 8px grey;
-}
-
-.swipe section figure {
-  /* background-color: white; */
-  height: 75vh;
   position: relative;
-}
-
-.swipe section figure img:nth-last-of-type(1) {
   width: 100%;
-  height: 100%;
+  height: 75vh;
+  background-color: white;
   border-radius: 1em;
-  /* height: 25em; */
+  box-shadow: 2px 2px 4px grey;
+}
+
+.swipe section img:nth-of-type(1) {
+  width: 90%;
+  height: 70%;
   object-fit: cover;
-  margin: 0 auto;
+  margin: 5% 5% 0% 5%;
 }
 
-.swipe section figure a {
-  width: 24px;
-  height: 24px;
+.swipe .info {
+  max-width: 3em;
   position: absolute;
-  left: 1em;
-  top: 1em;
+  left: 1.5em;
+  top: 1.5em;
 }
 
-.swipe section figure p {
+.swipe section p {
   background-color: #999ace;
   color: white;
   font-weight: 300;
+  font-size: 14px;
   border-radius: 0.2em;
-  padding: 0.3em;
+  padding: 0.5em 0.9em;
   text-decoration: none;
   position: absolute;
-  left: 1rem;
+  left: 2.75em;
 }
 
-.swipe section figure p:nth-of-type(1) {
-  bottom: 9.5rem;
+.swipe section p:nth-of-type(1) {
+  bottom: 23vh;
 }
 
-.swipe section figure p:nth-of-type(2) {
-  bottom: 12rem;
+.swipe section p:nth-of-type(2) {
+  bottom: 28vh;
 }
 
-.swipe section figure figcaption {
+.swipe section article {
   position: absolute;
   z-index: 1;
   bottom: 0;
   margin-top: -1rem;
   padding-top: 0.5em;
   width: 100%;
-  background-image: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 1),
-    rgba(0, 0, 0, 0.1)
-  );
-  color: white;
+  background-color: white;
+  color: black;
   text-align: center;
   border-radius: 0em 0em 1em 1em;
 }
 
-.swipe section figure figcaption h2 {
+.swipe section article h2 {
+  margin-top: 0.5em;
   font-size: 1.5em;
 }
 
-.swipe section figure figcaption h3 {
+.swipe section article h3 {
   font-weight: 300;
   font-size: 1em;
 }
 
-.swipe section figure figcaption h3 i {
-  height: 16px;
-  width: auto;
-  margin-right: 0.5em;
-  margin-top: 0.2em;
-}
-
-.swipe section figure figcaption form {
-  width: 100%;
+.swipe section article form {
+  width: 90%;
+  margin: 0% 5%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 1em;
 }
 
-.swipe section figure figcaption form div {
+.swipe section article form div {
   width: 40%;
 }
 
-.swipe section figure figcaption form input[type='submit'] {
+.swipe section article form input[type='submit'] {
   font-size: 32px;
   padding: 0.4em 0.75em;
-  background-color: white;
+  background-color: #e8e8e8;
   border: none;
   border-radius: 50%;
   margin: 0 auto;
   background-color: none;
+  box-shadow: 2px 2px 4px grey;
 }
 
-.swipe section figure figcaption form input[type='submit']:nth-of-type(2) {
+.swipe section article form input[type='submit']:nth-of-type(2) {
   padding: 0.4em 0.6em;
   background-color: #eb4b71;
   color: white;
+}
+
+.swipe .noUsersError {
+  margin-top: 1em;
+  width: 100%;
+  height: 75vh;
+  background-color: white;
+  border-radius: 1em;
+}
+
+.swipe .noUsersError h2 {
+  padding-top: 1.5em;
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.swipe .noUsersError img {
+  width: 25%;
+  height: auto;
+  margin: 0% 37%;
+}
+
+.swipe .noUsersError p {
+  position: relative;
+  padding: 0;
+  background: none;
+  color: black;
+  text-align: center;
+  margin-top: 5em;
+}
+
+.swipe .noUsersError a {
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.5em;
+  font-size: 1em;
+  font-weight: 400;
+  color: white;
+  background-color: #eb4b71;
+  box-shadow: 1px 1px 2px rgb(49, 49, 49);
+  border: none;
+  display: flex;
+  width: 68vw;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 2em;
+  padding: 0.6em 0.5em;
+}
+
+/******************************************************************************
+                          Sign In page
+*******************************************************************************/
+
+.signin main {
+  width: 90vw;
+  height: 25em;
+  background-color: white;
+  border: solid 2px #bcbdea;
+  border-radius: 0.3em;
+  margin: 0 auto;
+  margin-top: 10vh;
+}
+
+.signin main p:first-of-type {
+  position: absolute;
+  left: 4em;
+  top: 10em;
+  font-size: 0.8em;
+  color: red;
+  font-weight: 700;
+}
+
+.signin main div:nth-of-type(1) {
+  margin: 2.5em 10%;
+  width: 80%;
+  display: block;
+}
+
+.signin main div label {
+  display: block;
+  font-weight: 700;
+  margin-top: 1em;
+}
+
+.signin main form div input {
+  width: 100%;
+  padding: 12px 0px;
+  display: inline-block;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #eb4b71;
+  background-color: white;
+}
+
+.signin main form div:nth-of-type(2) {
+  margin-top: 2em;
+}
+
+.signin main form div:nth-of-type(2) input:nth-of-type(1) {
+  width: 20px;
+  margin-left: 10%;
+  margin-bottom: 2em;
+}
+
+.swipe main div:nth-of-type(2) label {
+  padding-left: 2em;
+  font-weight: 400;
+  font-size: 0.8em;
+}
+
+.signin main div:nth-of-type(2) button {
+  border-radius: 0.5em;
+  font-size: 1em;
+  font-weight: 400;
+  background-color: #eb4b71;
+  box-shadow: 1px 1px 2px rgb(49, 49, 49);
+  color: white;
+  padding: 14px 20px;
+  border: black;
+  cursor: pointer;
+  width: 80%;
+  margin: 0em 10%;
+  border-radius: 0.5em;
+}
+
+.signin div:nth-of-type(2) div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.signin div:nth-of-type(2) div a {
+  color: black;
+  text-decoration: none;
+}
+.signin div:nth-of-type(2) div a:nth-of-type(1) {
+  padding: 10px 2%;
+  background-color: hotpink;
+  border-radius: 0.5em;
+  background: white;
+  color: #4e50b8;
+  border: solid 2px #bcbdea;
+}
+
+.signin div:nth-of-type(2) div a:nth-of-type(2) {
+  padding: 15px 0px;
+  font-size: 0.7em;
+}
+
+/******************************************************************************
+                          Registration page
+*******************************************************************************/
+
+.registration main {
+  width: 90vw;
+  margin: 0 auto;
+  margin-top: 3em;
+  background-color: white;
+  border: solid 2px #bcbdea;
+  border-radius: 0.3em;
+  padding-bottom: 5em;
+  margin-bottom: 5em;
+}
+
+.registration main form {
+  width: 90%;
+  margin: 0% 5%;
+}
+.registration main form h2 {
+  margin: 1.5em 0em 1em 0em;
+}
+.registration main form div {
+  margin-bottom: 1em;
+}
+
+.registration main form div label {
+  display: block;
+  margin: 0.5em 0em 0.5em 0em;
+  font-weight: 700;
+}
+
+.registration main form div input {
+  width: 100%;
+  padding: 12px 0px;
+  margin-bottom: 1em;
+  display: inline-block;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #eb4b71;
+  background-color: white;
+}
+
+.registration main form div:nth-of-type(3) div {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.registration main form div:nth-of-type(3) div label {
+  margin-right: 10%;
+  font-weight: 500;
+}
+
+.registration input[type='radio'] {
+  align-items: center;
+  text-align: center;
+  padding: 12px 20px;
+  margin: 8px 0;
+  font-weight: 100;
+}
+
+.registration .inputfile {
+  color: #4e50b8;
+  background-color: #d7d7d7;
+  border: none;
+  margin-right: 1.5em;
+  text-decoration: none;
+}
+
+.registration main form button {
+  border-radius: 0.5em;
+  font-size: 1em;
+  font-weight: 400;
+  background-color: #eb4b71;
+  box-shadow: 1px 1px 2px rgb(49, 49, 49);
+  color: white;
+  padding: 14px 20px;
+  border: black;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 0.5em;
+  margin-top: 3em;
+}
+.registration main form a {
+  font-size: 1em;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 0px;
+  background: white;
+  color: #4e50b8;
+  border: solid 2px #bcbdea;
+  border-radius: 0.5em;
+  margin-top: 1em;
+  display: inline-block;
+}
+
+/******************************************************************************
+                          Profile page
+*******************************************************************************/
+
+.profile div {
+  margin-top: 1.5em;
+  width: 100%;
+}
+.profile main img {
+  width: 12em;
+  height: 12em;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+}
+
+.profile main h2 {
+  text-align: center;
+  margin: 0.7em 0em;
+  color: #4e50b8;
+}
+
+.profile main section {
+  width: 90%;
+  height: auto;
+  margin: 1em 5% 5em 5%;
+  color: black;
+}
+
+.profile main section div {
+  background: white;
+  width: 90%;
+  border-radius: 1em;
+  margin: 0em 0em 1em 0em;
+  border: 2px solid #4e51b2;
+  padding: 0.5em 1em 0.5em 1em;
+}
+
+.profile input[type='submit'] {
+  padding: 1em 2em;
+  background-color: white;
+  margin: 0em 3em;
+}
+
+.profile form:nth-of-type(2) {
+  margin-bottom: 6em;
 }
 
 /******************************************************************************
                           Filters page 
 *******************************************************************************/
 
-/** Header **/
+.filtersPage {
+  width: 90%;
+  margin: 0 auto;
+  height: 100vh;
+}
 
 .filtersPage header {
   display: flex;
-  margin: 1em;
+  margin: 1em 0em 1em 0em;
   border-bottom: solid 1px #bdbdbd;
   padding-bottom: 1em;
 }
@@ -219,35 +507,24 @@ footer ul li a img {
 }
 
 .filtersPage header a:active {
-  color: #ffbfe7;
+  color: #4e50b8;
 }
 
 .filtersPage header a img {
   padding-top: 0.5em;
 }
 
-/** Main **/
-
-.filtersPage main {
-  margin: 0em 1em;
-}
-
-.filtersPage main section {
-  margin: 0.5em 0em;
-}
-
 .filtersPage main section form button {
-  /* Save preferences button: */
   border-radius: 0.5em;
   font-size: 1em;
   font-weight: 400;
   color: white;
-  background-color: #ff8484;
+  background-color: #eb4b71;
   box-shadow: 1px 1px 2px rgb(49, 49, 49);
   border: none;
   margin: 0 auto;
   position: fixed;
-  bottom: 4em;
+  bottom: 6em;
   padding: 0.8em 1em;
   width: 90%;
 }
@@ -295,11 +572,9 @@ footer ul li a img {
 .filtersPage main section form fieldset select {
   font-size: 1em;
   background: white;
-  /* color: white; */
-  border: solid 2px #dcaba7;
+  border: solid 2px #bcbdea;
   border-radius: 0.3em;
   padding: 0.5em;
-  /* margin-bottom: 10em; */
 }
 
 .filtersPage main section form fieldset select:focus,
@@ -309,7 +584,7 @@ input:focus {
 
 .filtersPage main section form fieldset input {
   font-size: 1em;
-  border: solid 2px #dcaba7;
+  border: solid 2px #bcbdea;
   background-color: white;
   border-radius: 0.3em;
   padding: 0.5em;
@@ -322,6 +597,20 @@ input:focus {
 .filtersPage main section form fieldset input[type='radio'] {
   transform: scale(1.5);
   margin-left: 0.4em;
+}
+
+.remove {
+  border-radius: 0.5em;
+  font-size: 1em;
+  font-weight: 400;
+  color: #4e50b8;
+  background-color: White;
+  box-shadow: none;
+  border: 1px solid #bcbdea;
+  position: fixed;
+  bottom: 2em;
+  padding: 0.8em 0em;
+  width: 90%;
 }
 
 /******************************************************************************
@@ -343,48 +632,43 @@ input:focus {
 }
 
 .match section:nth-of-type(1) img {
-  width: 40%;
-  max-width: 10em;
+  border-radius: 10px;
+}
+
+.match section:nth-of-type(1) img:nth-of-type(1) {
+  /* Match heart*/
+  width: 10em;
   height: auto;
-  border-radius: 5px;
-  z-index: 1;
   position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
+  top: 10em;
+  left: 50%;
+  margin-left: -5em;
+  z-index: 4;
+  transform: rotate(20deg);
 }
 
 .match section:nth-of-type(1) img:nth-of-type(2) {
-  /* foto van match */
-  transform: rotate(25deg);
-  border-radius: 5px;
-  margin-left: auto;
-  margin-right: auto;
+  /* photo of match*/
+  position: absolute;
   top: 3em;
-  left: 0;
-  right: 0;
-  margin-right: 5em;
+  right: 4em;
+  z-index: 3;
+  height: 13em;
+  width: 8em;
+  object-fit: cover;
+  transform: rotate(25deg);
 }
 
 .match section:nth-of-type(1) img:nth-of-type(3) {
-  /* foto van jou */
+  /* photo of user*/
+  position: absolute;
+  top: 5em;
+  z-index: 2;
+  width: 8em;
+  height: 11em;
+  object-fit: cover;
+  left: 4em;
   transform: rotate(-25deg);
-  top: 6em;
-  width: 30%;
-  max-width: 7em;
-  height: auto;
-  margin-left: 5em;
-}
-
-.match section:nth-of-type(1) img {
-  /* foto van hart */
-  transform: rotate(2deg);
-  top: 11em;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
 }
 
 .match section:nth-of-type(2) {
@@ -450,11 +734,11 @@ input:focus {
 }
 
 .matchlist main ul li {
-  display: flex;
   width: 100vw;
 }
 
 .matchlist article {
+  background-color: white;
   width: 100%;
   margin-top: -2px;
   height: 120px;
@@ -499,136 +783,384 @@ input:focus {
                           Error Page
 *******************************************************************************/
 
-.error {
-  padding: 0em 3em;
-  height: 80vh;
+.error section h2 {
+  font-size: 2em;
   text-align: center;
-  display: table-cell;
-  vertical-align: middle;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.error section img {
+  width: 25%;
+  height: auto;
+  margin: 0% 37%;
+}
+
+.error section p {
+  text-align: center;
+  margin: 2em;
+}
+
+.error section div {
+  margin: 0 auto;
+}
+
+.error section a {
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.5em;
+  font-size: 1em;
+  font-weight: 400;
+  color: white;
+  background-color: #eb4b71;
+  box-shadow: 1px 1px 2px rgb(49, 49, 49);
+  border: none;
+  display: flex;
+  width: 80vw;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 7em;
+  padding: 0.6em 1em;
 }
 
 /******************************************************************************
                           TABLET index header
 *******************************************************************************/
 
-@media all and (min-width: 768px) {
-  .swipe header {
+@media all and (min-width: 600px) {
+  /** Header **/
+  header ul {
+    width: 60vw;
+    margin: 0 auto;
+  }
+
+  /** Header **/
+  footer ul {
+    width: 60vw;
+    margin: 0 auto;
+  }
+
+  .swipe main ul {
+    width: 60vw;
+    margin: 0 auto;
+  }
+  .swipe main ul li {
+    width: 60vw;
+  }
+  .swipe section p {
+    left: 4em;
+  }
+
+  .swipe section p:nth-of-type(1) {
+    bottom: 23vh;
+  }
+
+  .swipe section p:nth-of-type(2) {
+    bottom: 28vh;
+  }
+
+  .swipe section article form {
     width: 80%;
     margin: 0 auto;
-    margin-top: 1em;
+    margin-bottom: 1em;
   }
-  .swipe header ul li:nth-of-type(2) {
-    margin-left: 0;
+
+  /*******************************************
+              Tablet Filter 
+  *******************************************/
+
+  .filtersPage {
+    width: 60%;
   }
-  .swipe header ul li:nth-of-type(3) {
-    margin-right: 0;
+
+  .filtersPage main section form button {
+    width: 60%;
   }
-  .swipe header ul li:nth-of-type(2) a img {
-    /* Logo: */
-    width: 130%;
+
+  .remove {
+    width: 60%;
   }
-  .swipe header ul li:nth-of-type(3) a img {
-    /* Logo: */
-    width: 120%;
+
+  /*******************************************
+              Tablet match 
+  *******************************************/
+
+  .match section:nth-of-type(1) img:nth-of-type(2) {
+    /* photo of match*/
+    right: 10em;
   }
-  /******************************************************************************
-                          TABLET index main
-*******************************************************************************/
-  .swipe main {
-    width: 90%;
+
+  .match section:nth-of-type(1) img:nth-of-type(3) {
+    /* photo of user*/
+    left: 10em;
+  }
+
+  .match section a {
+    width: 60vw;
+  }
+
+  /*******************************************
+              Tablet matchlist 
+  *******************************************/
+
+  .matchlist main {
+    height: 100%;
+  }
+
+  .matchlist main ul li {
+    width: 60%;
+    margin: 0 auto;
+    list-style-type: none;
+  }
+
+  .matchlist article figure {
+    position: absolute;
+    left: 21vw;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    height: 100px;
+    width: 100px;
+  }
+
+  .matchlist article figcaption {
+    position: absolute;
+    right: 20vw;
+    margin-top: 0.5em;
+    margin-bottom: 0.3em;
+    width: 40%;
+  }
+
+  /*******************************************
+              Tablet sign-in 
+  *******************************************/
+
+  .signin main {
+    width: 60vw;
+  }
+
+  /*******************************************
+              Tablet sign-in 
+  *******************************************/
+
+  .registration main {
+    width: 60vw;
+  }
+}
+
+@media all and (min-width: 900px) {
+  /*******************************************
+              Tablet Home 
+  *******************************************/
+
+  /** Header **/
+  header ul {
+    width: 40vw;
     margin: 0 auto;
   }
-  /* .swipe main section figure a {
-        width: 20%;
-        height: 20%;
-    } */
+
+  /** Header **/
+  footer ul {
+    width: 40vw;
+    margin: 0 auto;
+  }
+
+  .swipe main ul {
+    width: 40vw;
+    margin: 0 auto;
+  }
+  .swipe main ul li {
+    width: 40vw;
+  }
+
+  /*******************************************
+              Tablet Filter 
+  *******************************************/
+
+  .filtersPage {
+    width: 40%;
+  }
+
+  .filtersPage main section form button {
+    width: 40%;
+  }
+
+  .remove {
+    width: 40%;
+  }
+
+  /*******************************************
+              Tablet Match 
+  *******************************************/
+
+  .match section:nth-of-type(1) img:nth-of-type(2) {
+    /* photo of match*/
+    right: 15em;
+  }
+
+  .match section:nth-of-type(1) img:nth-of-type(3) {
+    /* photo of user*/
+    left: 15em;
+  }
+
+  .match section a {
+    width: 50vw;
+  }
+
+  /*******************************************
+              Tablet matchlist 
+  *******************************************/
+
+  .matchlist main {
+    height: 100%;
+  }
+
+  .matchlist main ul li {
+    width: 40%;
+    margin: 0 auto;
+    list-style-type: none;
+  }
+
+  .matchlist article figure {
+    position: absolute;
+    left: 31vw;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    height: 100px;
+    width: 100px;
+  }
+
+  .matchlist article figcaption {
+    position: absolute;
+    right: 30vw;
+    margin-top: 0.5em;
+    margin-bottom: 0.3em;
+    width: 26%;
+  }
+
+  /*******************************************
+              Tablet sign-in 
+  *******************************************/
+
+  .signin main {
+    width: 40vw;
+  }
+
+  /*******************************************
+              Tablet sign-in 
+  *******************************************/
+
+  .registration main {
+    width: 40vw;
+  }
 }
 
 /******************************************************************************
-                          TABLET index main
+                          LAPTOP index header
 *******************************************************************************/
 
-@media all and (min-width: 768px) {
-  .swipe section {
-    margin-top: 1em;
-    border-radius: 1em;
-    box-shadow: 4px 4px 8px grey;
+@media all and (min-width: 1160px) {
+  /*******************************************
+              Laptop Home 
+  *******************************************/
+
+  /** Header **/
+  header ul {
+    width: 35%;
+    margin: 0 auto;
   }
-  .swipe section figure {
-    height: 75vh;
-    position: relative;
+
+  /** Footer **/
+  footer ul {
+    width: 35%;
+    margin: 0 auto;
   }
-  .swipe section figure img:nth-last-of-type(1) {
-    width: 100%;
+
+  .swipe main ul {
+    width: 35vw;
+    margin: 0 auto;
+  }
+  .swipe main ul li {
+    width: 35%;
+  }
+
+  /*******************************************
+              Tablet Filter 
+  *******************************************/
+
+  .filtersPage {
+    width: 35%;
+  }
+
+  .filtersPage main section form button {
+    width: 35%;
+  }
+
+  .remove {
+    width: 35%;
+  }
+
+  /*******************************************
+              Laptop matchlist 
+  *******************************************/
+
+  .match section:nth-of-type(1) img:nth-of-type(2) {
+    /* photo of match*/
+    right: 20em;
+  }
+
+  .match section:nth-of-type(1) img:nth-of-type(3) {
+    /* photo of user*/
+    left: 20em;
+  }
+
+  .match section a {
+    width: 40vw;
+  }
+
+  /*******************************************
+              Laptop matchlist 
+  *******************************************/
+
+  .matchlist main {
     height: 100%;
-    border-radius: 1em;
-    /* height: 25em; */
-    object-fit: cover;
+  }
+
+  .matchlist main ul li {
+    width: 35%;
     margin: 0 auto;
+    list-style-type: none;
   }
-  .swipe section figure a {
-    width: 24px;
-    height: 24px;
+
+  .matchlist article figure {
     position: absolute;
-    left: 1em;
-    top: 1em;
+    left: 33.5vw;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    height: 100px;
+    width: 100px;
   }
-  .swipe section figure p {
-    background-color: #dcaba7;
-    color: white;
-    font-weight: 300;
-    border-radius: 0.2em;
-    padding: 0.3em;
-    text-decoration: none;
+
+  .matchlist article figcaption {
     position: absolute;
-    left: 1rem;
+    right: 32.5vw;
+    margin-top: 0.5em;
+    margin-bottom: 0.3em;
+    width: 23%;
   }
-  .swipe section figure p:nth-of-type(1) {
-    bottom: 9.5rem;
+
+  /*******************************************
+              Tablet sign-in 
+  *******************************************/
+
+  .signin main {
+    width: 35vw;
   }
-  .swipe section figure p:nth-of-type(2) {
-    bottom: 12rem;
-  }
-  .swipe section figure figcaption {
-    position: absolute;
-    z-index: 1;
-    bottom: 0;
-    margin-top: -1rem;
-    padding-top: 0.5em;
-    width: 100%;
-    background-image: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 1),
-      rgba(0, 0, 0, 0.1)
-    );
-    color: white;
-    text-align: center;
-    border-radius: 0em 0em 1em 1em;
-  }
-  .swipe section figure figcaption h2 {
-    font-size: 1.5em;
-  }
-  .swipe section figure figcaption h3 {
-    font-weight: 300;
-    font-size: 1em;
-  }
-  .swipe section figure figcaption h3 i {
-    height: 16px;
-    width: auto;
-    margin-right: 0.5em;
-    margin-top: 0.2em;
-  }
-  .swipe section figure figcaption form {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1em;
-  }
-  .swipe section figure figcaption form div {
-    width: 50%;
-  }
-  .swipe section figure figcaption form button {
-    margin: 0 auto;
-    background-color: none;
+
+  /*******************************************
+              Tablet sign-in 
+  *******************************************/
+
+  .registration main {
+    width: 35vw;
   }
 }

@@ -1,66 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include ("components/head.ejs") %>
     <title>Dat.io – registration</title>
-</head>
-    <body>
-        
-        <h1>Down to Date</h1>      
-            <form action="/registration" id="registration" method="POST">
-    
-                <div class="reg-con-1"> 
-                    <label for="firstName"><b>First name</b></label>
-                    <input type="text" placeholder="First name" name="firstName" required>
-  
-                    <label for="lastName"><b>Last name</b></label>
-                    <input type="text" placeholder="Last name" name="lastName" required>  
-                </div>
-                
-                <div class="reg-con-2"> 
-                    <label for="email"><b>Email</b></label>
-                    <input type="email" name="email" minlength="6 " maxlength="60 " placeholder="test@hotmail.com" required>
-                    <label for='password'><b>Password</b></label>
-                    <input type="password" name="password" minlength="6 " placeholder="Min 6 letters" required>
-                </div>
+  </head>
 
-                
-            
-                <div class="reg-con-3">
-                    <h2>Tell us something about yourself..</h2>
-                   
-                    <h3>What is your age?</h3>
-                    <label for="age">Age
-                        <input type="number" min="18" max="40" id="age" name="age" value="age">
-                    </label>
+  <body class="registration">
+    <header>
+      <%- include ("components/header-two.ejs") %>
+    </header>
+    <main>
+      <form action="/registration" id="registration" method="POST">
+        <h2>Welcome to Dat.io! Would you like to introduce yourself?</h2>
+        <div>
+          <label for="firstName">First name</label>
+          <input
+            type="text"
+            placeholder="First name"
+            name="firstName"
+            required
+          />
 
-                    <h3>What is your gender?</h3>
-                    <label for="male">Male
-                        <input type="radio" id="male" name="gender" value="male">
-                    </label>
-                    <label for="female">Female
-                        <input type="radio" id="female" name="gender" value="female">
-                    </label>
+          <label for="lastName">Last name</label>
+          <input type="text" placeholder="Last name" name="lastName" required />
+        </div>
 
-                    <h3>Upload a photo of yourself!</h3>
-                    <label for="photo"> Upload photo 
-                        <input type="file" name="fileToUpload" id="fileToUpload">
-                    </label>
-                    
-                    <h3>What is your current occupation?</h3>
-                    <label for="work">Work
-                        <input type="text" placeholder="work" name="work" required>  
-                    </label>
-                </div>
-              
+        <div>
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            minlength="6 "
+            maxlength="60 "
+            placeholder="example@hotmail.com"
+            required
+          />
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            minlength="6 "
+            placeholder="Min 6 letters"
+            required
+          />
+        </div>
 
-  
+        <h2>Tell us something about yourself..</h2>
 
-                <button type="submit">Create</button>
+        <div>
+          <label for="age"
+            >What is your age?
+            <input
+              type="number"
+              min="18"
+              max="99"
+              id="age"
+              name="age"
+              value="age"
+              placeholder="18+"
+            />
+          </label>
 
-                <a href="login"><button type="button" class="toLogin">to login</button></a>
-            </form>
+          <h3>What is your gender?</h3>
+          <div>
+            <label for="man"
+              >Man
+              <input type="radio" id="man" name="gender" value="man" />
+            </label>
+            <label for="woman"
+              >Woman
+              <input type="radio" id="woman" name="gender" value="woman" />
+            </label>
+          </div>
 
-    </body>
+          <label for="photo"> Upload a photo of yourself!</label>
+          <input type="file" name="file" id="file" class="inputfile" />
+          <!-- <label for="photo">Choose a file</label> -->
+
+          <label for="work"
+            >What is your current occupation?
+            <input
+              type="text"
+              placeholder="Teacher of the year"
+              name="work"
+              required
+            />
+          </label>
+        </div>
+
+        <button type="submit">Create</button>
+
+        <a href="signin" class="toSignIn">Back to sign in</a>
+      </form>
+    </main>
+    <footer></footer>
+  </body>
 </html>

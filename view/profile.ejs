@@ -1,17 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include ("components/head.ejs") %>
-        <title>Dat.io – Profile</title>
-</head>
+    <title>Dat.io – Profile</title>
+  </head>
 
-<body class="matchlist">
+  <body class="profile">
     <header>
-        <%- include ("components/header-two.ejs") %>
+      <%- include ("components/header-two.ejs") %>
     </header>
-    <main></main>
-    <%- include ("components/footer-p.ejs") %>
-</body>
+    <main>
+      <form action="">
+        <div>
+          <img src="images/users/melissagomez.jpg" alt="">
+        </div>
 
+        <h2>My profile</h2>
+        <section>
+          <div>
+            <label for="Name">firstName</label>
+          </div>
+          <div>
+            <label for="password">Password</label>
+          </div>
+          <div>
+            <label for="email">Email</label>
+          </div>
+          <div>
+            <label for="age">Age</label>
+          </div>
+          <div>
+            <p>What do you like?</p>
+            <h3>Movies:</h3>
+            <form action="">
+              <!-- <input type="select" />
+              <input type="select" /> -->
+            </form>
+          </div>
+
+         
+        </section>
+      </form>
+      <form action="/signOut" method="POST">
+        <input name="SignOut" type="submit" value="Sign Out" />
+      </form>
+    </main>
+    <%- include ("components/footer-p.ejs") %>
+  </body>
 </html>
