@@ -12,7 +12,7 @@
     <main>
       <form action="">
         <div>
-          <img src="images/users/<%= user[0].photo %>" alt="Image of user" />
+          <img src="images/users/melissagomez.jpg" alt="">
         </div>
 
         <h2>My profile</h2>
@@ -38,8 +38,11 @@
             </form>
           </div>
 
-          <input type="submit" value="Sign Out" />
+         
         </section>
+      </form>
+      <form action="/signOut" method="POST">
+        <input name="SignOut" type="submit" value="Sign Out" />
       </form>
     </main>
     <%- include ("components/footer-p.ejs") %>
