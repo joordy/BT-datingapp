@@ -10,21 +10,18 @@ let db = null;
 let usersCollection = null;
 let url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_URL}${process.env.DB_END}`;
 
-mongo.MongoClient.connect(
-  url,
-  {
-    useUnifiedTopology: true,
-  },
-  function (err, client) {
-    if (err) {
-      throw err;
-    } else if (client) {
-      console.log('Connected to database');
-    }
-    db = client.db(process.env.DB_NAME);
-    usersCollection = db.collection('users');
+mongo.MongoClient.connect(url, { useUnifiedTopology: true }, function (
+  err,
+  client
+) {
+  if (err) {
+    throw err;
+  } else if (client) {
+    console.log('Connected to database');
   }
-);
+  db = client.db(process.env.DB_NAME);
+  usersCollection = db.collection('users');
+});
 
 router.get('/profile', profileOfMe); // Rowan
 router.post('/profile', postProfile); // Rowan
