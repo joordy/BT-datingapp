@@ -27,14 +27,15 @@ mongo.MongoClient.connect(
 );
 
 router.get('/', userUndefined, home); // Jordy & Veerle
+// router.get('/curreser', userUndefined, currentUsers); // Jordy &
 router.post('/match', match); // Jordy
 router.get('/matchlist', userUndefined, matchList); // Jordy
 router.get('/filter', userUndefined, filter); // Veerle - KLAAR
 router.post('/', postFilter); // Veerle - BIJNA KLAAR
 
-function userUndefined (req, res, next) {
-  if (req.session.idLoggedIn === undefined ) {
-    res.redirect('/signin')
+function userUndefined(req, res, next) {
+  if (req.session.idLoggedIn === undefined) {
+    res.redirect('/signin');
   } else {
     next();
   }
@@ -46,7 +47,9 @@ async function home(req, res, next) {
   try {
     // let idLoggedIn = req.session.idLoggedIn;
     console.log(req.session.idLoggedIn);
-    let myself = await usersCollection.find({id : req.session.idLoggedIn}).toArray(); // this code can be removed at the point sessions works.
+    let myself = await usersCollection
+      .find({ id: req.session.idLoggedIn })
+      .toArray(); // this code can be removed at the point sessions works.
     let liked = myself[0].liked;
     let disliked = myself[0].disliked;
     let allUsers = await usersCollection
@@ -88,7 +91,9 @@ async function match(req, res, next) {
   // Route match page, when pressing like, database will be updated with 'seen: true' & 'match: true'. Users gets match page.
   // When pressing dislike, database will be updated with 'seen: true' & match stays false. Index page will be rerendered.
   try {
-    let myself = await usersCollection.find({id : req.session.idLoggedIn}).toArray(); // this code can be removed at the point sessions works.
+    let myself = await usersCollection
+      .find({ id: req.session.idLoggedIn })
+      .toArray(); // this code can be removed at the point sessions works.
     let liked = myself[0].liked;
     let disliked = myself[0].disliked;
     let allUsers = await usersCollection
@@ -129,9 +134,11 @@ async function match(req, res, next) {
 async function matchList(req, res, next) {
   // Route match overview, graps every user with 'match: true' and will be displayed on overview page.
   try {
-    let myself = await usersCollection.find({id : req.session.idLoggedIn}).toArray(); // this code can be removed at the point sessions works.
+    let myself = await usersCollection
+      .find({ id: req.session.idLoggedIn })
+      .toArray(); // this code can be removed at the point sessions works.
     let liked = myself[0].liked;
-    let matches = await usersCollection.find({ id: { $in: liked} }).toArray();
+    let matches = await usersCollection.find({ id: { $in: liked } }).toArray();
     let lijstje = [];
 
     await matches.forEach(function (user) {
@@ -196,7 +203,9 @@ async function filter(req, res, next) {
   // Veerle
   //Displays the filter page with the sessions for the
   //filter preferences:
-  let myself = await usersCollection.find({id : req.session.idLoggedIn}).toArray(); // this code can be removed at the point sessions works.
+  let myself = await usersCollection
+    .find({ id: req.session.idLoggedIn })
+    .toArray(); // this code can be removed at the point sessions works.
   try {
     res.render('filter.ejs', {
       gender: myself[0].prefGender,
@@ -213,9 +222,11 @@ async function postFilter(req, res, next) {
   //updatePreferences function. After this the /home page is
   //redirected again:
   try {
-    let myself = await usersCollection.find({id : req.session.idLoggedIn}).toArray(); // this code can be removed at the point sessions works.
+    let myself = await usersCollection
+      .find({ id: req.session.idLoggedIn })
+      .toArray(); // this code can be removed at the point sessions works.
     if (req.body.remove) {
-      await updatePreferences(req.session.idLoggedIn, 'everyone', "");
+      await updatePreferences(req.session.idLoggedIn, 'everyone', '');
     } else {
       await updatePreferences(myself[0].id, req.body.gender, req.body.movies);
     }
