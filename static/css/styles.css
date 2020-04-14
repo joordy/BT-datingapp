@@ -6,11 +6,6 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  /* background: url('../images/background.png') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; */
   background-color: #dbdcef;
   color: black;
 }
@@ -95,7 +90,7 @@ footer ul li a img {
 .swipe section {
   position: relative;
   width: 100%;
-  height: 75vh;
+  height: 73vh;
   background-color: white;
   border-radius: 1em;
   box-shadow: 2px 2px 4px grey;
@@ -111,8 +106,8 @@ footer ul li a img {
 .swipe .info {
   max-width: 3em;
   position: absolute;
-  left: 1.5em;
-  top: 1.5em;
+  left: 2em;
+  top: 2em;
 }
 
 .swipe section p {
@@ -124,15 +119,15 @@ footer ul li a img {
   padding: 0.5em 0.9em;
   text-decoration: none;
   position: absolute;
-  left: 2.75em;
+  left: 2.25em;
 }
 
 .swipe section p:nth-of-type(1) {
-  bottom: 23vh;
+  bottom: 26vh;
 }
 
 .swipe section p:nth-of-type(2) {
-  bottom: 28vh;
+  bottom: 34vh;
 }
 
 .swipe section article {
@@ -239,6 +234,179 @@ footer ul li a img {
                           Sign In page
 *******************************************************************************/
 
+.currentUser {
+  margin: 0;
+}
+
+.currentUser main {
+  margin-top: -1em;
+}
+
+.currentUser section .back {
+  position: absolute;
+  top: 2em;
+  left: 5%;
+  z-index: 4;
+}
+
+.currentUser section .back a {
+  color: white;
+  text-decoration: none;
+  font-size: 2em;
+}
+
+.currentUser main section .headimage {
+  position: fixed;
+  width: 100vw;
+  height: 105vh;
+  object-fit: cover;
+}
+
+.currentUser main section .gradient {
+  background-image: linear-gradient(
+    to top,
+    rgba(153, 154, 206, 1),
+    rgba(153, 154, 206, 0.01)
+  );
+  width: 100%;
+  height: 35vh;
+  position: absolute;
+  top: 55vh;
+}
+.currentUser main section article:nth-of-type(1) {
+  color: white;
+  width: 90%;
+  height: 5em;
+  position: absolute;
+  left: 50%;
+  margin-left: -45%;
+  top: 69vh;
+}
+
+.currentUser main section article:nth-of-type(1) h2 {
+  margin-bottom: 0.5em;
+  font-size: 2em;
+}
+
+.currentUser main section article:nth-of-type(1) h3 {
+  font-weight: 400;
+}
+
+.currentUser main section article:nth-of-type(2) {
+  width: 100vw;
+  height: auto;
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  top: 86vh;
+  background-color: white;
+  padding-top: 2.5em;
+  border-radius: 1.5em 1.5em 0em 0em;
+}
+
+.currentUser main section article:nth-of-type(2) .bar {
+  height: 4px;
+  width: 50px;
+  background-color: #aaaaaa;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 2;
+  top: 3vh;
+  left: 50%;
+  margin-left: -25px;
+}
+
+.currentUser .socials {
+  width: 90%;
+  margin: 0% 5%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+.currentUser .socials div {
+  padding: 1em 1.5em;
+  background-color: #dbdcef;
+  border-radius: 1em;
+  text-align: center;
+  border-radius: 0.5em;
+}
+
+.currentUser .socials div a i {
+  border-radius: 0.5em;
+  font-size: 2em;
+  color: #4e50b8;
+}
+
+.currentUser .info {
+  width: 90%;
+  height: auto;
+  margin: 0% 5%;
+}
+
+.currentUser .info .movies p {
+  font-weight: 700;
+  display: inline-block;
+  line-height: 20px;
+  vertical-align: top;
+  margin-right: 0.5em;
+  margin-bottom: 1em;
+}
+
+.currentUser .imagebar {
+  width: 90%;
+  height: 5em;
+  margin: 1em 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.currentUser .imagebar img {
+  width: 28vw;
+  height: 7em;
+  object-fit: cover;
+}
+
+.currentUser main section article form {
+  width: 90%;
+  margin: 0% 5%;
+  display: flex;
+  justify-content: space-between;
+  height: 2em;
+  margin-bottom: 3em;
+  margin-top: 6em;
+}
+
+.currentUser main section article form div {
+  width: 40%;
+}
+
+.currentUser .like {
+  font-size: 24px;
+  padding: 0.5em 0.9em;
+  margin-top: -1em;
+  border-radius: 50%;
+  background-color: #eb4b71;
+  color: white;
+  border: none;
+}
+
+.currentUser .dislike {
+  font-size: 24px;
+  padding: 0.5em 0.9em;
+  margin-top: -1em;
+  border-radius: 50%;
+  background-color: #e8e8e8;
+  border: none;
+}
+
+.currentUser footer {
+  visibility: hidden;
+}
+
+/*****************************************************************************
+                          Sign In page
+*******************************************************************************/
+
 .signin main {
   width: 90vw;
   height: 25em;
@@ -288,12 +456,6 @@ footer ul li a img {
   width: 20px;
   margin-left: 10%;
   margin-bottom: 2em;
-}
-
-.swipe main div:nth-of-type(2) label {
-  padding-left: 2em;
-  font-weight: 400;
-  font-size: 0.8em;
 }
 
 .signin main div:nth-of-type(2) button {
@@ -697,12 +859,12 @@ input:focus {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  background-color: #ef6a52;
+  background-color: #eb4b71;
   color: white;
   text-decoration: none;
   font-weight: 600;
   padding: 1em 0em;
-  border-radius: 5px;
+  border-radius: 0.5em;
 }
 
 .match section a:nth-of-type(1) {
@@ -711,7 +873,9 @@ input:focus {
 
 .match section a:nth-of-type(2) {
   margin-top: 1.25em;
-  background-color: #8182c8;
+  background-color: white;
+  border: 1px solid #bcbdea;
+  color: #4e50b8;
 }
 
 /******************************************************************************
@@ -851,6 +1015,13 @@ input:focus {
     left: 4em;
   }
 
+  .swipe .info {
+    max-width: 3em;
+    position: absolute;
+    left: 3em;
+    top: 3em;
+  }
+
   .swipe section p:nth-of-type(1) {
     bottom: 23vh;
   }
@@ -863,6 +1034,81 @@ input:focus {
     width: 80%;
     margin: 0 auto;
     margin-bottom: 1em;
+  }
+
+  /*******************************************
+              Tablet Currentuser 
+  *******************************************/
+
+  .currentUser section .back {
+    left: 15%;
+  }
+
+  .currentUser main section article:nth-of-type(1) {
+    width: 60%;
+    left: 50%;
+    margin-left: -30%;
+    top: 69vh;
+  }
+
+  .currentUser main section article:nth-of-type(2) .bar {
+    width: 50px;
+    top: 2vh;
+    left: 50%;
+    margin-left: -25px;
+  }
+
+  .currentUser .socials {
+    width: 60%;
+    margin: 0% 20%;
+  }
+  .currentUser .socials div {
+    padding: 1em 1.5em;
+    background-color: #dbdcef;
+    border-radius: 1em;
+    text-align: center;
+    border-radius: 0.5em;
+  }
+
+  .currentUser .socials div a i {
+    border-radius: 0.5em;
+    font-size: 2em;
+    color: #4e50b8;
+  }
+
+  .currentUser .info {
+    width: 60%;
+    height: auto;
+    margin: 0% 20%;
+  }
+
+  .currentUser .info .movies p {
+    font-weight: 700;
+    display: inline-block;
+    line-height: 20px;
+    vertical-align: top;
+    margin-right: 0.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  .currentUser .imagebar {
+    width: 60%;
+    margin: 1em 20%;
+  }
+
+  .currentUser .imagebar img {
+    width: 28%;
+  }
+
+  .currentUser main section article form {
+    width: 60%;
+    margin: 0% 20%;
+    display: flex;
+    justify-content: space-between;
+    height: 2em;
+    margin-bottom: 3em;
+    margin-top: 6em;
   }
 
   /*******************************************
@@ -970,6 +1216,81 @@ input:focus {
   }
   .swipe main ul li {
     width: 40vw;
+  }
+
+  /*******************************************
+              Tablet Currentuser 
+  *******************************************/
+
+  .currentUser section .back {
+    left: 30%;
+  }
+
+  .currentUser main section article:nth-of-type(1) {
+    width: 40%;
+    left: 50%;
+    margin-left: -20%;
+    top: 69vh;
+  }
+
+  .currentUser main section article:nth-of-type(2) .bar {
+    width: 50px;
+    top: 2vh;
+    left: 50%;
+    margin-left: -25px;
+  }
+
+  .currentUser .socials {
+    width: 35%;
+    margin: 0% 32.5%;
+  }
+  .currentUser .socials div {
+    padding: 1em 1.5em;
+    background-color: #dbdcef;
+    border-radius: 1em;
+    text-align: center;
+    border-radius: 0.5em;
+  }
+
+  .currentUser .socials div a i {
+    border-radius: 0.5em;
+    font-size: 2em;
+    color: #4e50b8;
+  }
+
+  .currentUser .info {
+    width: 35%;
+    height: auto;
+    margin: 0% 32.5%;
+  }
+
+  .currentUser .info .movies p {
+    font-weight: 700;
+    display: inline-block;
+    line-height: 20px;
+    vertical-align: top;
+    margin-right: 0.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  .currentUser .imagebar {
+    width: 35%;
+    margin: 1em 32.5%;
+  }
+
+  .currentUser .imagebar img {
+    width: 28%;
+  }
+
+  .currentUser main section article form {
+    width: 35%;
+    margin: 0% 32.55%;
+    display: flex;
+    justify-content: space-between;
+    height: 2em;
+    margin-bottom: 3em;
+    margin-top: 6em;
   }
 
   /*******************************************
@@ -1084,7 +1405,82 @@ input:focus {
   }
 
   /*******************************************
-              Tablet Filter 
+              Tablet Currentuser 
+  *******************************************/
+
+  .currentUser section .back {
+    left: 35%;
+  }
+
+  .currentUser main section article:nth-of-type(1) {
+    width: 30%;
+    left: 50%;
+    margin-left: -15%;
+    top: 69vh;
+  }
+
+  .currentUser main section article:nth-of-type(2) .bar {
+    width: 50px;
+    top: 2vh;
+    left: 50%;
+    margin-left: -25px;
+  }
+
+  .currentUser .socials {
+    width: 30%;
+    margin: 0% 35%;
+  }
+  .currentUser .socials div {
+    padding: 1em 1.5em;
+    background-color: #dbdcef;
+    border-radius: 1em;
+    text-align: center;
+    border-radius: 0.5em;
+  }
+
+  .currentUser .socials div a i {
+    border-radius: 0.5em;
+    font-size: 2em;
+    color: #4e50b8;
+  }
+
+  .currentUser .info {
+    width: 30%;
+    height: auto;
+    margin: 0% 35%;
+  }
+
+  .currentUser .info .movies p {
+    font-weight: 700;
+    display: inline-block;
+    line-height: 20px;
+    vertical-align: top;
+    margin-right: 0.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  .currentUser .imagebar {
+    width: 30%;
+    margin: 1em 35%;
+  }
+
+  .currentUser .imagebar img {
+    width: 28%;
+  }
+
+  .currentUser main section article form {
+    width: 30%;
+    margin: 0% 35%;
+    display: flex;
+    justify-content: space-between;
+    height: 2em;
+    margin-bottom: 3em;
+    margin-top: 6em;
+  }
+
+  /*******************************************
+              Laptop Filter 
   *******************************************/
 
   .filtersPage {
@@ -1149,7 +1545,7 @@ input:focus {
   }
 
   /*******************************************
-              Tablet sign-in 
+              Laptop sign-in 
   *******************************************/
 
   .signin main {
@@ -1157,7 +1553,7 @@ input:focus {
   }
 
   /*******************************************
-              Tablet sign-in 
+              Laptop register 
   *******************************************/
 
   .registration main {

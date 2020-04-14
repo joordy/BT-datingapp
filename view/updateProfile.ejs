@@ -10,20 +10,15 @@
       <%- include ("components/header-two.ejs") %>
     </header>
     <main>
+      <form action="/profile" enctype="multipart/form-data" method="POST">
+        <input type="file" name="myImage" accept="image/*" />
 
-        
-        <form action="/profile" enctype="multipart/form-data" method="POST"> 
-            <input type="file" name="myImage" accept="image/*" />
-            
-          
         <div>
-          <img  src="images/users/melissagomez.jpg" alt="">
+          <img src="images/users/melissagomez.jpg" alt="" />
         </div>
-      
-      
-      
+
         <h2>My profile</h2>
-        
+
         <section>
           <div>
             <label for="Name">firstName</label>
@@ -37,19 +32,22 @@
           <div>
             <p>What do you like?</p>
             <h3>Movies:</h3>
-              <!-- <input type="select" />
+            <!-- <input type="select" />
               <input type="select" /> -->
           </div>
-
         </section>
-        <input type="submit" value="submit profile"/>
-        </form>
-
-        <form action="/profile" autocomplete="off" method="POST">
-          <input type="password" required name="newPassword" placeholder="New password">
-       <button>  <input type="submit" value="Change Password"></button> 
+        <input type="submit" value="submit profile" />
       </form>
 
+      <form action="/profile" autocomplete="off" method="POST">
+        <input
+          type="password"
+          required
+          name="newPassword"
+          placeholder="New password"
+        />
+        <button><input type="submit" value="Change Password" /></button>
+      </form>
     </main>
     <%- include ("components/footer-p.ejs") %>
   </body>

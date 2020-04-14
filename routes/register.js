@@ -19,7 +19,6 @@ mongo.MongoClient.connect(
     if (err) {
       throw err;
     } else if (client) {
-      console.log('Connected to database');
     }
     db = client.db(process.env.DB_NAME);
     usersCollection = db.collection('users');
@@ -43,61 +42,45 @@ async function createAccount(req, res, next) {
   try {
     const allUsers = await usersCollection.find().toArray();
     let totalCount = allUsers.length + 1;
-    // rounds(of salt) is the number of times in which the password is generated
-    // const rounds = 10;
     const password = req.body.password;
     // hashes the password with salt
     console.log(password);
     let hashPassword = bcrypt.hashSync(password, 10);
     console.log(hashPassword);
-    // bcrypt.hash(password, rounds, (err, hash) => {
-    //   if (err) {
-    //     console.error(err);
-    //     return;
-    //   }
-    
-    //   //logs the hash code
-    //   console.log(hash);
 
-      // body pulled from forms
-      let firstName = req.body.firstName;
-      let lastName = req.body.lastName;
-      let email = req.body.email;
-      let gender = req.body.gender;
-      let age = req.body.age;
-      let photo = req.body.photo;
-      let work = req.body.work;
+    // body pulled from forms
+    let firstName = req.body.firstName;
+    let lastName = req.body.lastName;
+    let email = req.body.email;
+    let gender = req.body.gender;
+    let age = req.body.age;
+    let photo = req.body.photo;
+    let work = req.body.work;
 
-      // makes age integer
-      age = parseInt(age);
+    // makes age integer
+    age = parseInt(age);
 
-      // daata send to the DB
-      let data = {
-        id: totalCount,
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: hashPassword,
-        gender: gender,
-        age: age,
-        photo: photo,
-        work: work,
-        movies: [],
-        prefGender: 'everyone',
-        prefMovie: '',
-        liked: [],
-        disliked: [],
-      };
-      // const hashPassword = async () => {
-      //   const hash = await bcrypt.hash(password, rounds);
-      //   console.log(hash);
-      // };
-      // hashPassword();
+    // daata send to the DB
+    let data = {
+      id: totalCount,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: hashPassword,
+      gender: gender,
+      age: age,
+      photo: photo,
+      work: work,
+      movies: [],
+      prefGender: 'everyone',
+      prefMovie: '',
+      liked: [],
+      disliked: [],
+    };
 
-      usersCollection.insertOne(data);
-      console.log('Created new user');
-      res.render('signIn.ejs');
-    // });
+    usersCollection.insertOne(data);
+    console.log('Created new user');
+    res.render('signIn.ejs');
   } catch (err) {
     next(err);
   }
