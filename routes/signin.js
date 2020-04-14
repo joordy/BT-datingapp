@@ -32,7 +32,7 @@ async function signIn(req, res, next) {
   // Rowan
   try {
     let message = '';
-    res.render('signIn.ejs', {text: message});
+    res.render('signIn.ejs', { text: message });
   } catch (err) {
     next(err);
   }
@@ -44,13 +44,15 @@ async function logIn(req, res) {
     if (person) {
       if (bcrypt.compareSync(req.body.password, person.password)) {
         req.session.idLoggedIn = person.id;
-        res.render('profile.ejs', {user: person});
+        res.render('profile.ejs', { user: person });
         console.log('Logged in as ' + person.firstName);
       } else {
-        res.render('signin.ejs', {text: 'Sorry: this password is incorrect.'});
+        res.render('signin.ejs', {
+          text: 'Sorry: this password is incorrect.',
+        });
       }
     } else {
-      res.render('signin.ejs', {text: 'Sorry: this email does not exists.'})
+      res.render('signin.ejs', { text: 'Sorry: this email does not exists.' });
     }
   } catch (err) {
     console.log(err);

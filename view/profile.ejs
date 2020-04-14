@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <%- include ("components/head.ejs") %>
-    <title>Dat.io – Profile</title>
+    <title>Profile — Dat.io</title>
   </head>
 
   <body class="profile">
@@ -12,8 +12,15 @@
     <main>
       <a href="/updateProfile">edit profile page</a>
       <div>
+<<<<<<< HEAD
         <img  src="images/users/woman.png" alt="">
       </div>
+=======
+        <img src="images/users/melissagomez.jpg" alt="" />
+      </div>  
+      
+      <form action="">
+>>>>>>> develop
         <h2>My profile</h2>
         <section>
           <div>
@@ -40,15 +47,11 @@
               <!-- <input type="select" />
               <input type="select" /> -->
           </div>
-
-         
         </section>
       
       <form action="/signOut" method="POST">
         <input name="SignOut" type="submit" value="Sign Out" />
       </form>
-
-      
 
     </main>
     <%- include ("components/footer-p.ejs") %>

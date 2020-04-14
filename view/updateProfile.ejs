@@ -10,14 +10,15 @@
       <%- include ("components/header-two.ejs") %>
     </header>
     <main>
-      <form action="/profile" method="POST"> 
-        <!-- <input type="file" name="myImage" accept="image/*"> -->
+      <form action="/profile" enctype="multipart/form-data" method="POST">
+        <!-- <input type="file" name="myImage" accept="image/*" /> -->
+
         <div>
-          <img src="images/users/melissagomez.jpg" alt="">
+          <img src="images/users/melissagomez.jpg" alt="" />
         </div>
-        
+
         <h2>My profile</h2>
-        
+
         <section>
           <div>
             <label for="Name">First name:</label>

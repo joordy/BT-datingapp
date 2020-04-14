@@ -19,7 +19,6 @@ mongo.MongoClient.connect(
     if (err) {
       throw err;
     } else if (client) {
-      console.log('Connected to database');
     }
     db = client.db(process.env.DB_NAME);
     usersCollection = db.collection('users');
@@ -43,11 +42,10 @@ async function createAccount(req, res, next) {
   try {
     const allUsers = await usersCollection.find().toArray();
     let totalCount = allUsers.length + 1;
-    // rounds(of salt) is the number of times in which the password is generated
-    // const rounds = 10;
     const password = req.body.password;
     // hashes the password with salt
     let hashPassword = bcrypt.hashSync(password, 10);
+<<<<<<< HEAD
       // body pulled from forms
       let firstName = req.body.firstName;
       let lastName = req.body.lastName;
@@ -56,10 +54,23 @@ async function createAccount(req, res, next) {
       let age = req.body.age;
       let photo = req.body.photo;
       let work = req.body.work;
+=======
+    console.log(hashPassword);
 
-      // makes age integer
-      age = parseInt(age);
+    // body pulled from forms
+    let firstName = req.body.firstName;
+    let lastName = req.body.lastName;
+    let email = req.body.email;
+    let gender = req.body.gender;
+    let age = req.body.age;
+    let photo = req.body.photo;
+    let work = req.body.work;
+>>>>>>> develop
 
+    // makes age integer
+    age = parseInt(age);
+
+<<<<<<< HEAD
       // daata send to the DB
       let data = {
         id: totalCount,
@@ -80,6 +91,29 @@ async function createAccount(req, res, next) {
       usersCollection.insertOne(data);
       console.log('Created new user');
       res.render('signIn.ejs', {text: "Created the account!"});
+=======
+    // daata send to the DB
+    let data = {
+      id: totalCount,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: hashPassword,
+      gender: gender,
+      age: age,
+      photo: photo,
+      work: work,
+      movies: [],
+      prefGender: 'everyone',
+      prefMovie: '',
+      liked: [],
+      disliked: [],
+    };
+
+    usersCollection.insertOne(data);
+    console.log('Created new user');
+    res.render('signIn.ejs');
+>>>>>>> develop
   } catch (err) {
     next(err);
   }

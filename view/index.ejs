@@ -16,9 +16,9 @@
       <% for (let i = 0; i <users.length; i++) { %>
         <li>
           <section>
-            <a href="#">
+            <a href="currentUser">
               <img src="images/users/<%= users[i].photo %>" alt="Image of user">
-              <a href="profile" class="info"><img src="images/icons/info.svg" alt=""></a>
+              <a href="currentUser" class="info"><img src="images/icons/info.svg" alt=""></a>
               <% if (users[i].movies[1] != undefined) {%>
                 <p>#<%= users[i].movies[1] %></p>
               <% } %> 
