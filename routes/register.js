@@ -77,16 +77,9 @@ async function createAccount(req, res, next) {
         liked: [],
         disliked: [],
       };
-      // const hashPassword = async () => {
-      //   const hash = await bcrypt.hash(password, rounds);
-      //   console.log(hash);
-      // };
-      // hashPassword();
-
       usersCollection.insertOne(data);
       console.log('Created new user');
-      res.render('signIn.ejs');
-    // });
+      res.render('signIn.ejs', {text: "Created the account!"});
   } catch (err) {
     next(err);
   }

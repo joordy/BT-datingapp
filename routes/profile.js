@@ -40,9 +40,9 @@ mongo.MongoClient.connect(
 );
 
 router.get('/profile', userUndefined, profileOfMe); // Rowan
-router.post('/profile', profileOfMe);
+// router.post('/profile', profileOfMe);
 router.get('/updateProfile', editPage);
-router.post('/updateProfile', upload.single('myImage'), updateProfile);
+router.post('/profile', postProfile); //upload.single('myImage'),
 router.post('/signOut', signOut);
 router.get('/passwordform', passwordForm);
 
@@ -58,8 +58,9 @@ function userUndefined (req, res, next) {
 async function profileOfMe(req, res, next) {
   // Rowan
   try {
-    console.log(req.session.idLoggedIn);
-    res.render('profile.ejs', { user: req.session.idLoggedIn });
+    let myself = await usersCollection.find({id : req.session.idLoggedIn}).toArray();
+    // console.log(req.session.idLoggedIn);
+    res.render('profile.ejs', { user: myself[0]});
   } catch (err) {
     next(err);
   }
@@ -68,41 +69,51 @@ async function profileOfMe(req, res, next) {
 async function editPage(req, res, next) {
   // Rowan
   try {
+    let myself = await usersCollection.find({id : req.session.idLoggedIn}).toArray();
     console.log(req.session.idLoggedIn);
-    res.render('updateProfile.ejs', { user: req.session.idLoggedIn });
+    res.render('updateProfile.ejs', { user: myself[0] });
   } catch (err) {
     next(err);
   }
 }
 
-async function updateProfile(req, res, next) {
-  // Rowan
+async function postProfile(req, res, next) {
+  // Rowan & Veerle
   try {
-    console.log(req.file);
-        upload.single('myImage'), (req, res) => {
-      let img = fs.readFileSync(req.file.path);
-      let encode_image = img.toString('base64');
-   // Define a JSONobject for the image attributes for saving to database
+    let myself = await usersCollection.find({id : req.session.idLoggedIn}).toArray();
+    let name = req.body.firstName;
+    let email = req.body.email;
+    let age = req.body.age;
+
+    await usersCollection.updateOne(
+      { id: myself[0].id },
+      { $set: { firstName: name, email: email, age: age }
+      }
+    );
+    res.redirect('/profile');
+  //   console.log(req.file);
+  //       upload.single('myImage'), (req, res) => {
+  //     let img = fs.readFileSync(req.file.path);
+  //     let encode_image = img.toString('base64');
+  //  // Define a JSONobject for the image attributes for saving to database
     
-   let finalImg = {
-        contentType: req.file.mimetype,
-        image:  new Buffer(encode_image, 'base64')
-     };
+  //  let finalImg = {
+  //       contentType: req.file.mimetype,
+  //       image:  new Buffer(encode_image, 'base64')
+  //    };
      
-  usersCollection.insertOne(finalImg, (err, result) => {
-      console.log(result)
+  // usersCollection.insertOne(finalImg, (err, result) => {
+  //     console.log(result)
    
-      if (err) return console.log(err)
+  //     if (err) return console.log(err)
    
-      console.log('saved to database')
-      res.redirect('/')
-     
-       
-    })
-  }
-} catch (err) {
+  //     console.log('saved to database')
+  //     res.redirect('/') 
+  //   })
+  // }
+  } catch (err) {
   next(err);
-}
+  }
 }
 
 
@@ -131,25 +142,23 @@ async function passwordForm(req, res, next) {
 
 async function changePassword(req, res) {
   try{ 
-      if (req.session.loggedIN === true) {
-          usersCollection.findOne({ email: req.session.user.email })
-              if (data) {
-                  const query = { email: data.email };
-                  const update = { '$set': { 'password': req.body.newPassword } };
-                  const options = { returnNewDocument: true };
-                  console.log()
-                  usersCollection.findOneAndUpdate(query, update, options );
-                          if (updatedDocument) {
-                              req.session.loggedIN = false;
-                              res.render('/profile');
-                          }
-                          return updatedDocument;
-                      }
-              }
-            
-          } catch (err) {
-            next(err);
-          }
-          }
+    if (req.session.loggedIN === true) {
+      usersCollection.findOne({ email: req.session.user.email })
+        if (data) {
+          const query = { email: data.email };
+          const update = { '$set': { 'password': req.body.newPassword } };
+          const options = { returnNewDocument: true };
+          usersCollection.findOneAndUpdate(query, update, options );
+            if (updatedDocument) {
+              req.session.loggedIN = false;
+              res.render('/profile');
+            }
+          return updatedDocument;
+        }
+      }     
+  } catch (err) {
+    next(err);
+  }
+}
 
 module.exports = router;
