@@ -11,21 +11,22 @@
     </header>
     <main>
 
-      <a href="/updateProfile">edit profile page</a>
         
+        <form action="/profile" enctype="multipart/form-data" method="POST"> 
+            <input type="file" name="myImage" accept="image/*" />
+            
+          
         <div>
           <img  src="images/users/melissagomez.jpg" alt="">
         </div>
       
       
-      <form action="">
+      
         <h2>My profile</h2>
+        
         <section>
           <div>
             <label for="Name">firstName</label>
-          </div>
-          <div>
-            <label for="password">Password</label>
           </div>
           <div>
             <label for="email">Email</label>
@@ -38,19 +39,16 @@
             <h3>Movies:</h3>
               <!-- <input type="select" />
               <input type="select" /> -->
-            </form>
           </div>
 
-         
         </section>
-      </form>
-      
-      
-      <form action="/signOut" method="POST">
-        <input name="SignOut" type="submit" value="Sign Out" />
-      </form>
+        <input type="submit" value="submit profile"/>
+        </form>
 
-      
+        <form action="/profile" autocomplete="off" method="POST">
+          <input type="password" required name="newPassword" placeholder="New password">
+       <button>  <input type="submit" value="Change Password"></button> 
+      </form>
 
     </main>
     <%- include ("components/footer-p.ejs") %>
