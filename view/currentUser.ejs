@@ -1,5 +1,3 @@
-<!-- Code van Jordy/Veerle -->
-<!-- Code van Veerle & Jordy -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,9 +5,70 @@
     <title>User - Dat.io</title>
   </head>
 
-  <body class="swipe">
+  <body class="currentUser">
     <header></header>
-    <main></main>
+    <main>
+      <section>
+        <div class="back">
+          <a href="/"><i class="fas fa-backspace"></i></a>
+        </div>
+        <img class="headimage" src="images/users/<%=user.photo%>" alt="" />
+        <div class="gradient"></div>
+        <article>
+          <h2><%=user.firstName%> <%=user.lastName%></h2>
+          <h3><%=user.work%></h3>
+        </article>
+        <article>
+          <div class="bar"></div>
+          <div class="socials">
+            <div>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div>
+              <a href="#"><i class="fab fa-facebook-square"></i> </a>
+            </div>
+            <div>
+              <a href="#"><i class="fab fa-linkedin"></i> </a>
+            </div>
+          </div>
+
+          <div class="info">
+            <div class="movies">
+              <% if (user.movies[1] != undefined) {%>
+              <p>#<%= user.movies[1] %></p>
+              <% } %> <% if (user.movies[0] != undefined) {%>
+              <p>#<%= user.movies[0] %></p>
+              <% } %>
+            </div>
+            <p><%=user.desc%></p>
+          </div>
+
+          <div class="imagebar">
+            <img src="images/users/<%=user.photo%>" alt="" />
+            <img src="images/users/<%=user.photo%>" alt="" />
+            <img src="images/users/<%=user.photo%>" alt="" />
+          </div>
+
+          <form action="/match" method="POST" class="likeordislike">
+            <input
+              type="submit"
+              name="dislike"
+              class="dislike"
+              data-id="<%=user._id%>"
+              value="&times;"
+            />
+            <div></div>
+            <input
+              type="submit"
+              name="like"
+              class="like"
+              data-id="<%=user._id%>"
+              value="❤"
+            />
+          </form>
+        </article>
+      </section>
+    </main>
     <footer></footer>
   </body>
 </html>
