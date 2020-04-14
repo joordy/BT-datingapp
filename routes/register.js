@@ -42,21 +42,11 @@ async function createAccount(req, res, next) {
   try {
     const allUsers = await usersCollection.find().toArray();
     let totalCount = allUsers.length + 1;
-    // rounds(of salt) is the number of times in which the password is generated
-    // const rounds = 10;
     const password = req.body.password;
     // hashes the password with salt
     console.log(password);
     let hashPassword = bcrypt.hashSync(password, 10);
     console.log(hashPassword);
-    // bcrypt.hash(password, rounds, (err, hash) => {
-    //   if (err) {
-    //     console.error(err);
-    //     return;
-    //   }
-
-    //   //logs the hash code
-    //   console.log(hash);
 
     // body pulled from forms
     let firstName = req.body.firstName;
@@ -87,16 +77,10 @@ async function createAccount(req, res, next) {
       liked: [],
       disliked: [],
     };
-    // const hashPassword = async () => {
-    //   const hash = await bcrypt.hash(password, rounds);
-    //   console.log(hash);
-    // };
-    // hashPassword();
 
     usersCollection.insertOne(data);
     console.log('Created new user');
     res.render('signIn.ejs');
-    // });
   } catch (err) {
     next(err);
   }
