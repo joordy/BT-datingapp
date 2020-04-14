@@ -27,7 +27,7 @@ mongo.MongoClient.connect(
 );
 
 router.get('/', userUndefined, home); // Jordy & Veerle
-// router.get('/curreser', userUndefined, currentUsers); // Jordy &
+router.get('/currentUser', userUndefined, currentUsers); // Jordy &
 router.post('/match', match); // Jordy
 router.get('/matchlist', userUndefined, matchList); // Jordy
 router.get('/filter', userUndefined, filter); // Veerle - KLAAR
@@ -65,6 +65,13 @@ async function home(req, res, next) {
     res.render('index.ejs', {
       users: filtered,
     });
+  } catch (err) {
+    next(err);
+  }
+}
+async function currentUsers(req, res, next) {
+  try {
+    res.render('currentUser.ejs', { user: lastOne });
   } catch (err) {
     next(err);
   }
