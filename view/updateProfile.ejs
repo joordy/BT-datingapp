@@ -10,19 +10,13 @@
       <%- include ("components/header-two.ejs") %>
     </header>
     <main>
-      <form action="/profile" enctype="multipart/form-data" method="POST">
-        <!-- <input type="file" name="myImage" accept="image/*" /> -->
-
-        <div>
-          <img src="images/users/melissagomez.jpg" alt="" />
-        </div>
-
+      <form action="/profile" method="POST" enctype="multipart/form-data"> 
+        <input type="file" name="myImage" accept="image/*" />
         <h2>My profile</h2>
-
         <section>
           <div>
             <label for="Name">First name:</label>
-            <input type="text" name="firstName" placeholder="<%= user.firstName %>">
+            <input type="text" name="firstName" value="<%= user.firstName %>" placeholder="<%= user.firstName %>">
           </div>
           <div>
             <label for="email">Email:</label>
@@ -30,30 +24,12 @@
           </div>
           <div>
             <label for="age">Age:</label>
-            <input type="text" name="age" value="<%= user.age %>" placeholder="Age">
-          </div>
-          <div>
-            <p>What do you like?</p>
-            <h3>Movies:</h3>
-            <!-- <select name="movies" id="">
-              <option value="firstChoice">-- Choose an option</option>
-              <option value="horrorMovies">#horrorMovies</option>
-              <option value="fantasyMovies">#fantasyMovies</option>
-            </select>
-            <select name="movies" id="">
-              <option value="secondChoice">-- Choose an option</option>
-              <option value="horrorMovies">#horrorMovies</option>
-              <option value="fantasyMovies">#fantasyMovies</option>
-            </select> -->
+            <input type="number" min="18"
+            max="99" name="age" value="<%= user.age %>" placeholder="Age">
           </div>
         </section>
         <input type="submit" value="submit profile"/>
         </form>
-
-        <!-- <form action="/profile" autocomplete="off" method="POST">
-          <input type="password" required name="newPassword" placeholder="New password">
-       <button>  <input type="submit" value="Change Password"></button> 
-      </form> -->
     </main>
     <%- include ("components/footer-p.ejs") %>
   </body>

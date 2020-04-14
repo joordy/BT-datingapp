@@ -5,7 +5,6 @@ const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 // Database calling
-let idLoggedIn = 14;
 let db = null;
 let usersCollection = null;
 let url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_URL}${process.env.DB_END}`;
@@ -25,11 +24,11 @@ mongo.MongoClient.connect(
   }
 );
 
-router.get('/registration', registration); // Rowan klaar
-router.post('/registration', createAccount); // Rowan klaar
+router.get('/registration', registration); 
+router.post('/registration', createAccount); 
 
 async function registration(req, res, next) {
-  // Rowan
+  // Loads the registration page
   try {
     res.render('registration.ejs');
   } catch (err) {
@@ -38,82 +37,51 @@ async function registration(req, res, next) {
 }
 
 async function createAccount(req, res, next) {
-  // Rowan
+  // Page to fill in all user information to register
   try {
     const allUsers = await usersCollection.find().toArray();
     let totalCount = allUsers.length + 1;
     const password = req.body.password;
     // hashes the password with salt
     let hashPassword = bcrypt.hashSync(password, 10);
-<<<<<<< HEAD
       // body pulled from forms
       let firstName = req.body.firstName;
       let lastName = req.body.lastName;
       let email = req.body.email;
       let gender = req.body.gender;
       let age = req.body.age;
-      let photo = req.body.photo;
       let work = req.body.work;
-=======
-    console.log(hashPassword);
-
-    // body pulled from forms
-    let firstName = req.body.firstName;
-    let lastName = req.body.lastName;
-    let email = req.body.email;
-    let gender = req.body.gender;
-    let age = req.body.age;
-    let photo = req.body.photo;
-    let work = req.body.work;
->>>>>>> develop
+      let movie1 = req.body.movie1;
+      let movie2 = req.body.movie2;
 
     // makes age integer
+    let photo;
     age = parseInt(age);
-
-<<<<<<< HEAD
-      // daata send to the DB
+    if (gender === 'man') {
+      photo = 'man.png';
+    } else {
+      photo = 'woman.png'
+    }
+      // data send to the DB
       let data = {
-        id: totalCount,
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: hashPassword,
-        gender: gender,
-        age: age,
-        photo: photo,
-        work: work,
-        movies: [],
-        prefGender: 'everyone',
-        prefMovie: '',
-        liked: [],
-        disliked: [],
+        'id': totalCount,
+        'firstName': firstName,
+        'lastName': lastName,
+        'email': email,
+        'password': hashPassword,
+        'gender': gender,
+        'age': age,
+        'photo': photo,
+        'work': work,
+        'movies': [movie1, movie2],
+        'prefGender': 'everyone',
+        'prefMovie': '',
+        'liked': [],
+        'disliked': [],
       };
       usersCollection.insertOne(data);
       console.log('Created new user');
       res.render('signIn.ejs', {text: "Created the account!"});
-=======
-    // daata send to the DB
-    let data = {
-      id: totalCount,
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: hashPassword,
-      gender: gender,
-      age: age,
-      photo: photo,
-      work: work,
-      movies: [],
-      prefGender: 'everyone',
-      prefMovie: '',
-      liked: [],
-      disliked: [],
-    };
-
-    usersCollection.insertOne(data);
-    console.log('Created new user');
-    res.render('signIn.ejs');
->>>>>>> develop
   } catch (err) {
     next(err);
   }
