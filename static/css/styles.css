@@ -249,8 +249,17 @@ footer ul li a img {
   margin-top: 10vh;
 }
 
+.signin main p:first-of-type {
+  position: absolute;
+  left: 4em;
+  top: 10em;
+  font-size: 0.8em;
+  color: red;
+  font-weight: 700;
+}
+
 .signin main div:nth-of-type(1) {
-  margin: 2em 10%;
+  margin: 2.5em 10%;
   width: 80%;
   display: block;
 }
@@ -465,6 +474,10 @@ footer ul li a img {
   padding: 1em 2em;
   background-color: white;
   margin: 0em 3em;
+}
+
+.profile form:nth-of-type(2) {
+  margin-bottom: 6em;
 }
 
 /******************************************************************************

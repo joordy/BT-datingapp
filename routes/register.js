@@ -64,12 +64,12 @@ async function createAccount(req, res, next) {
       let lastName = req.body.lastName;
       let email = req.body.email;
       let gender = req.body.gender;
-      let age = parseInt(req.body.age);
+      let age = req.body.age;
       let photo = req.body.photo;
       let work = req.body.work;
 
       // makes age integer
-      // age = parseInt(age);
+      age = parseInt(age);
 
       // daata send to the DB
       let data = {
