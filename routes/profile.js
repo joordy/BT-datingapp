@@ -5,7 +5,6 @@ const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 // Database calling
-let idLoggedIn = 14;
 let db = null;
 let usersCollection = null;
 let url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_URL}${process.env.DB_END}`;
@@ -27,9 +26,9 @@ mongo.MongoClient.connect(
 );
 
 router.get('/profile', userUndefined, profileOfMe); // Rowan
-router.post('/profile', postProfile); // Rowan
-router.post('/updateProfile', updateProfile);
-router.post('/forgotPassword', forgotPassword);
+// router.post('/profile', postProfile); // Rowan
+router.post('/profile', updateProfile);
+//router.post('/forgotPassword', forgotPassword);
 router.post('/signOut', signOut);
 
 function userUndefined (req, res, next) {

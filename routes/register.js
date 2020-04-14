@@ -47,18 +47,7 @@ async function createAccount(req, res, next) {
     // const rounds = 10;
     const password = req.body.password;
     // hashes the password with salt
-    console.log(password);
     let hashPassword = bcrypt.hashSync(password, 10);
-    console.log(hashPassword);
-    // bcrypt.hash(password, rounds, (err, hash) => {
-    //   if (err) {
-    //     console.error(err);
-    //     return;
-    //   }
-    
-    //   //logs the hash code
-    //   console.log(hash);
-
       // body pulled from forms
       let firstName = req.body.firstName;
       let lastName = req.body.lastName;
