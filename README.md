@@ -21,11 +21,6 @@ This is a datingapp made together with [@RowanHorn](https://github.com/rowanhorn
 
 > When a user is going to create a profile on the application for the first time, the user wants to be given various options to fill in his profile as independently as possible, so that other users who find his profile know exactly what kind of person the user is. The user also wants to be sure that his account is safe.
 
-<!-- <img src="https://imgflip.com/gif/3wqw91">
-
-[url=https://imgflip.com/gif/3wqw91][img]https://i.imgflip.com/3wqw91.gif[/img][/url][url=https://imgflip.com/gif-maker]via Imgflip GIF Maker[/url] -->
-![Animated GIF-source (1)](https://user-images.githubusercontent.com/35265583/79357490-648fc680-7f40-11ea-8456-1482aa5a0490.gif)
-
 #### Filter — Veerle:
 
 > When I sit on the couch at home with my phone in my hands, I want to be able to filter on the movie preferences of my possible matches, so that I don't have a fight in the future about which movie genre we're going to watch (for example on Netflix).
