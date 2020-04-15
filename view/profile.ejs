@@ -10,25 +10,25 @@
       <%- include ("components/header-two.ejs") %>
     </header>
     <main>
-      <a href="/updateProfile">edit profile page</a>
+      <a class="account" href="/updateProfile">edit profile page</a>
       <div>
-        <img  src="images/users/<%= user.photo%>" alt="">
+        <img src="images/users/<%= user.photo%>" alt="" />
       </div>
-        <h2>My profile</h2>
-        <section>
-          <div>
-            <p>Name:</p>
-            <p><%= user.firstName%> <%=user.lastName %> </p>
-          </div>
-          <div>
-            <p>Age:</p>
-            <p><%= user.age %> </p>
-          </div>
-          <div>
-            <p>Email:</p>
-            <p><%= user.email %> </p>
-          </div>
-        </section>
+      <h2>My profile</h2>
+      <section>
+        <div>
+          <p>Name:</p>
+          <p><%= user.firstName%> <%=user.lastName %></p>
+        </div>
+        <div>
+          <p>Age:</p>
+          <p><%= user.age %></p>
+        </div>
+        <div>
+          <p>Email:</p>
+          <p><%= user.email %></p>
+        </div>
+      </section>
       <form action="/signOut" method="POST">
         <input name="SignOut" type="submit" value="Sign Out" />
       </form>

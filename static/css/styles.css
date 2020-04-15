@@ -601,9 +601,24 @@ footer ul li a img {
   margin-top: 1.5em;
   width: 100%;
 }
+
+.profile .account {
+  position: absolute;
+  width: 50%;
+  left: 50%;
+  margin-left: -27%;
+  text-align: center;
+  top: 33em;
+  text-decoration: none;
+  color: white;
+  padding: 0.5em 1em;
+  background-color: #eb4b71;
+  border-radius: 0.5em;
+}
+
 .profile main img {
-  width: 12em;
-  height: 12em;
+  width: 9em;
+  height: 9em;
   object-fit: cover;
   border-radius: 50%;
   display: block;
@@ -632,15 +647,147 @@ footer ul li a img {
   padding: 0.5em 1em 0.5em 1em;
 }
 
-.profile input[type='submit'] {
-  padding: 1em 2em;
-  background-color: white;
-  margin: 0em 3em;
+.profile form:nth-of-type(2) {
+  position: absolute;
+  width: 90%;
+  margin: 0% 5%;
+  left: 0;
+  top: 85vh;
 }
 
-.profile form:nth-of-type(2) {
-  margin-bottom: 6em;
+.profile input[type='submit'] {
+  position: absolute;
+  top: 55em;
+  width: 90vw;
+  padding: 1em 2em;
+  background-color: #eb4b71;
+  color: white;
+  border-radius: 0.5em;
+  font-weight: 700;
+  margin: 0em 5% 10em 5%;
 }
+
+/******************************************************************************
+                          Profile page
+*******************************************************************************/
+
+.updateprofile div {
+  margin-top: 1.5em;
+  width: 100%;
+}
+
+.updateprofile .account {
+  position: absolute;
+  width: 50%;
+  left: 50%;
+  margin-left: -27%;
+  text-align: center;
+  top: 33em;
+  text-decoration: none;
+  color: white;
+  padding: 0.5em 1em;
+  background-color: #eb4b71;
+  border-radius: 0.5em;
+}
+
+.updateprofile main img {
+  width: 9em;
+  height: 9em;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+}
+
+.updateprofile main h2 {
+  text-align: center;
+  margin: 0.7em 0em;
+  color: #4e50b8;
+}
+
+.updateprofile main section {
+  width: 90%;
+  height: auto;
+  margin: 1em 5% 5em 5%;
+  color: black;
+}
+
+.updateprofile main section div {
+  background: white;
+  width: 90%;
+  border-radius: 1em;
+  margin: 0em 0em 1em 0em;
+  border: 2px solid #4e51b2;
+  padding: 0.5em 1em 0.5em 1em;
+}
+
+.updateprofile form:nth-of-type(2) {
+  position: absolute;
+  width: 90%;
+  margin: 0% 5%;
+  left: 0;
+  top: 85vh;
+}
+
+.updateprofile input[type='submit'] {
+  position: absolute;
+  top: 55em;
+  width: 90vw;
+  padding: 1em 2em;
+  background-color: #eb4b71;
+  color: white;
+  border-radius: 0.5em;
+  font-weight: 700;
+  margin: 0em 5% 10em 5%;
+}
+
+.updateprofile input[type='file'] {
+  width: 12em;
+  height: 14em;
+  border-radius: 0.5em;
+  position: absolute;
+  left: 50%;
+  margin-left: -6em;
+  top: 7em;
+  opacity: 0;
+}
+
+.updateprofile div:nth-of-type(1) a {
+  position: absolute;
+  left: 55%;
+  top: 12.5em;
+  width: 2em;
+  height: 2em;
+}
+.updateprofile div:nth-of-type(1) a i {
+  font-size: 2em;
+  color: #4e51b2;
+}
+
+/*** UPDATE PROFILE ***/
+
+/* .profile input[type='file'] {
+  width: 12em;
+  height: 14em;
+  border-radius: 0.5em;
+  position: absolute;
+  left: 50%;
+  margin-left: -6em;
+  top: 7em;
+  opacity: 0;
+}
+
+.profile div:nth-of-type(1) a {
+  position: absolute;
+  left: 55%;
+  top: 12.5em;
+  width: 2em;
+  height: 2em;
+}
+.profile div:nth-of-type(1) a i {
+  font-size: 2em;
+  color: #4e51b2;
+} */
 
 /******************************************************************************
                           Filters page 
