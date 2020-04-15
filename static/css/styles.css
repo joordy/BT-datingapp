@@ -604,15 +604,15 @@ footer ul li a img {
 
 .profile .account {
   position: absolute;
-  width: 50%;
-  left: 50%;
-  margin-left: -27%;
+  right: 5%;
   text-align: center;
-  top: 33em;
+  top: 5em;
   text-decoration: none;
-  color: white;
-  padding: 0.5em 1em;
-  background-color: #eb4b71;
+  color: #4e50b8;
+  border: 1px solid #bcbdea;
+  padding: 0.5em;
+  font-size: 0.75em;
+  background-color: white;
   border-radius: 0.5em;
 }
 
@@ -657,7 +657,7 @@ footer ul li a img {
 
 .profile input[type='submit'] {
   position: absolute;
-  top: 55em;
+  top: 59em;
   width: 90vw;
   padding: 1em 2em;
   background-color: #eb4b71;
@@ -674,20 +674,6 @@ footer ul li a img {
 .updateprofile div {
   margin-top: 1.5em;
   width: 100%;
-}
-
-.updateprofile .account {
-  position: absolute;
-  width: 50%;
-  left: 50%;
-  margin-left: -27%;
-  text-align: center;
-  top: 33em;
-  text-decoration: none;
-  color: white;
-  padding: 0.5em 1em;
-  background-color: #eb4b71;
-  border-radius: 0.5em;
 }
 
 .updateprofile main img {
@@ -731,7 +717,7 @@ footer ul li a img {
 
 .updateprofile input[type='submit'] {
   position: absolute;
-  top: 55em;
+  top: 50em;
   width: 90vw;
   padding: 1em 2em;
   background-color: #eb4b71;
@@ -763,31 +749,6 @@ footer ul li a img {
   font-size: 2em;
   color: #4e51b2;
 }
-
-/*** UPDATE PROFILE ***/
-
-/* .profile input[type='file'] {
-  width: 12em;
-  height: 14em;
-  border-radius: 0.5em;
-  position: absolute;
-  left: 50%;
-  margin-left: -6em;
-  top: 7em;
-  opacity: 0;
-}
-
-.profile div:nth-of-type(1) a {
-  position: absolute;
-  left: 55%;
-  top: 12.5em;
-  width: 2em;
-  height: 2em;
-}
-.profile div:nth-of-type(1) a i {
-  font-size: 2em;
-  color: #4e51b2;
-} */
 
 /******************************************************************************
                           Filters page 

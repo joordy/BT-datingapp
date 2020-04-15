@@ -10,7 +10,7 @@
       <%- include ("components/header-two.ejs") %>
     </header>
     <main>
-      <a class="account" href="/updateProfile">edit profile page</a>
+      <a class="account" href="/updateProfile">Edit profile</a>
       <div>
         <img src="images/users/<%= user.photo%>" alt="" />
       </div>
@@ -27,6 +27,11 @@
         <div>
           <p>Email:</p>
           <p><%= user.email %></p>
+        </div>
+        <div>
+          <p>Movies:</p>
+          <p><%= user.movies[0] %></p>
+          <p><%= user.movies[1] %></p>
         </div>
       </section>
       <form action="/signOut" method="POST">
