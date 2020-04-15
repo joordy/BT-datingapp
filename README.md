@@ -24,7 +24,7 @@ This is a datingapp made together with [@RowanHorn](https://github.com/rowanhorn
 <!-- <img src="https://imgflip.com/gif/3wqw91">
 
 [url=https://imgflip.com/gif/3wqw91][img]https://i.imgflip.com/3wqw91.gif[/img][/url][url=https://imgflip.com/gif-maker]via Imgflip GIF Maker[/url] -->
-![image](https://i.imgflip.com/3wqw91.gif)
+![Animated GIF-source (1)](https://user-images.githubusercontent.com/35265583/79357490-648fc680-7f40-11ea-8456-1482aa5a0490.gif)
 
 #### Filter — Veerle:
 
