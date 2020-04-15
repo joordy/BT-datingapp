@@ -21,7 +21,7 @@ This is a datingapp made together with [@RowanHorn](https://github.com/rowanhorn
 
 > When a user is going to create a profile on the application for the first time, the user wants to be given various options to fill in his profile as independently as possible, so that other users who find his profile know exactly what kind of person the user is. The user also wants to be sure that his account is safe.
 
-<img src="https://media.giphy.com/media/JUw5yxFxz7X3OXbaJ4/giphy.gif" alt="Register gif">
+<div style="width:123px;max-width:100%;"><div style="height:0;padding-bottom:164.23%;position:relative;"><iframe width="123" height="202" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameBorder="0" src="https://imgflip.com/embed/3wqvey"></iframe></div><p><a href="https://imgflip.com/gif/3wqvey">via Imgflip</a></p></div>
 
 #### Filter — Veerle:
 
