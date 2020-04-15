@@ -87,10 +87,20 @@ async function postProfile(req, res, next) {
     let email = req.body.email;
     let age = req.body.age;
     age = parseInt(age);
+    let movie1 = req.body.movie1;
+    let movie2 = req.body.movie2;
     let photo = req.file.originalname;
     await usersCollection.updateOne(
       { id: myself[0].id },
       { $set: { 'firstName': name, 'email': email, 'age': age, 'photo': photo}},
+    );
+    await usersCollection.updateOne(
+      {id: myself[0].id},
+      {$set: {"movies.0" : movie1}},
+    );
+    await usersCollection.updateOne(
+      {id: myself[0].id},
+      {$set: {"movies.1" : movie2}}
     );
     res.redirect('/profile');
   } catch (err) {
