@@ -2,11 +2,9 @@
 const express = require('express');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
-const slug = require('slug');
 const session = require('express-session');
 const mongo = require('mongodb');
 const assert = require('assert');
-// const routing = require('./routes/route.js');
 const signinRouter = require('./routes/signin');
 const registerRouter = require('./routes/register');
 const swipingRouter = require('./routes/swiping');
