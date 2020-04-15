@@ -4,16 +4,26 @@ const mongo = require('mongodb');
 const bcrypt = require('bcrypt');
 const multer = require('multer');
 
-// SET STORAGE
 let storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, '/static/images/');
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  },
+	destination: function (req, files, cb) {
+		cb(null, "./static/images/users/");
+	},
+	filename: function (req, file, cb) {
+		cb(null, file.originalname);
+	}
 });
-let upload = multer({ storage: storage });
+let fileFilter = (req, file, cb) => {
+	if (
+		file.mimetype === "image/png" ||
+    file.mimetype === "image/jpg" ||
+    file.mimetype === "image/jpeg"
+	) {
+		cb(null, true);
+	} else {
+		cb(new Error("File format should be PNG,JPG,JPEG"), false);
+	}
+};
+let upload = multer({ storage: storage, fileFilter: fileFilter });
 
 // Database variables
 let db = null;
@@ -32,12 +42,10 @@ mongo.MongoClient.connect(url, { useUnifiedTopology: true }, function (
   usersCollection = db.collection('users');
 });
 
-router.get('/profile', userUndefined, profileOfMe);
-router.post('/profile', profileOfMe);
-router.get('/updateProfile', editPage);
-router.post('/updateProfile', upload.single('myImage'), updateProfile);
+router.get('/profile', userUndefined, profileOfMe); 
+router.get('/updateProfile',  editPage);
+router.post('/profile', upload.single('myImage'), postProfile);
 router.post('/signOut', signOut);
-router.get('/passwordform', passwordForm);
 
 function userUndefined(req, res, next) {
   // Redirect user to Sign in if not logged in. You must have an account for the application.
@@ -49,50 +57,44 @@ function userUndefined(req, res, next) {
 }
 
 async function profileOfMe(req, res, next) {
-  // Rowan
+  // Print the current user's profile whos logged in.
   try {
-    console.log(req.session.idLoggedIn);
-    res.render('profile.ejs', { user: req.session.idLoggedIn });
+    let myself = await usersCollection.find({id : req.session.idLoggedIn}).toArray();
+    res.render('profile.ejs', { user: myself[0]});
   } catch (err) {
     next(err);
   }
 }
 
 async function editPage(req, res, next) {
-  // Rowan
+  // Showing the page where the user can edit his/her image, name, email and photo:
   try {
+    let myself = await usersCollection.find({id : req.session.idLoggedIn}).toArray();
     console.log(req.session.idLoggedIn);
-    res.render('updateProfile.ejs', { user: req.session.idLoggedIn });
+
+    console.log(myself[0].movies);
+    res.render('updateProfile.ejs', { user: myself[0] });
   } catch (err) {
     next(err);
   }
 }
 
-async function updateProfile(req, res, next) {
-  // Rowan
+async function postProfile(req, res, next) {
+  // Updating the profile with new name, email, age and picture:
   try {
-    console.log(req.file);
-    upload.single('myImage'),
-      (req, res) => {
-        let img = fs.readFileSync(req.file.path);
-        let encode_image = img.toString('base64');
-        // Define a JSONobject for the image attributes for saving to database
-        let finalImg = {
-          contentType: req.file.mimetype,
-          image: new Buffer(encode_image, 'base64'),
-        };
-
-        usersCollection.insertOne(finalImg, (err, result) => {
-          console.log(result);
-
-          if (err) return console.log(err);
-
-          console.log('saved to database');
-          res.redirect('/');
-        });
-      };
+    let myself = await usersCollection.find({id : req.session.idLoggedIn}).toArray();
+    let name = req.body.firstName;
+    let email = req.body.email;
+    let age = req.body.age;
+    age = parseInt(age);
+    let photo = req.file.originalname;
+    await usersCollection.updateOne(
+      { id: myself[0].id },
+      { $set: { 'firstName': name, 'email': email, 'age': age, 'photo': photo}},
+    );
+    res.redirect('/profile');
   } catch (err) {
-    next(err);
+  next(err);
   }
 }
 
@@ -104,36 +106,6 @@ async function signOut(req, res, next) {
       'Your session is destroyed. You can log in again to use the application.'
     );
     res.redirect('/signIn');
-  } catch (err) {
-    next(err);
-  }
-}
-
-async function passwordForm(req, res, next) {
-  try {
-    res.render('changePassword');
-  } catch (err) {
-    next(err);
-  }
-}
-
-async function changePassword(req, res) {
-  try {
-    if (req.session.loggedIN === true) {
-      usersCollection.findOne({ email: req.session.user.email });
-      if (data) {
-        const query = { email: data.email };
-        const update = { $set: { password: req.body.newPassword } };
-        const options = { returnNewDocument: true };
-        console.log();
-        usersCollection.findOneAndUpdate(query, update, options);
-        if (updatedDocument) {
-          req.session.loggedIN = false;
-          res.render('/profile');
-        }
-        return updatedDocument;
-      }
-    }
   } catch (err) {
     next(err);
   }

@@ -25,11 +25,11 @@ mongo.MongoClient.connect(
   }
 );
 
-router.get('/signIn', signIn); // Rowan, eerste pagina (index)
-router.post('/signIn', logIn); // Rowan
+router.get('/signIn', signIn); 
+router.post('/signIn', logIn); 
 
 async function signIn(req, res, next) {
-  // Rowan
+  // Loads log in screen:
   try {
     let message = '';
     res.render('signIn.ejs', { text: message });
@@ -39,6 +39,7 @@ async function signIn(req, res, next) {
 }
 
 async function logIn(req, res) {
+  // Checks if user has right email and password:
   try {
     let person = await usersCollection.findOne({ email: req.body.email });
     if (person) {
