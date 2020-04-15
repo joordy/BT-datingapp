@@ -2,11 +2,9 @@
 const express = require('express');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
-const slug = require('slug');
 const session = require('express-session');
 const mongo = require('mongodb');
 const assert = require('assert');
-// const routing = require('./routes/route.js');
 const signinRouter = require('./routes/signin');
 const registerRouter = require('./routes/register');
 const swipingRouter = require('./routes/swiping');
@@ -16,7 +14,6 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || process.env.DB_PORT;
-// const loggedIn;
 
 // Middleware set-up
 app.set('view engine', 'ejs');
