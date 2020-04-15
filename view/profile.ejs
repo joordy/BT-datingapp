@@ -28,6 +28,11 @@
             <p>Email:</p>
             <p><%= user.email %> </p>
           </div>
+          <div>
+            <p>Movies:</p>
+            <p><%= user.movies[0] %> </p>
+            <p><%= user.movies[1] %> </p>
+          </div>
         </section>
       <form action="/signOut" method="POST">
         <input name="SignOut" type="submit" value="Sign Out" />
