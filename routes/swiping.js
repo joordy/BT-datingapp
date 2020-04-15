@@ -134,7 +134,7 @@ async function match(req, res, next) {
 
     if (value === true && user.liked.includes(req.session.idLoggedIn)) {
       console.log(
-        `you have a like with ${user.firstName}, and the ID is ${user._id}, ${user.liked}`
+        `you have a like with ${user.firstName}, and the ID is ${user._id}`
       );
       res.render('match.ejs', {
         users: user,
