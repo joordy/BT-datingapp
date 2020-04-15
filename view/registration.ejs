@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <%- include ("components/head.ejs") %>
-    <title>Dat.io – registration</title>
+    <title>Register — Dat.io</title>
   </head>
 
   <body class="registration">
@@ -57,7 +57,7 @@
               id="age"
               name="age"
               value="age"
-              placeholder="18+"
+              placeholder="18+" required
             />
           </label>
 
@@ -73,12 +73,8 @@
             </label>
           </div>
 
-          <label for="photo"> Upload a photo of yourself!</label>
-          <input type="file" name="file" id="file" class="inputfile" />
-          <!-- <label for="photo">Choose a file</label> -->
-
           <label for="work"
-            >What is your current occupation?
+            >What is your current education or work spot?
             <input
               type="text"
               placeholder="Teacher of the year"
@@ -86,6 +82,32 @@
               required
             />
           </label>
+
+          <label for="movie1">What are your movie preferences?</label>
+          <select name="movie1" required>
+            <option value="firstChoice" disabled>-- Choose an option</option>
+            <option value="actionMovies">#actionMovies</option>
+            <option value="adventureMovies">#adventureMovies</option>
+            <option value="comedyMovies">#comedyMovies</option>
+            <option value="romanceMovies">#romanceMovies</option>
+            <option value="fantasyMovies">#fantasyMovies</option>
+            <option value="thrillerMovies">#thrillerMovies</option>
+            <option value="horrorMovies">#horrorMovies</option>
+            <option value="westernMovies">#westernMovies</option>
+            <option value="disneyMovies">#disneyMovies</option>
+          </select>
+          <select name="movie2" required>
+            <option value="secondChoice" disabled>-- Choose an option</option>
+            <option value="actionMovies">#actionMovies</option>
+            <option value="adventureMovies">#adventureMovies</option>
+            <option value="comedyMovies">#comedyMovies</option>
+            <option value="romanceMovies">#romanceMovies</option>
+            <option value="fantasyMovies">#fantasyMovies</option>
+            <option value="thrillerMovies">#thrillerMovies</option>
+            <option value="horrorMovies">#horrorMovies</option>
+            <option value="westernMovies">#westernMovies</option>
+            <option value="disneyMovies">#disneyMovies</option>
+          </select>
         </div>
 
         <button type="submit">Create</button>

@@ -1,27 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <%- include ("components/head.ejs") %>
+    <title>Match — Dat.io</title>
+  </head>
 
-<head>
-  <%- include ("components/head.ejs") %>
-  <title>Match</title>
-</head>
-
-<body class="match">
-
-  <main>
-    <section>
-      <img src="images/icons/matchheart.svg" alt="">
-      <img src="images/users/<%=users.photo%>" alt="">
-      <img src="images/users/<%=userLoggedIn.photo%>" alt="">
-
-    </section>
-    <section>
-      <h1>It's a match!</h1>
-      <h2>You and <%= users.firstName %> have liked each other.</h2>
-      <a href="matchlist"> Send Message </a>
-      <a href="/"> Keep Swiping </a>
-    </section>
-  </main>
-</body>
-
+  <body class="match">
+    <main>
+      <section>
+        <img src="images/icons/matchheart.svg" alt="" />
+        <img src="images/users/<%=users.photo%>" alt="" />
+        <img src="images/users/<%=userLoggedIn.photo%>" alt="" />
+      </section>
+      <section>
+        <h1>It's a match!</h1>
+        <h2>You and <%= users.firstName %> have liked each other.</h2>
+        <a href="matchlist"> Send Message </a>
+        <a href="/"> Keep Swiping </a>
+      </section>
+    </main>
+  </body>
 </html>

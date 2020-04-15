@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <%- include ("components/head.ejs") %>
-    <title>Dat.io – Profile</title>
+    <title>Profile — Dat.io</title>
   </head>
 
   <body class="profile">
@@ -10,37 +10,30 @@
       <%- include ("components/header-two.ejs") %>
     </header>
     <main>
-      <form action="">
+      <a class="account" href="/updateProfile">Edit profile</a>
+      <div>
+        <img src="images/users/<%= user.photo%>" alt="" />
+      </div>
+      <h2>My profile</h2>
+      <section>
         <div>
-          <img src="images/users/melissagomez.jpg" alt="">
+          <p>Name:</p>
+          <p><%= user.firstName%> <%=user.lastName %></p>
         </div>
-
-        <h2>My profile</h2>
-        <section>
-          <div>
-            <label for="Name">firstName</label>
-          </div>
-          <div>
-            <label for="password">Password</label>
-          </div>
-          <div>
-            <label for="email">Email</label>
-          </div>
-          <div>
-            <label for="age">Age</label>
-          </div>
-          <div>
-            <p>What do you like?</p>
-            <h3>Movies:</h3>
-            <form action="">
-              <!-- <input type="select" />
-              <input type="select" /> -->
-            </form>
-          </div>
-
-         
-        </section>
-      </form>
+        <div>
+          <p>Age:</p>
+          <p><%= user.age %></p>
+        </div>
+        <div>
+          <p>Email:</p>
+          <p><%= user.email %></p>
+        </div>
+        <div>
+          <p>Movies:</p>
+          <p><%= user.movies[0] %></p>
+          <p><%= user.movies[1] %></p>
+        </div>
+      </section>
       <form action="/signOut" method="POST">
         <input name="SignOut" type="submit" value="Sign Out" />
       </form>

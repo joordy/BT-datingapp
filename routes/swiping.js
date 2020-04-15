@@ -1,11 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const mongo = require('mongodb');
-// const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 // Database calling
-// let idLoggedIn = req.session.idLoggedIn;
 let db = null;
 let usersCollection = null;
 let url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_URL}${process.env.DB_END}`;
@@ -19,34 +17,34 @@ mongo.MongoClient.connect(
     if (err) {
       throw err;
     } else if (client) {
-      console.log('Connected to database');
     }
     db = client.db(process.env.DB_NAME);
     usersCollection = db.collection('users');
   }
 );
 
-router.get('/', userUndefined, home); // Jordy & Veerle
-router.post('/match', match); // Jordy
-router.get('/matchlist', userUndefined, matchList); // Jordy
-router.get('/filter', userUndefined, filter); // Veerle - KLAAR
-router.post('/', postFilter); // Veerle - BIJNA KLAAR
+router.get('/', userUndefined, home);
+router.get('/currentUser', userUndefined, currentUsers);
+router.post('/match', match);
+router.get('/matchlist', userUndefined, matchList);
+router.get('/filter', userUndefined, filter);
+router.post('/', postFilter);
 
-function userUndefined (req, res, next) {
-  if (req.session.idLoggedIn === undefined ) {
-    res.redirect('/signin')
+function userUndefined(req, res, next) {
+  // Redirect user to Sign in if not logged in. You must have an account for the application.
+  if (req.session.idLoggedIn === undefined) {
+    res.redirect('/signin');
   } else {
     next();
   }
 }
 
 async function home(req, res, next) {
-  // Jordy & Veerle
   // Routes function home, graps every user not in 'liked' or 'disliked', meets the filters, and shows them on page.
   try {
-    // let idLoggedIn = req.session.idLoggedIn;
-    console.log(req.session.idLoggedIn);
-    let myself = await usersCollection.find({id : req.session.idLoggedIn}).toArray(); // this code can be removed at the point sessions works.
+    let myself = await usersCollection
+      .find({ id: req.session.idLoggedIn })
+      .toArray();
     let liked = myself[0].liked;
     let disliked = myself[0].disliked;
     let allUsers = await usersCollection
@@ -59,9 +57,36 @@ async function home(req, res, next) {
       })
       .toArray();
     let filtered = await checkGenderPref(allUsers, myself[0]);
+
     res.render('index.ejs', {
       users: filtered,
     });
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function currentUsers(req, res, next) {
+  // Shows the last user of the stack. Always the same user as on Home.
+  try {
+    let myself = await usersCollection
+      .find({ id: req.session.idLoggedIn })
+      .toArray();
+    let liked = myself[0].liked;
+    let disliked = myself[0].disliked;
+    let allUsers = await usersCollection
+      .find({
+        $and: [
+          { id: { $ne: req.session.idLoggedIn } },
+          { id: { $nin: liked } },
+          { id: { $nin: disliked } },
+        ],
+      })
+      .toArray();
+    let filtered = await checkGenderPref(allUsers, myself[0]);
+    let lastOne = filtered[filtered.length - 1];
+
+    res.render('currentUser.ejs', { user: lastOne });
   } catch (err) {
     next(err);
   }
@@ -88,7 +113,9 @@ async function match(req, res, next) {
   // Route match page, when pressing like, database will be updated with 'seen: true' & 'match: true'. Users gets match page.
   // When pressing dislike, database will be updated with 'seen: true' & match stays false. Index page will be rerendered.
   try {
-    let myself = await usersCollection.find({id : req.session.idLoggedIn}).toArray(); // this code can be removed at the point sessions works.
+    let myself = await usersCollection
+      .find({ id: req.session.idLoggedIn })
+      .toArray();
     let liked = myself[0].liked;
     let disliked = myself[0].disliked;
     let allUsers = await usersCollection
@@ -107,7 +134,7 @@ async function match(req, res, next) {
 
     if (value === true && user.liked.includes(req.session.idLoggedIn)) {
       console.log(
-        `you have a like with ${user.firstName}, and the ID is ${user._id}, ${user.liked}`
+        `you have a like with ${user.firstName}, and the ID is ${user._id}`
       );
       res.render('match.ejs', {
         users: user,
@@ -129,9 +156,11 @@ async function match(req, res, next) {
 async function matchList(req, res, next) {
   // Route match overview, graps every user with 'match: true' and will be displayed on overview page.
   try {
-    let myself = await usersCollection.find({id : req.session.idLoggedIn}).toArray(); // this code can be removed at the point sessions works.
+    let myself = await usersCollection
+      .find({ id: req.session.idLoggedIn })
+      .toArray(); // this code can be removed at the point sessions works.
     let liked = myself[0].liked;
-    let matches = await usersCollection.find({ id: { $in: liked} }).toArray();
+    let matches = await usersCollection.find({ id: { $in: liked } }).toArray();
     let lijstje = [];
 
     await matches.forEach(function (user) {
@@ -151,9 +180,7 @@ async function matchList(req, res, next) {
 }
 
 function checkGenderPref(users, loggedIn) {
-  //Veerle
-  //Filters the users by gender and sends to checkMoviePref and returns
-  //a boolean if the conditions are correct for both sides:
+  //Filters the users by gender and sends to checkMoviePref and returns a boolean if the conditions are correct for both sides:
   return users.filter(function (user) {
     if (
       loggedIn.prefGender === user.gender &&
@@ -180,9 +207,7 @@ function checkGenderPref(users, loggedIn) {
 }
 
 function checkMoviePref(user, loggedIn) {
-  //Veerle
-  //Filters the users by movie preferences and returns
-  //a boolean if the conditions are correct:
+  //Filters the users by movie preferences and returns a boolean if the conditions are correct:
   if (loggedIn.prefMovie === '') {
     return true;
   } else if (loggedIn.prefMovie !== '') {
@@ -193,10 +218,10 @@ function checkMoviePref(user, loggedIn) {
 }
 
 async function filter(req, res, next) {
-  // Veerle
-  //Displays the filter page with the sessions for the
-  //filter preferences:
-  let myself = await usersCollection.find({id : req.session.idLoggedIn}).toArray(); // this code can be removed at the point sessions works.
+  //Displays the filter page with the sessions for the filter preferences:
+  let myself = await usersCollection
+    .find({ id: req.session.idLoggedIn })
+    .toArray(); // this code can be removed at the point sessions works.
   try {
     res.render('filter.ejs', {
       gender: myself[0].prefGender,
@@ -208,14 +233,13 @@ async function filter(req, res, next) {
 }
 
 async function postFilter(req, res, next) {
-  // Veerle
-  //Retrieves the entered preferences and sends them to the
-  //updatePreferences function. After this the /home page is
-  //redirected again:
+  //Retrieves the entered preferences and sends them to the updatePreferences function. After this the /home page is redirected again:
   try {
-    let myself = await usersCollection.find({id : req.session.idLoggedIn}).toArray(); // this code can be removed at the point sessions works.
+    let myself = await usersCollection
+      .find({ id: req.session.idLoggedIn })
+      .toArray(); // this code can be removed at the point sessions works.
     if (req.body.remove) {
-      await updatePreferences(req.session.idLoggedIn, 'everyone', "");
+      await updatePreferences(req.session.idLoggedIn, 'everyone', '');
     } else {
       await updatePreferences(myself[0].id, req.body.gender, req.body.movies);
     }
@@ -226,9 +250,7 @@ async function postFilter(req, res, next) {
 }
 
 async function updatePreferences(loggedIn, genderPreference, moviePreference) {
-  // Veerle
-  // Updates the database with the new preferences from the filter
-  // preferences form:
+  // Updates the database with the new preferences from the filter preferences form:
   try {
     await usersCollection.updateOne(
       { id: loggedIn },
