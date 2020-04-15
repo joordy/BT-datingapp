@@ -12,38 +12,26 @@
     <main>
       <a href="/updateProfile">edit profile page</a>
       <div>
-        <img src="images/users/melissagomez.jpg" alt="" />
-      </div>  
-      
-      <form action="">
+        <img  src="images/users/<%= user.photo%>" alt="">
+      </div>
         <h2>My profile</h2>
         <section>
           <div>
-            <label for="Name">firstName</label>
+            <p>Name:</p>
+            <p><%= user.firstName%> <%=user.lastName %> </p>
           </div>
           <div>
-            <label for="password">Password</label>
+            <p>Age:</p>
+            <p><%= user.age %> </p>
           </div>
           <div>
-            <label for="email">Email</label>
-          </div>
-          <div>
-            <label for="age">Age</label>
-          </div>
-          <div>
-            <p>What do you like?</p>
-            <h3>Movies:</h3>
-              <!-- <input type="select" />
-              <input type="select" /> -->
-            </form>
+            <p>Email:</p>
+            <p><%= user.email %> </p>
           </div>
         </section>
-      </form>
-      
       <form action="/signOut" method="POST">
         <input name="SignOut" type="submit" value="Sign Out" />
       </form>
-
     </main>
     <%- include ("components/footer-p.ejs") %>
   </body>
